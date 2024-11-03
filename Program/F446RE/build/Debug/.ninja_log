@@ -1,0 +1,25 @@
+# ninja log v5
+0	4	0	clean	4e890576ff0a3f07
+1	239	1730621853832465846	CMakeFiles/F446RE.dir/Core/Src/main.c.obj	a619208074a326ff
+1	260	1730621853853658803	CMakeFiles/F446RE.dir/Core/Src/stm32f4xx_it.c.obj	b9d9140156585a7b
+1	267	1730621853861861291	CMakeFiles/F446RE.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c.obj	56015bf831e8cd50
+2	288	1730621853882826162	CMakeFiles/F446RE.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c.obj	263ab88565e22d20
+1	302	1730621853892819175	CMakeFiles/F446RE.dir/Core/Src/stm32f4xx_hal_msp.c.obj	2daef9be5d4631d4
+3	306	1730621853900676116	CMakeFiles/F446RE.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c.obj	2dbadab0355b73b4
+1	306	1730621853901660713	CMakeFiles/F446RE.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c.obj	91bd886516527213
+1	361	1730621853954957653	CMakeFiles/F446RE.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c.obj	350cf59c17dabb88
+1	363	1730621853958003153	CMakeFiles/F446RE.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj	a32df26b7ee7f632
+1	476	1730621854070640658	CMakeFiles/F446RE.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c.obj	6e574d958e62d87b
+306	525	1730621854119595205	CMakeFiles/F446RE.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj	e721a7fab7520fea
+239	529	1730621854123368632	CMakeFiles/F446RE.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c.obj	e1cd55f0ec042f85
+288	553	1730621854146778495	CMakeFiles/F446RE.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c.obj	749571b81c798494
+260	566	1730621854160008426	CMakeFiles/F446RE.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c.obj	40ff9c2b87240481
+306	567	1730621854160542058	CMakeFiles/F446RE.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj	89e75692e34f78df
+476	569	1730621854165143205	CMakeFiles/F446RE.dir/Core/Src/sysmem.c.obj	6cf4e03969cfc7dd
+302	583	1730621854177802796	CMakeFiles/F446RE.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c.obj	165b71f0bc15858c
+529	594	1730621854189709959	CMakeFiles/F446RE.dir/startup_stm32f446xx.s.obj	d416caba69de5337
+363	609	1730621854204258867	CMakeFiles/F446RE.dir/Core/Src/system_stm32f4xx.c.obj	6ecf500ab1cab00b
+525	621	1730621854216836998	CMakeFiles/F446RE.dir/Core/Src/syscalls.c.obj	ef2d20e8511c6b5c
+267	629	1730621854224152015	CMakeFiles/F446RE.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj	2fa6ed16e9acac01
+361	634	1730621854230041888	CMakeFiles/F446RE.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c.obj	85ef5f298d9950b
+634	713	1730621854307530910	F446RE.elf	e286559eb6406c71
