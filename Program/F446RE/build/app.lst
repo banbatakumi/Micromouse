@@ -1,0 +1,134 @@
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc3gF76l.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"app.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "src/app/app.c"
+  20              		.global	__aeabi_f2d
+  21              		.global	__aeabi_dadd
+  22              		.global	__aeabi_d2f
+  23              		.section	.text.main_app,"ax",%progbits
+  24              		.align	1
+  25              		.global	main_app
+  26              		.syntax unified
+  27              		.thumb
+  28              		.thumb_func
+  30              	main_app:
+  31              	.LFB239:
+   1:src/app/app.c **** #include "app.h"
+   2:src/app/app.c **** 
+   3:src/app/app.c **** int data = 0;
+   4:src/app/app.c **** float fdata = 0.0;
+   5:src/app/app.c **** void main_app() {
+  32              		.loc 1 5 17 view -0
+  33              		.cfi_startproc
+  34              		@ args = 0, pretend = 0, frame = 0
+  35              		@ frame_needed = 0, uses_anonymous_args = 0
+  36 0000 10B5     		push	{r4, lr}
+  37              	.LCFI0:
+  38              		.cfi_def_cfa_offset 8
+  39              		.cfi_offset 4, -8
+  40              		.cfi_offset 14, -4
+   6:src/app/app.c ****       // Your code here
+   7:src/app/app.c ****       /* USER CODE END WHILE */
+   8:src/app/app.c ****       /* USER CODE BEGIN 3 */
+   9:src/app/app.c ****       // HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
+  10:src/app/app.c ****       // HAL_Delay(250); // Delay 500ms
+  11:src/app/app.c ****       // HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_SET);
+  12:src/app/app.c ****       HAL_Delay(250);  // Delay 500ms
+  41              		.loc 1 12 7 view .LVU1
+  42 0002 FA20     		movs	r0, #250
+  43 0004 FFF7FEFF 		bl	HAL_Delay
+  44              	.LVL0:
+  13:src/app/app.c ****       data++;
+  45              		.loc 1 13 7 view .LVU2
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc3gF76l.s 			page 2
+
+
+  46              		.loc 1 13 11 is_stmt 0 view .LVU3
+  47 0008 0B4A     		ldr	r2, .L3+8
+  48 000a 1368     		ldr	r3, [r2]
+  49 000c 0133     		adds	r3, r3, #1
+  50 000e 1360     		str	r3, [r2]
+  14:src/app/app.c ****       fdata += 0.1;
+  51              		.loc 1 14 7 is_stmt 1 view .LVU4
+  52              		.loc 1 14 13 is_stmt 0 view .LVU5
+  53 0010 0A4C     		ldr	r4, .L3+12
+  54 0012 2068     		ldr	r0, [r4]	@ float
+  55 0014 FFF7FEFF 		bl	__aeabi_f2d
+  56              	.LVL1:
+  57 0018 05A3     		adr	r3, .L3
+  58 001a D3E90023 		ldrd	r2, [r3]
+  59 001e FFF7FEFF 		bl	__aeabi_dadd
+  60              	.LVL2:
+  61 0022 FFF7FEFF 		bl	__aeabi_d2f
+  62              	.LVL3:
+  63 0026 2060     		str	r0, [r4]	@ float
+  15:src/app/app.c ****       // // ここでDMAバッファにprintfの出力をコピー
+  16:src/app/app.c ****       // snprintf(dma_buffer, DMA_BUFFER_SIZE, "Hello, world!\r\n");
+  17:src/app/app.c ****       // // DMA転送開始
+  18:src/app/app.c ****       // HAL_UART_Transmit_DMA(&huart2, (uint8_t *)dma_buffer, strlen(dma_buffer));
+  19:src/app/app.c ****       // DMA転送完了まで待機
+  20:src/app/app.c ****       // printfDMA("Hello, world! %d %.2f\r\n", data, fdata);
+  21:src/app/app.c **** }...
+  64              		.loc 1 21 1 view .LVU6
+  65 0028 10BD     		pop	{r4, pc}
+  66              	.L4:
+  67 002a 00BFAFF3 		.align	3
+  67      0080
+  68              	.L3:
+  69 0030 9A999999 		.word	-1717986918
+  70 0034 9999B93F 		.word	1069128089
+  71 0038 00000000 		.word	data
+  72 003c 00000000 		.word	fdata
+  73              		.cfi_endproc
+  74              	.LFE239:
+  76              		.global	fdata
+  77              		.section	.bss.fdata,"aw",%nobits
+  78              		.align	2
+  81              	fdata:
+  82 0000 00000000 		.space	4
+  83              		.global	data
+  84              		.section	.bss.data,"aw",%nobits
+  85              		.align	2
+  88              	data:
+  89 0000 00000000 		.space	4
+  90              		.text
+  91              	.Letext0:
+  92              		.file 2 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/machine/_default_ty
+  93              		.file 3 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/sys/_stdint.h"
+  94              		.file 4 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc3gF76l.s 			page 3
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 app.c
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc3gF76l.s:24     .text.main_app:00000000 $t
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc3gF76l.s:30     .text.main_app:00000000 main_app
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc3gF76l.s:69     .text.main_app:00000030 $d
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc3gF76l.s:88     .bss.data:00000000 data
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc3gF76l.s:81     .bss.fdata:00000000 fdata
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc3gF76l.s:78     .bss.fdata:00000000 $d
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc3gF76l.s:85     .bss.data:00000000 $d
+
+UNDEFINED SYMBOLS
+__aeabi_f2d
+__aeabi_dadd
+__aeabi_d2f
+HAL_Delay
