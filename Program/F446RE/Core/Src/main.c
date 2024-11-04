@@ -81,6 +81,7 @@ int main(void) {
 
       /* Configure the system clock */
       SystemClock_Config();
+
       /* USER CODE BEGIN SysInit */
 
       /* USER CODE END SysInit */
@@ -94,35 +95,12 @@ int main(void) {
       MX_USART6_UART_Init();
       MX_TIM2_Init();
       /* USER CODE BEGIN 2 */
-
+      setup();
       /* USER CODE END 2 */
 
       /* Infinite loop */
       /* USER CODE BEGIN WHILE */
-      HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
-      HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2);
-      HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_3);
-      HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_4);
-      HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_3);
-      HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_4);
-      __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_3, 2500);
-      HAL_Delay(100);
-      __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_3, 0);
-      HAL_Delay(100);
-      __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_3, 2500);
-      HAL_Delay(100);
-      __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_3, 0);
-      HAL_Delay(100);
-
-      for (int i = 0; i < 300; i++) {
-            __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_4, i);
-            HAL_Delay(4);
-      }
       while (1) {
-            __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 0);
-            __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, 0);
-            __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, 0);
-            __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_4, 0);
             main_app();
             /* USER CODE END WHILE */
 

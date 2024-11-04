@@ -1,0 +1,473 @@
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccTqzmi6.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"robot.cpp"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "src/unit/robot.cpp"
+  20              		.section	.text._ZN12PwmSingleOut4initEv,"axG",%progbits,_ZN12PwmSingleOut4initEv,comdat
+  21              		.align	1
+  22              		.weak	_ZN12PwmSingleOut4initEv
+  23              		.syntax unified
+  24              		.thumb
+  25              		.thumb_func
+  27              	_ZN12PwmSingleOut4initEv:
+  28              		.fnstart
+  29              	.LVL0:
+  30              	.LFB256:
+  31              		.file 2 "Lib/PWMSingle/PWMSingle.hpp"
+   1:Lib/PWMSingle/PWMSingle.hpp **** #ifndef __PWMSINGLE__
+   2:Lib/PWMSingle/PWMSingle.hpp **** #define __PWMSINGLE__
+   3:Lib/PWMSingle/PWMSingle.hpp **** 
+   4:Lib/PWMSingle/PWMSingle.hpp **** #include "tim.h"
+   5:Lib/PWMSingle/PWMSingle.hpp **** #include "MyMath.hpp"
+   6:Lib/PWMSingle/PWMSingle.hpp **** 
+   7:Lib/PWMSingle/PWMSingle.hpp **** #ifdef __cplusplus
+   8:Lib/PWMSingle/PWMSingle.hpp **** extern "C" {
+   9:Lib/PWMSingle/PWMSingle.hpp **** 
+  10:Lib/PWMSingle/PWMSingle.hpp **** class PwmSingleOut {
+  11:Lib/PWMSingle/PWMSingle.hpp ****   public:
+  12:Lib/PWMSingle/PWMSingle.hpp ****     PwmSingleOut(TIM_HandleTypeDef *htim, uint32_t channel)
+  13:Lib/PWMSingle/PWMSingle.hpp ****         : _htim(htim), _channel(channel), _maxValue(_htim->Init.Period) {
+  14:Lib/PWMSingle/PWMSingle.hpp ****     }
+  15:Lib/PWMSingle/PWMSingle.hpp **** 
+  16:Lib/PWMSingle/PWMSingle.hpp ****     void init() {
+  32              		.loc 2 16 10 view -0
+  33              		.cfi_startproc
+  34              		@ args = 0, pretend = 0, frame = 0
+  35              		@ frame_needed = 0, uses_anonymous_args = 0
+  36              		.loc 2 16 10 is_stmt 0 view .LVU1
+  37 0000 10B5     		push	{r4, lr}
+  38              		.save {r4, lr}
+  39              	.LCFI0:
+  40              		.cfi_def_cfa_offset 8
+  41              		.cfi_offset 4, -8
+  42              		.cfi_offset 14, -4
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccTqzmi6.s 			page 2
+
+
+  43 0002 0446     		mov	r4, r0
+  17:Lib/PWMSingle/PWMSingle.hpp ****         HAL_TIM_PWM_Start(_htim, _channel);
+  44              		.loc 2 17 9 is_stmt 1 view .LVU2
+  45              		.loc 2 17 26 is_stmt 0 view .LVU3
+  46 0004 4168     		ldr	r1, [r0, #4]
+  47 0006 0068     		ldr	r0, [r0]
+  48              	.LVL1:
+  49              		.loc 2 17 26 view .LVU4
+  50 0008 FFF7FEFF 		bl	HAL_TIM_PWM_Start
+  51              	.LVL2:
+  18:Lib/PWMSingle/PWMSingle.hpp ****         _maxValue = _htim->Init.Period;
+  52              		.loc 2 18 9 is_stmt 1 view .LVU5
+  53              		.loc 2 18 21 is_stmt 0 view .LVU6
+  54 000c 2368     		ldr	r3, [r4]
+  55              		.loc 2 18 33 view .LVU7
+  56 000e DB68     		ldr	r3, [r3, #12]
+  57              		.loc 2 18 19 view .LVU8
+  58 0010 A360     		str	r3, [r4, #8]
+  19:Lib/PWMSingle/PWMSingle.hpp ****     }
+  59              		.loc 2 19 5 view .LVU9
+  60 0012 10BD     		pop	{r4, pc}
+  61              		.loc 2 19 5 view .LVU10
+  62              		.cfi_endproc
+  63              	.LFE256:
+  64              		.fnend
+  66              		.section	.text._ZN5RobotC2Ev,"ax",%progbits
+  67              		.align	1
+  68              		.global	_ZN5RobotC2Ev
+  69              		.syntax unified
+  70              		.thumb
+  71              		.thumb_func
+  73              	_ZN5RobotC2Ev:
+  74              		.fnstart
+  75              	.LVL3:
+  76              	.LFB261:
+   1:src/unit/robot.cpp **** #include "robot.hpp"
+   2:src/unit/robot.cpp **** 
+   3:src/unit/robot.cpp **** Robot::Robot() {
+  77              		.loc 1 3 1 is_stmt 1 view -0
+  78              		.cfi_startproc
+  79              		@ args = 0, pretend = 0, frame = 0
+  80              		@ frame_needed = 0, uses_anonymous_args = 0
+  81              		.loc 1 3 1 is_stmt 0 view .LVU12
+  82 0000 38B5     		push	{r3, r4, r5, lr}
+  83              		.save {r3, r4, r5, lr}
+  84              	.LCFI1:
+  85              		.cfi_def_cfa_offset 16
+  86              		.cfi_offset 3, -16
+  87              		.cfi_offset 4, -12
+  88              		.cfi_offset 5, -8
+  89              		.cfi_offset 14, -4
+  90 0002 0446     		mov	r4, r0
+  91              	.LVL4:
+  92              	.LBB30:
+  93              	.LBB31:
+  94              	.LBI31:
+  95              		.file 3 "Lib/DigitalInOut/DigitalInOut.hpp"
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccTqzmi6.s 			page 3
+
+
+   1:Lib/DigitalInOut/DigitalInOut.hpp **** #ifndef __DigitalInOut__
+   2:Lib/DigitalInOut/DigitalInOut.hpp **** #define __DigitalInOut__
+   3:Lib/DigitalInOut/DigitalInOut.hpp **** 
+   4:Lib/DigitalInOut/DigitalInOut.hpp **** #include "main.h"
+   5:Lib/DigitalInOut/DigitalInOut.hpp **** 
+   6:Lib/DigitalInOut/DigitalInOut.hpp **** #ifdef __cplusplus
+   7:Lib/DigitalInOut/DigitalInOut.hpp **** 
+   8:Lib/DigitalInOut/DigitalInOut.hpp **** extern "C" {
+   9:Lib/DigitalInOut/DigitalInOut.hpp **** 
+  10:Lib/DigitalInOut/DigitalInOut.hpp **** class DigitalOut {
+  11:Lib/DigitalInOut/DigitalInOut.hpp ****   public:
+  12:Lib/DigitalInOut/DigitalInOut.hpp ****     DigitalOut(GPIO_TypeDef *port, uint16_t pin) : port(port), pin(pin) {
+  96              		.loc 3 12 5 is_stmt 1 view .LVU13
+  97              	.LBB32:
+  98              		.loc 3 12 52 is_stmt 0 view .LVU14
+  99 0004 1A48     		ldr	r0, .L5
+ 100              	.LVL5:
+ 101              		.loc 3 12 52 view .LVU15
+ 102 0006 2060     		str	r0, [r4]
+ 103              		.loc 3 12 64 view .LVU16
+ 104 0008 0421     		movs	r1, #4
+ 105 000a A180     		strh	r1, [r4, #4]	@ movhi
+  13:Lib/DigitalInOut/DigitalInOut.hpp ****         HAL_GPIO_WritePin(port, pin, GPIO_PIN_RESET);
+ 106              		.loc 3 13 9 is_stmt 1 view .LVU17
+ 107              		.loc 3 13 26 is_stmt 0 view .LVU18
+ 108 000c 0022     		movs	r2, #0
+ 109 000e FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 110              	.LVL6:
+ 111              		.loc 3 13 26 view .LVU19
+ 112              	.LBE32:
+ 113              	.LBE31:
+ 114              	.LBB33:
+ 115              	.LBI33:
+  12:Lib/DigitalInOut/DigitalInOut.hpp ****         HAL_GPIO_WritePin(port, pin, GPIO_PIN_RESET);
+ 116              		.loc 3 12 5 is_stmt 1 view .LVU20
+ 117              	.LBB34:
+  12:Lib/DigitalInOut/DigitalInOut.hpp ****         HAL_GPIO_WritePin(port, pin, GPIO_PIN_RESET);
+ 118              		.loc 3 12 52 is_stmt 0 view .LVU21
+ 119 0012 184D     		ldr	r5, .L5+4
+ 120 0014 A560     		str	r5, [r4, #8]
+  12:Lib/DigitalInOut/DigitalInOut.hpp ****         HAL_GPIO_WritePin(port, pin, GPIO_PIN_RESET);
+ 121              		.loc 3 12 64 view .LVU22
+ 122 0016 1021     		movs	r1, #16
+ 123 0018 A181     		strh	r1, [r4, #12]	@ movhi
+ 124              		.loc 3 13 9 is_stmt 1 view .LVU23
+ 125              		.loc 3 13 26 is_stmt 0 view .LVU24
+ 126 001a 0022     		movs	r2, #0
+ 127 001c 2846     		mov	r0, r5
+ 128 001e FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 129              	.LVL7:
+ 130              		.loc 3 13 26 view .LVU25
+ 131              	.LBE34:
+ 132              	.LBE33:
+ 133              	.LBB35:
+ 134              	.LBI35:
+  12:Lib/DigitalInOut/DigitalInOut.hpp ****         HAL_GPIO_WritePin(port, pin, GPIO_PIN_RESET);
+ 135              		.loc 3 12 5 is_stmt 1 view .LVU26
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccTqzmi6.s 			page 4
+
+
+ 136              	.LBB36:
+  12:Lib/DigitalInOut/DigitalInOut.hpp ****         HAL_GPIO_WritePin(port, pin, GPIO_PIN_RESET);
+ 137              		.loc 3 12 52 is_stmt 0 view .LVU27
+ 138 0022 2561     		str	r5, [r4, #16]
+  12:Lib/DigitalInOut/DigitalInOut.hpp ****         HAL_GPIO_WritePin(port, pin, GPIO_PIN_RESET);
+ 139              		.loc 3 12 64 view .LVU28
+ 140 0024 4021     		movs	r1, #64
+ 141 0026 A182     		strh	r1, [r4, #20]	@ movhi
+ 142              		.loc 3 13 9 is_stmt 1 view .LVU29
+ 143              		.loc 3 13 26 is_stmt 0 view .LVU30
+ 144 0028 0022     		movs	r2, #0
+ 145 002a 2846     		mov	r0, r5
+ 146 002c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 147              	.LVL8:
+ 148              		.loc 3 13 26 view .LVU31
+ 149              	.LBE36:
+ 150              	.LBE35:
+ 151              	.LBB37:
+ 152              	.LBI37:
+  12:Lib/DigitalInOut/DigitalInOut.hpp ****         HAL_GPIO_WritePin(port, pin, GPIO_PIN_RESET);
+ 153              		.loc 3 12 5 is_stmt 1 view .LVU32
+ 154              	.LBB38:
+  12:Lib/DigitalInOut/DigitalInOut.hpp ****         HAL_GPIO_WritePin(port, pin, GPIO_PIN_RESET);
+ 155              		.loc 3 12 52 is_stmt 0 view .LVU33
+ 156 0030 A561     		str	r5, [r4, #24]
+  12:Lib/DigitalInOut/DigitalInOut.hpp ****         HAL_GPIO_WritePin(port, pin, GPIO_PIN_RESET);
+ 157              		.loc 3 12 64 view .LVU34
+ 158 0032 8021     		movs	r1, #128
+ 159 0034 A183     		strh	r1, [r4, #28]	@ movhi
+ 160              		.loc 3 13 9 is_stmt 1 view .LVU35
+ 161              		.loc 3 13 26 is_stmt 0 view .LVU36
+ 162 0036 0022     		movs	r2, #0
+ 163 0038 2846     		mov	r0, r5
+ 164 003a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 165              	.LVL9:
+ 166              		.loc 3 13 26 view .LVU37
+ 167              	.LBE38:
+ 168              	.LBE37:
+ 169              	.LBB39:
+ 170              	.LBI39:
+  12:Lib/DigitalInOut/DigitalInOut.hpp ****         HAL_GPIO_WritePin(port, pin, GPIO_PIN_RESET);
+ 171              		.loc 3 12 5 is_stmt 1 view .LVU38
+ 172              	.LBB40:
+  12:Lib/DigitalInOut/DigitalInOut.hpp ****         HAL_GPIO_WritePin(port, pin, GPIO_PIN_RESET);
+ 173              		.loc 3 12 52 is_stmt 0 view .LVU39
+ 174 003e 2562     		str	r5, [r4, #32]
+  12:Lib/DigitalInOut/DigitalInOut.hpp ****         HAL_GPIO_WritePin(port, pin, GPIO_PIN_RESET);
+ 175              		.loc 3 12 64 view .LVU40
+ 176 0040 4FF48071 		mov	r1, #256
+ 177 0044 A184     		strh	r1, [r4, #36]	@ movhi
+ 178              		.loc 3 13 9 is_stmt 1 view .LVU41
+ 179              		.loc 3 13 26 is_stmt 0 view .LVU42
+ 180 0046 0022     		movs	r2, #0
+ 181 0048 2846     		mov	r0, r5
+ 182 004a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 183              	.LVL10:
+ 184              		.loc 3 13 26 view .LVU43
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccTqzmi6.s 			page 5
+
+
+ 185              	.LBE40:
+ 186              	.LBE39:
+ 187              	.LBB41:
+ 188              	.LBI41:
+  12:Lib/DigitalInOut/DigitalInOut.hpp ****         HAL_GPIO_WritePin(port, pin, GPIO_PIN_RESET);
+ 189              		.loc 3 12 5 is_stmt 1 view .LVU44
+ 190              	.LBB42:
+  12:Lib/DigitalInOut/DigitalInOut.hpp ****         HAL_GPIO_WritePin(port, pin, GPIO_PIN_RESET);
+ 191              		.loc 3 12 52 is_stmt 0 view .LVU45
+ 192 004e A562     		str	r5, [r4, #40]
+  12:Lib/DigitalInOut/DigitalInOut.hpp ****         HAL_GPIO_WritePin(port, pin, GPIO_PIN_RESET);
+ 193              		.loc 3 12 64 view .LVU46
+ 194 0050 4FF40071 		mov	r1, #512
+ 195 0054 A185     		strh	r1, [r4, #44]	@ movhi
+ 196              		.loc 3 13 9 is_stmt 1 view .LVU47
+ 197              		.loc 3 13 26 is_stmt 0 view .LVU48
+ 198 0056 0022     		movs	r2, #0
+ 199 0058 2846     		mov	r0, r5
+ 200 005a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 201              	.LVL11:
+ 202              		.loc 3 13 26 view .LVU49
+ 203              	.LBE42:
+ 204              	.LBE41:
+ 205              	.LBB43:
+ 206              	.LBI43:
+  12:Lib/PWMSingle/PWMSingle.hpp ****         : _htim(htim), _channel(channel), _maxValue(_htim->Init.Period) {
+ 207              		.loc 2 12 5 is_stmt 1 view .LVU50
+ 208              	.LBB44:
+  13:Lib/PWMSingle/PWMSingle.hpp ****     }
+ 209              		.loc 2 13 11 is_stmt 0 view .LVU51
+ 210 005e 064B     		ldr	r3, .L5+8
+ 211 0060 2363     		str	r3, [r4, #48]
+  13:Lib/PWMSingle/PWMSingle.hpp ****     }
+ 212              		.loc 2 13 24 view .LVU52
+ 213 0062 0C22     		movs	r2, #12
+ 214 0064 6263     		str	r2, [r4, #52]
+  13:Lib/PWMSingle/PWMSingle.hpp ****     }
+ 215              		.loc 2 13 65 view .LVU53
+ 216 0066 DB68     		ldr	r3, [r3, #12]
+  13:Lib/PWMSingle/PWMSingle.hpp ****     }
+ 217              		.loc 2 13 43 view .LVU54
+ 218 0068 A363     		str	r3, [r4, #56]
+ 219              	.LVL12:
+  13:Lib/PWMSingle/PWMSingle.hpp ****     }
+ 220              		.loc 2 13 43 view .LVU55
+ 221              	.LBE44:
+ 222              	.LBE43:
+ 223              	.LBE30:
+   4:src/unit/robot.cpp **** }
+ 224              		.loc 1 4 1 view .LVU56
+ 225 006a 2046     		mov	r0, r4
+ 226 006c 38BD     		pop	{r3, r4, r5, pc}
+ 227              	.LVL13:
+ 228              	.L6:
+ 229              		.loc 1 4 1 view .LVU57
+ 230 006e 00BF     		.align	2
+ 231              	.L5:
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccTqzmi6.s 			page 6
+
+
+ 232 0070 000C0240 		.word	1073875968
+ 233 0074 00040240 		.word	1073873920
+ 234 0078 00000000 		.word	htim3
+ 235              		.cfi_endproc
+ 236              	.LFE261:
+ 237              		.fnend
+ 239              		.global	_ZN5RobotC1Ev
+ 240              		.thumb_set _ZN5RobotC1Ev,_ZN5RobotC2Ev
+ 241              		.section	.rodata._ZN5Robot12hardwareInitEv.str1.4,"aMS",%progbits,1
+ 242              		.align	2
+ 243              	.LC0:
+ 244 0000 48656C6C 		.ascii	"Hello World\000"
+ 244      6F20576F 
+ 244      726C6400 
+ 245              		.section	.text._ZN5Robot12hardwareInitEv,"ax",%progbits
+ 246              		.align	1
+ 247              		.global	_ZN5Robot12hardwareInitEv
+ 248              		.syntax unified
+ 249              		.thumb
+ 250              		.thumb_func
+ 252              	_ZN5Robot12hardwareInitEv:
+ 253              		.fnstart
+ 254              	.LVL14:
+ 255              	.LFB263:
+   5:src/unit/robot.cpp **** 
+   6:src/unit/robot.cpp **** void Robot::hardwareInit() {
+ 256              		.loc 1 6 28 is_stmt 1 view -0
+ 257              		.cfi_startproc
+ 258              		@ args = 0, pretend = 0, frame = 0
+ 259              		@ frame_needed = 0, uses_anonymous_args = 0
+ 260              		.loc 1 6 28 is_stmt 0 view .LVU59
+ 261 0000 10B5     		push	{r4, lr}
+ 262              		.save {r4, lr}
+ 263              	.LCFI2:
+ 264              		.cfi_def_cfa_offset 8
+ 265              		.cfi_offset 4, -8
+ 266              		.cfi_offset 14, -4
+ 267 0002 0446     		mov	r4, r0
+   7:src/unit/robot.cpp ****       printf("Hello World\n");
+ 268              		.loc 1 7 7 is_stmt 1 view .LVU60
+ 269              		.loc 1 7 13 is_stmt 0 view .LVU61
+ 270 0004 0B48     		ldr	r0, .L9
+ 271              	.LVL15:
+ 272              		.loc 1 7 13 view .LVU62
+ 273 0006 FFF7FEFF 		bl	puts
+ 274              	.LVL16:
+   8:src/unit/robot.cpp ****       fan.init();
+ 275              		.loc 1 8 7 is_stmt 1 view .LVU63
+ 276              		.loc 1 8 15 is_stmt 0 view .LVU64
+ 277 000a 04F13000 		add	r0, r4, #48
+ 278 000e FFF7FEFF 		bl	_ZN12PwmSingleOut4initEv
+ 279              	.LVL17:
+   9:src/unit/robot.cpp ****       led1 = 1;
+ 280              		.loc 1 9 7 is_stmt 1 view .LVU65
+ 281              	.LBB45:
+ 282              	.LBI45:
+  14:Lib/DigitalInOut/DigitalInOut.hpp ****     }
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccTqzmi6.s 			page 7
+
+
+  15:Lib/DigitalInOut/DigitalInOut.hpp ****     void write(bool value) {
+  16:Lib/DigitalInOut/DigitalInOut.hpp ****         HAL_GPIO_WritePin(port, pin, value ? GPIO_PIN_SET : GPIO_PIN_RESET);
+  17:Lib/DigitalInOut/DigitalInOut.hpp ****     }
+  18:Lib/DigitalInOut/DigitalInOut.hpp **** 
+  19:Lib/DigitalInOut/DigitalInOut.hpp ****     void operator=(bool value) {
+ 283              		.loc 3 19 10 view .LVU66
+ 284              	.LBB46:
+  20:Lib/DigitalInOut/DigitalInOut.hpp ****         HAL_GPIO_WritePin(port, pin, value ? GPIO_PIN_SET : GPIO_PIN_RESET);
+ 285              		.loc 3 20 9 view .LVU67
+ 286              		.loc 3 20 26 is_stmt 0 view .LVU68
+ 287 0012 0122     		movs	r2, #1
+ 288 0014 A188     		ldrh	r1, [r4, #4]
+ 289 0016 2068     		ldr	r0, [r4]
+ 290 0018 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 291              	.LVL18:
+ 292              		.loc 3 20 26 view .LVU69
+ 293              	.LBE46:
+ 294              	.LBE45:
+  10:src/unit/robot.cpp ****       led2 = 1;
+ 295              		.loc 1 10 7 is_stmt 1 view .LVU70
+ 296              	.LBB47:
+ 297              	.LBI47:
+  19:Lib/DigitalInOut/DigitalInOut.hpp ****         HAL_GPIO_WritePin(port, pin, value ? GPIO_PIN_SET : GPIO_PIN_RESET);
+ 298              		.loc 3 19 10 view .LVU71
+ 299              	.LBB48:
+ 300              		.loc 3 20 9 view .LVU72
+ 301              		.loc 3 20 26 is_stmt 0 view .LVU73
+ 302 001c 0122     		movs	r2, #1
+ 303 001e A189     		ldrh	r1, [r4, #12]
+ 304 0020 A068     		ldr	r0, [r4, #8]
+ 305 0022 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 306              	.LVL19:
+ 307              		.loc 3 20 26 view .LVU74
+ 308              	.LBE48:
+ 309              	.LBE47:
+  11:src/unit/robot.cpp ****       led3 = 1;
+ 310              		.loc 1 11 7 is_stmt 1 view .LVU75
+ 311              	.LBB49:
+ 312              	.LBI49:
+  19:Lib/DigitalInOut/DigitalInOut.hpp ****         HAL_GPIO_WritePin(port, pin, value ? GPIO_PIN_SET : GPIO_PIN_RESET);
+ 313              		.loc 3 19 10 view .LVU76
+ 314              	.LBB50:
+ 315              		.loc 3 20 9 view .LVU77
+ 316              		.loc 3 20 26 is_stmt 0 view .LVU78
+ 317 0026 0122     		movs	r2, #1
+ 318 0028 A18A     		ldrh	r1, [r4, #20]
+ 319 002a 2069     		ldr	r0, [r4, #16]
+ 320 002c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 321              	.LVL20:
+ 322              		.loc 3 20 26 view .LVU79
+ 323              	.LBE50:
+ 324              	.LBE49:
+  12:src/unit/robot.cpp **** }...
+ 325              		.loc 1 12 1 view .LVU80
+ 326 0030 10BD     		pop	{r4, pc}
+ 327              	.LVL21:
+ 328              	.L10:
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccTqzmi6.s 			page 8
+
+
+ 329              		.loc 1 12 1 view .LVU81
+ 330 0032 00BF     		.align	2
+ 331              	.L9:
+ 332 0034 00000000 		.word	.LC0
+ 333              		.cfi_endproc
+ 334              	.LFE263:
+ 335              		.fnend
+ 337              		.text
+ 338              	.Letext0:
+ 339              		.file 4 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/machine/_default_ty
+ 340              		.file 5 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/sys/_stdint.h"
+ 341              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f446xx.h"
+ 342              		.file 7 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/lib/gcc/arm-none-eabi/12.3.1/include/stdd
+ 343              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 344              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+ 345              		.file 10 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 346              		.file 11 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h"
+ 347              		.file 12 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/c++/12.3.1/cstdio"
+ 348              		.file 13 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/c++/12.3.1/arm-non
+ 349              		.file 14 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/sys/_types.h"
+ 350              		.file 15 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/sys/reent.h"
+ 351              		.file 16 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/sys/lock.h"
+ 352              		.file 17 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/stdio.h"
+ 353              		.file 18 "src/unit/robot.hpp"
+ 354              		.file 19 "Core/Inc/tim.h"
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccTqzmi6.s 			page 9
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 robot.cpp
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccTqzmi6.s:21     .text._ZN12PwmSingleOut4initEv:00000000 $t
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccTqzmi6.s:27     .text._ZN12PwmSingleOut4initEv:00000000 _ZN12PwmSingleOut4initEv
+.ARM.exidx.text._ZN12PwmSingleOut4initEv:00000000 $d
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccTqzmi6.s:67     .text._ZN5RobotC2Ev:00000000 $t
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccTqzmi6.s:73     .text._ZN5RobotC2Ev:00000000 _ZN5RobotC2Ev
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccTqzmi6.s:232    .text._ZN5RobotC2Ev:00000070 $d
+    .ARM.exidx.text._ZN5RobotC2Ev:00000000 $d
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccTqzmi6.s:73     .text._ZN5RobotC2Ev:00000000 _ZN5RobotC1Ev
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccTqzmi6.s:242    .rodata._ZN5Robot12hardwareInitEv.str1.4:00000000 $d
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccTqzmi6.s:246    .text._ZN5Robot12hardwareInitEv:00000000 $t
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccTqzmi6.s:252    .text._ZN5Robot12hardwareInitEv:00000000 _ZN5Robot12hardwareInitEv
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccTqzmi6.s:332    .text._ZN5Robot12hardwareInitEv:00000034 $d
+.ARM.exidx.text._ZN5Robot12hardwareInitEv:00000000 $d
+
+UNDEFINED SYMBOLS
+HAL_TIM_PWM_Start
+__aeabi_unwind_cpp_pr0
+HAL_GPIO_WritePin
+htim3
+puts

@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc3gF76l.s 			page 1
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccBAaM2e.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -15,120 +15,257 @@ ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc3gF76l.s 			page 1
   12              		.eabi_attribute 30, 1
   13              		.eabi_attribute 34, 1
   14              		.eabi_attribute 18, 4
-  15              		.file	"app.c"
+  15              		.file	"app.cpp"
   16              		.text
   17              	.Ltext0:
   18              		.cfi_sections	.debug_frame
-  19              		.file 1 "src/app/app.c"
-  20              		.global	__aeabi_f2d
-  21              		.global	__aeabi_dadd
-  22              		.global	__aeabi_d2f
-  23              		.section	.text.main_app,"ax",%progbits
-  24              		.align	1
-  25              		.global	main_app
-  26              		.syntax unified
-  27              		.thumb
-  28              		.thumb_func
-  30              	main_app:
-  31              	.LFB239:
-   1:src/app/app.c **** #include "app.h"
-   2:src/app/app.c **** 
-   3:src/app/app.c **** int data = 0;
-   4:src/app/app.c **** float fdata = 0.0;
-   5:src/app/app.c **** void main_app() {
-  32              		.loc 1 5 17 view -0
-  33              		.cfi_startproc
-  34              		@ args = 0, pretend = 0, frame = 0
-  35              		@ frame_needed = 0, uses_anonymous_args = 0
-  36 0000 10B5     		push	{r4, lr}
-  37              	.LCFI0:
-  38              		.cfi_def_cfa_offset 8
-  39              		.cfi_offset 4, -8
-  40              		.cfi_offset 14, -4
-   6:src/app/app.c ****       // Your code here
-   7:src/app/app.c ****       /* USER CODE END WHILE */
-   8:src/app/app.c ****       /* USER CODE BEGIN 3 */
-   9:src/app/app.c ****       // HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
-  10:src/app/app.c ****       // HAL_Delay(250); // Delay 500ms
-  11:src/app/app.c ****       // HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_SET);
-  12:src/app/app.c ****       HAL_Delay(250);  // Delay 500ms
-  41              		.loc 1 12 7 view .LVU1
-  42 0002 FA20     		movs	r0, #250
-  43 0004 FFF7FEFF 		bl	HAL_Delay
-  44              	.LVL0:
-  13:src/app/app.c ****       data++;
-  45              		.loc 1 13 7 view .LVU2
-ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc3gF76l.s 			page 2
+  19              		.file 1 "src/app/app.cpp"
+  20              		.section	.text._Z41__static_initialization_and_destruction_0ii,"ax",%progbits
+  21              		.align	1
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_Z41__static_initialization_and_destruction_0ii:
+  27              		.fnstart
+  28              	.LVL0:
+  29              	.LFB262:
+   1:src/app/app.cpp **** #include "app.h"
+   2:src/app/app.cpp **** 
+   3:src/app/app.cpp **** #include "robot.hpp"
+   4:src/app/app.cpp **** 
+   5:src/app/app.cpp **** Robot robot;
+   6:src/app/app.cpp **** 
+   7:src/app/app.cpp **** void setup() {
+   8:src/app/app.cpp ****       printf("Hello World");
+   9:src/app/app.cpp ****       robot.hardwareInit();
+  10:src/app/app.cpp **** }
+  11:src/app/app.cpp **** 
+  12:src/app/app.cpp **** void main_app() {
+  13:src/app/app.cpp ****       HAL_Delay(250);  // Delay 500ms
+  14:src/app/app.cpp **** }...
+  30              		.loc 1 14 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 14 1 is_stmt 0 view .LVU1
+  35 0000 0128     		cmp	r0, #1
+  36 0002 00D0     		beq	.L7
+  37 0004 7047     		bx	lr
+  38              	.L7:
+  39              		.loc 1 14 1 discriminator 1 view .LVU2
+  40 0006 08B5     		push	{r3, lr}
+  41              	.LCFI0:
+  42              		.cfi_def_cfa_offset 8
+  43              		.cfi_offset 3, -8
+  44              		.cfi_offset 14, -4
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccBAaM2e.s 			page 2
 
 
-  46              		.loc 1 13 11 is_stmt 0 view .LVU3
-  47 0008 0B4A     		ldr	r2, .L3+8
-  48 000a 1368     		ldr	r3, [r2]
-  49 000c 0133     		adds	r3, r3, #1
-  50 000e 1360     		str	r3, [r2]
-  14:src/app/app.c ****       fdata += 0.1;
-  51              		.loc 1 14 7 is_stmt 1 view .LVU4
-  52              		.loc 1 14 13 is_stmt 0 view .LVU5
-  53 0010 0A4C     		ldr	r4, .L3+12
-  54 0012 2068     		ldr	r0, [r4]	@ float
-  55 0014 FFF7FEFF 		bl	__aeabi_f2d
-  56              	.LVL1:
-  57 0018 05A3     		adr	r3, .L3
-  58 001a D3E90023 		ldrd	r2, [r3]
-  59 001e FFF7FEFF 		bl	__aeabi_dadd
-  60              	.LVL2:
-  61 0022 FFF7FEFF 		bl	__aeabi_d2f
-  62              	.LVL3:
-  63 0026 2060     		str	r0, [r4]	@ float
-  15:src/app/app.c ****       // // ここでDMAバッファにprintfの出力をコピー
-  16:src/app/app.c ****       // snprintf(dma_buffer, DMA_BUFFER_SIZE, "Hello, world!\r\n");
-  17:src/app/app.c ****       // // DMA転送開始
-  18:src/app/app.c ****       // HAL_UART_Transmit_DMA(&huart2, (uint8_t *)dma_buffer, strlen(dma_buffer));
-  19:src/app/app.c ****       // DMA転送完了まで待機
-  20:src/app/app.c ****       // printfDMA("Hello, world! %d %.2f\r\n", data, fdata);
-  21:src/app/app.c **** }...
-  64              		.loc 1 21 1 view .LVU6
-  65 0028 10BD     		pop	{r4, pc}
-  66              	.L4:
-  67 002a 00BFAFF3 		.align	3
-  67      0080
-  68              	.L3:
-  69 0030 9A999999 		.word	-1717986918
-  70 0034 9999B93F 		.word	1069128089
-  71 0038 00000000 		.word	data
-  72 003c 00000000 		.word	fdata
-  73              		.cfi_endproc
-  74              	.LFE239:
-  76              		.global	fdata
-  77              		.section	.bss.fdata,"aw",%nobits
-  78              		.align	2
-  81              	fdata:
-  82 0000 00000000 		.space	4
-  83              		.global	data
-  84              		.section	.bss.data,"aw",%nobits
-  85              		.align	2
-  88              	data:
-  89 0000 00000000 		.space	4
-  90              		.text
-  91              	.Letext0:
-  92              		.file 2 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/machine/_default_ty
-  93              		.file 3 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/sys/_stdint.h"
-  94              		.file 4 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
-ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc3gF76l.s 			page 3
+  45              		.loc 1 14 1 discriminator 1 view .LVU3
+  46 0008 4FF6FF73 		movw	r3, #65535
+  47 000c 9942     		cmp	r1, r3
+  48 000e 00D0     		beq	.L8
+  49              	.LVL1:
+  50              	.L1:
+  51              		.loc 1 14 1 view .LVU4
+  52 0010 08BD     		pop	{r3, pc}
+  53              	.LVL2:
+  54              	.L8:
+   5:src/app/app.cpp **** 
+  55              		.loc 1 5 7 view .LVU5
+  56 0012 0248     		ldr	r0, .L9
+  57              	.LVL3:
+   5:src/app/app.cpp **** 
+  58              		.loc 1 5 7 view .LVU6
+  59 0014 FFF7FEFF 		bl	_ZN5RobotC1Ev
+  60              	.LVL4:
+  61              		.loc 1 14 1 view .LVU7
+  62 0018 FAE7     		b	.L1
+  63              	.L10:
+  64 001a 00BF     		.align	2
+  65              	.L9:
+  66 001c 00000000 		.word	robot
+  67              		.cfi_endproc
+  68              	.LFE262:
+  69              		.cantunwind
+  70              		.fnend
+  72              		.section	.rodata.setup.str1.4,"aMS",%progbits,1
+  73              		.align	2
+  74              	.LC0:
+  75 0000 48656C6C 		.ascii	"Hello World\000"
+  75      6F20576F 
+  75      726C6400 
+  76              		.section	.text.setup,"ax",%progbits
+  77              		.align	1
+  78              		.global	setup
+  79              		.syntax unified
+  80              		.thumb
+  81              		.thumb_func
+  83              	setup:
+  84              		.fnstart
+  85              	.LFB260:
+   7:src/app/app.cpp ****       printf("Hello World");
+  86              		.loc 1 7 14 is_stmt 1 view -0
+  87              		.cfi_startproc
+  88              		@ args = 0, pretend = 0, frame = 0
+  89              		@ frame_needed = 0, uses_anonymous_args = 0
+  90 0000 08B5     		push	{r3, lr}
+  91              		.save {r3, lr}
+  92              	.LCFI1:
+  93              		.cfi_def_cfa_offset 8
+  94              		.cfi_offset 3, -8
+  95              		.cfi_offset 14, -4
+   8:src/app/app.cpp ****       robot.hardwareInit();
+  96              		.loc 1 8 7 view .LVU9
+   8:src/app/app.cpp ****       robot.hardwareInit();
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccBAaM2e.s 			page 3
+
+
+  97              		.loc 1 8 13 is_stmt 0 view .LVU10
+  98 0002 0348     		ldr	r0, .L13
+  99 0004 FFF7FEFF 		bl	printf
+ 100              	.LVL5:
+   9:src/app/app.cpp ****       robot.hardwareInit();
+ 101              		.loc 1 9 7 is_stmt 1 view .LVU11
+   9:src/app/app.cpp ****       robot.hardwareInit();
+ 102              		.loc 1 9 25 is_stmt 0 view .LVU12
+ 103 0008 0248     		ldr	r0, .L13+4
+ 104 000a FFF7FEFF 		bl	_ZN5Robot12hardwareInitEv
+ 105              	.LVL6:
+  10:src/app/app.cpp **** }
+ 106              		.loc 1 10 1 view .LVU13
+ 107 000e 08BD     		pop	{r3, pc}
+ 108              	.L14:
+ 109              		.align	2
+ 110              	.L13:
+ 111 0010 00000000 		.word	.LC0
+ 112 0014 00000000 		.word	robot
+ 113              		.cfi_endproc
+ 114              	.LFE260:
+ 115              		.fnend
+ 117              		.section	.text.main_app,"ax",%progbits
+ 118              		.align	1
+ 119              		.global	main_app
+ 120              		.syntax unified
+ 121              		.thumb
+ 122              		.thumb_func
+ 124              	main_app:
+ 125              		.fnstart
+ 126              	.LFB261:
+  12:src/app/app.cpp **** void main_app() {
+ 127              		.loc 1 12 17 is_stmt 1 view -0
+ 128              		.cfi_startproc
+ 129              		@ args = 0, pretend = 0, frame = 0
+ 130              		@ frame_needed = 0, uses_anonymous_args = 0
+ 131 0000 08B5     		push	{r3, lr}
+ 132              		.save {r3, lr}
+ 133              	.LCFI2:
+ 134              		.cfi_def_cfa_offset 8
+ 135              		.cfi_offset 3, -8
+ 136              		.cfi_offset 14, -4
+  13:src/app/app.cpp ****       HAL_Delay(250);  // Delay 500ms
+ 137              		.loc 1 13 7 view .LVU15
+  13:src/app/app.cpp ****       HAL_Delay(250);  // Delay 500ms
+ 138              		.loc 1 13 16 is_stmt 0 view .LVU16
+ 139 0002 FA20     		movs	r0, #250
+ 140 0004 FFF7FEFF 		bl	HAL_Delay
+ 141              	.LVL7:
+ 142              		.loc 1 14 1 view .LVU17
+ 143 0008 08BD     		pop	{r3, pc}
+ 144              		.cfi_endproc
+ 145              	.LFE261:
+ 146              		.fnend
+ 148              		.section	.text._GLOBAL__sub_I_robot,"ax",%progbits
+ 149              		.align	1
+ 150              		.syntax unified
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccBAaM2e.s 			page 4
+
+
+ 151              		.thumb
+ 152              		.thumb_func
+ 154              	_GLOBAL__sub_I_robot:
+ 155              		.fnstart
+ 156              	.LFB263:
+ 157              		.loc 1 14 1 is_stmt 1 view -0
+ 158              		.cfi_startproc
+ 159              		@ args = 0, pretend = 0, frame = 0
+ 160              		@ frame_needed = 0, uses_anonymous_args = 0
+ 161 0000 08B5     		push	{r3, lr}
+ 162              	.LCFI3:
+ 163              		.cfi_def_cfa_offset 8
+ 164              		.cfi_offset 3, -8
+ 165              		.cfi_offset 14, -4
+ 166              		.loc 1 14 1 is_stmt 0 view .LVU19
+ 167 0002 4FF6FF71 		movw	r1, #65535
+ 168 0006 0120     		movs	r0, #1
+ 169 0008 FFF7FEFF 		bl	_Z41__static_initialization_and_destruction_0ii
+ 170              	.LVL8:
+ 171 000c 08BD     		pop	{r3, pc}
+ 172              		.cfi_endproc
+ 173              	.LFE263:
+ 174              		.cantunwind
+ 175              		.fnend
+ 177              		.section	.init_array,"aw",%init_array
+ 178              		.align	2
+ 179 0000 00000000 		.word	_GLOBAL__sub_I_robot(target1)
+ 180              		.global	robot
+ 181              		.section	.bss.robot,"aw",%nobits
+ 182              		.align	2
+ 185              	robot:
+ 186 0000 00000000 		.space	64
+ 186      00000000 
+ 186      00000000 
+ 186      00000000 
+ 186      00000000 
+ 187              		.text
+ 188              	.Letext0:
+ 189              		.file 2 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/machine/_default_ty
+ 190              		.file 3 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/sys/_stdint.h"
+ 191              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f446xx.h"
+ 192              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ 193              		.file 6 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/lib/gcc/arm-none-eabi/12.3.1/include/stdd
+ 194              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 195              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 196              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h"
+ 197              		.file 10 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+ 198              		.file 11 "Lib/DigitalInOut/DigitalInOut.hpp"
+ 199              		.file 12 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/c++/12.3.1/cstdio"
+ 200              		.file 13 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/c++/12.3.1/arm-non
+ 201              		.file 14 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/sys/_types.h"
+ 202              		.file 15 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/sys/reent.h"
+ 203              		.file 16 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/sys/lock.h"
+ 204              		.file 17 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/stdio.h"
+ 205              		.file 18 "Lib/PWMSingle/PWMSingle.hpp"
+ 206              		.file 19 "src/unit/robot.hpp"
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccBAaM2e.s 			page 5
 
 
 DEFINED SYMBOLS
-                            *ABS*:00000000 app.c
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc3gF76l.s:24     .text.main_app:00000000 $t
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc3gF76l.s:30     .text.main_app:00000000 main_app
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc3gF76l.s:69     .text.main_app:00000030 $d
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc3gF76l.s:88     .bss.data:00000000 data
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc3gF76l.s:81     .bss.fdata:00000000 fdata
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc3gF76l.s:78     .bss.fdata:00000000 $d
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc3gF76l.s:85     .bss.data:00000000 $d
+                            *ABS*:00000000 app.cpp
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccBAaM2e.s:21     .text._Z41__static_initialization_and_destruction_0ii:00000000 $t
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccBAaM2e.s:26     .text._Z41__static_initialization_and_destruction_0ii:00000000 _Z41__static_initialization_and_destruction_0ii
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccBAaM2e.s:66     .text._Z41__static_initialization_and_destruction_0ii:0000001c $d
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccBAaM2e.s:185    .bss.robot:00000000 robot
+.ARM.exidx.text._Z41__static_initialization_and_destruction_0ii:00000000 $d
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccBAaM2e.s:73     .rodata.setup.str1.4:00000000 $d
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccBAaM2e.s:77     .text.setup:00000000 $t
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccBAaM2e.s:83     .text.setup:00000000 setup
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccBAaM2e.s:111    .text.setup:00000010 $d
+            .ARM.extab.text.setup:00000000 $d
+            .ARM.exidx.text.setup:00000000 $d
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccBAaM2e.s:118    .text.main_app:00000000 $t
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccBAaM2e.s:124    .text.main_app:00000000 main_app
+         .ARM.extab.text.main_app:00000000 $d
+         .ARM.exidx.text.main_app:00000000 $d
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccBAaM2e.s:149    .text._GLOBAL__sub_I_robot:00000000 $t
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccBAaM2e.s:154    .text._GLOBAL__sub_I_robot:00000000 _GLOBAL__sub_I_robot
+.ARM.exidx.text._GLOBAL__sub_I_robot:00000000 $d
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccBAaM2e.s:178    .init_array:00000000 $d
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccBAaM2e.s:182    .bss.robot:00000000 $d
 
 UNDEFINED SYMBOLS
-__aeabi_f2d
-__aeabi_dadd
-__aeabi_d2f
+_ZN5RobotC1Ev
+printf
+_ZN5Robot12hardwareInitEv
+__aeabi_unwind_cpp_pr1
 HAL_Delay
