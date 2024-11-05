@@ -5,8 +5,14 @@ Robot::Robot() {
 
 void Robot::hardwareInit() {
       printf("Hello World\n");
+      printf("SystemCoreClock = %ld\n", SystemCoreClock);
+
       fan.init();
-      led1 = 1;
-      led2 = 1;
-      led3 = 1;
+      ledH.init();
+      lineLed.init();
+      motor1a.init();
+      motor1b.init();
+      motor2a.init();
+      motor2b.init();
+      buzzer.init();
 }

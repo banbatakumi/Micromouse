@@ -10,7 +10,9 @@
                 "${workspaceFolder}/Drivers/CMSIS/Device/ST/STM32F4xx/Include",
                 "${workspaceFolder}/Drivers/CMSIS/Include",
                 "${workspaceFolder}/src/app",
+                "${workspaceFolder}/src/unit",
                 "${workspaceFolder}/src/",
+                "${workspaceFolder}/lib/",
                 "${workspaceFolder}/Drivers/CMSIS/Include"
             ],
             "defines": [

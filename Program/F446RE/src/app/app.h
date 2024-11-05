@@ -2,7 +2,6 @@
 #define __APP__
 #ifdef __cplusplus
 
-#include "DigitalInOut.hpp"
 #include "main.h"
 
 extern "C" {
@@ -10,6 +9,7 @@ extern "C" {
 
 void setup();
 void main_app();
+void TimInterrupt1khz();
 
 #ifdef __cplusplus
 }
