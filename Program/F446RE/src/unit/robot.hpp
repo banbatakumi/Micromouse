@@ -1,23 +1,40 @@
 #ifndef __ROBOT__
 #define __ROBOT__
 
+#include "Button.hpp"
 #include "Buzzer.hpp"
 #include "DigitalInOut.hpp"
 #include "PWMSingle.hpp"
 #include "Timer.hpp"
 #include "adc.h"
+#include "config.h"
 #include "main.h"
 
+typedef struct {
+      // local
+      struct {
+            uint16_t mainVal[LINE_QTY];
+            uint16_t leftVal;
+            uint16_t rightVal;
+            int16_t position;
+            bool isLeft;
+            bool isRight;
+      } line;
+} RobotInfo;
 class Robot {
      public:
       Robot();
-      void hardwareInit();
+      RobotInfo info;
 
       DigitalOut led1 = DigitalOut(LED1_GPIO_Port, LED1_Pin);
       DigitalOut led2 = DigitalOut(LED2_GPIO_Port, LED2_Pin);
       DigitalOut led3 = DigitalOut(LED3_GPIO_Port, LED3_Pin);
       DigitalOut led4 = DigitalOut(LED4_GPIO_Port, LED4_Pin);
       DigitalOut led5 = DigitalOut(LED5_GPIO_Port, LED5_Pin);
+
+      Button button1 = Button(BUTTON1_GPIO_Port, BUTTON1_Pin);
+      Button button2 = Button(GPIOB, BUTTON2_Pin);
+      Button button3 = Button(GPIOB, BUTTON3_Pin);
 
       PwmSingleOut fan = PwmSingleOut(&htim3, TIM_CHANNEL_4);
       PwmSingleOut ledH = PwmSingleOut(&htim2, TIM_CHANNEL_2);
@@ -27,6 +44,9 @@ class Robot {
       PwmSingleOut motor2a = PwmSingleOut(&htim1, TIM_CHANNEL_3);
       PwmSingleOut motor2b = PwmSingleOut(&htim1, TIM_CHANNEL_4);
       Buzzer buzzer = Buzzer(&htim2, TIM_CHANNEL_3);
+
+      void hardwareInit();
+      void getSensors();
 
       inline __attribute__((always_inline)) void heartBeat() {
             static int i = 0;

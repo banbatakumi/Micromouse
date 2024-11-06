@@ -11,6 +11,7 @@
                 "${workspaceFolder}/Drivers/CMSIS/Include",
                 "${workspaceFolder}/src/app",
                 "${workspaceFolder}/src/unit",
+                "${workspaceFolder}/src/mode",
                 "${workspaceFolder}/src/",
                 "${workspaceFolder}/lib/",
                 "${workspaceFolder}/Drivers/CMSIS/Include"

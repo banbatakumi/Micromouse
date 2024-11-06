@@ -114,8 +114,8 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+      main_app();
       while (1) {
-            main_app();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
