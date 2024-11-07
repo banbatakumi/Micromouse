@@ -5,17 +5,10 @@ MainMode::MainMode() {
 
 void MainMode::loop() {
       timer.reset();
+      robot.motor.encoderCompute();
       robot.getSensors();
-      printf("LinePosition = %d\n", robot.line.position);
-      int16_t left, right;
-      left = robot.line.position / 10;
-      right = robot.line.position / -10;
-      if (abs(robot.line.position) < 200) {
-            left += 10;
-            right += 10;
-      }
-      if (abs(left) > 20) left = 20 * (abs(left) / left);
-      if (abs(right) > 20) right = 20 * (abs(right) / right);
-      robot.motor.drive(left, right);
-      while (timer.read_us() < 1000);  // 1ms time control
+      // printf("LinePosition = %d\n", robot.line.position);
+      robot.motor.drive(30, 0);
+      printf("%d\n", timer.read_us());
+      if (timer.read_us() < 100) HAL_Delay(100 - timer.read_us());  // 1ms time control
 }

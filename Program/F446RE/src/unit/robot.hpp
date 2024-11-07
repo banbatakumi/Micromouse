@@ -22,6 +22,8 @@ class Robot {
             bool isLeft;
             bool isRight;
       } line;
+      uint16_t encoderLeft;
+      uint16_t encoderRight;
 
       DigitalOut led1 = DigitalOut(LED1_GPIO_Port, LED1_Pin);
       DigitalOut led2 = DigitalOut(LED2_GPIO_Port, LED2_Pin);
@@ -42,7 +44,7 @@ class Robot {
       PwmSingleOut motor2b = PwmSingleOut(&htim1, TIM_CHANNEL_4);
       Buzzer buzzer = Buzzer(&htim2, TIM_CHANNEL_3);
 
-      MotorDrive motor = MotorDrive(&motor1a, &motor1b, &motor2a, &motor2b);
+      MotorDrive motor = MotorDrive(&motor1a, &motor1b, &motor2a, &motor2b, &encoderLeft, &encoderRight);
 
       void hardwareInit();
       void getSensors();

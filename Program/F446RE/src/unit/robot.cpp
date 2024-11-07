@@ -40,6 +40,6 @@ void Robot::getSensors() {
       }
       line.position *= -1;
 
-      line.leftVal = adcGetVal[0];
-      line.rightVal = adcGetVal[1];
+      encoderLeft = adcGetVal[0];
+      encoderRight = adcGetVal[1];
 }

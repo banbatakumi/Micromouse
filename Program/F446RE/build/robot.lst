@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s 			page 1
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc1ioxfv.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s 			page 1
   41              		.cfi_offset 4, -8
   42              		.cfi_offset 14, -4
   43 0002 0446     		mov	r4, r0
-ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s 			page 2
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc1ioxfv.s 			page 2
 
 
   16:Lib/Buzzer/Buzzer.hpp ****             HAL_TIM_PWM_Start(_htim, _channel);
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s 			page 1
   81              		@ frame_needed = 0, uses_anonymous_args = 0
   82              		.loc 3 16 12 is_stmt 0 view .LVU12
   83 0000 10B5     		push	{r4, lr}
-ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s 			page 3
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc1ioxfv.s 			page 3
 
 
   84              		.save {r4, lr}
@@ -178,15 +178,15 @@ ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s 			page 1
  132              		.cfi_offset 4, -20
  133              		.cfi_offset 5, -16
  134              		.cfi_offset 6, -12
-ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s 			page 4
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc1ioxfv.s 			page 4
 
 
  135              		.cfi_offset 7, -8
  136              		.cfi_offset 14, -4
- 137              		.pad #12
- 138 0002 83B0     		sub	sp, sp, #12
+ 137              		.pad #20
+ 138 0002 85B0     		sub	sp, sp, #20
  139              	.LCFI3:
- 140              		.cfi_def_cfa_offset 32
+ 140              		.cfi_def_cfa_offset 40
  141 0004 0446     		mov	r4, r0
  142              	.LVL7:
  143              	.LBB42:
@@ -208,13 +208,13 @@ ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s 			page 1
  147              		.loc 4 12 5 is_stmt 1 view .LVU24
  148              	.LBB44:
  149              		.loc 4 12 52 is_stmt 0 view .LVU25
- 150 0006 4148     		ldr	r0, .L7
+ 150 0006 4448     		ldr	r0, .L7
  151              	.LVL8:
  152              		.loc 4 12 52 view .LVU26
- 153 0008 E061     		str	r0, [r4, #28]
+ 153 0008 2062     		str	r0, [r4, #32]
  154              		.loc 4 12 64 view .LVU27
  155 000a 0426     		movs	r6, #4
- 156 000c 2684     		strh	r6, [r4, #32]	@ movhi
+ 156 000c A684     		strh	r6, [r4, #36]	@ movhi
   13:Lib/DigitalInOut/DigitalInOut.hpp ****         HAL_GPIO_WritePin(port, pin, GPIO_PIN_RESET);
  157              		.loc 4 13 9 is_stmt 1 view .LVU28
  158              		.loc 4 13 26 is_stmt 0 view .LVU29
@@ -232,13 +232,13 @@ ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s 			page 1
  169              	.LBB46:
   12:Lib/DigitalInOut/DigitalInOut.hpp ****         HAL_GPIO_WritePin(port, pin, GPIO_PIN_RESET);
  170              		.loc 4 12 52 is_stmt 0 view .LVU32
- 171 0016 3E4D     		ldr	r5, .L7+4
- 172 0018 6562     		str	r5, [r4, #36]
+ 171 0016 414D     		ldr	r5, .L7+4
+ 172 0018 A562     		str	r5, [r4, #40]
   12:Lib/DigitalInOut/DigitalInOut.hpp ****         HAL_GPIO_WritePin(port, pin, GPIO_PIN_RESET);
  173              		.loc 4 12 64 view .LVU33
  174 001a 1021     		movs	r1, #16
- 175 001c 2185     		strh	r1, [r4, #40]	@ movhi
-ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s 			page 5
+ 175 001c A185     		strh	r1, [r4, #44]	@ movhi
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc1ioxfv.s 			page 5
 
 
  176              		.loc 4 13 9 is_stmt 1 view .LVU34
@@ -257,11 +257,11 @@ ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s 			page 1
  188              	.LBB48:
   12:Lib/DigitalInOut/DigitalInOut.hpp ****         HAL_GPIO_WritePin(port, pin, GPIO_PIN_RESET);
  189              		.loc 4 12 52 is_stmt 0 view .LVU38
- 190 0026 E562     		str	r5, [r4, #44]
+ 190 0026 2563     		str	r5, [r4, #48]
   12:Lib/DigitalInOut/DigitalInOut.hpp ****         HAL_GPIO_WritePin(port, pin, GPIO_PIN_RESET);
  191              		.loc 4 12 64 view .LVU39
  192 0028 4021     		movs	r1, #64
- 193 002a 2186     		strh	r1, [r4, #48]	@ movhi
+ 193 002a A186     		strh	r1, [r4, #52]	@ movhi
  194              		.loc 4 13 9 is_stmt 1 view .LVU40
  195              		.loc 4 13 26 is_stmt 0 view .LVU41
  196 002c 0022     		movs	r2, #0
@@ -278,11 +278,11 @@ ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s 			page 1
  206              	.LBB50:
   12:Lib/DigitalInOut/DigitalInOut.hpp ****         HAL_GPIO_WritePin(port, pin, GPIO_PIN_RESET);
  207              		.loc 4 12 52 is_stmt 0 view .LVU44
- 208 0034 6563     		str	r5, [r4, #52]
+ 208 0034 A563     		str	r5, [r4, #56]
   12:Lib/DigitalInOut/DigitalInOut.hpp ****         HAL_GPIO_WritePin(port, pin, GPIO_PIN_RESET);
  209              		.loc 4 12 64 view .LVU45
  210 0036 8021     		movs	r1, #128
- 211 0038 2187     		strh	r1, [r4, #56]	@ movhi
+ 211 0038 A187     		strh	r1, [r4, #60]	@ movhi
  212              		.loc 4 13 9 is_stmt 1 view .LVU46
  213              		.loc 4 13 26 is_stmt 0 view .LVU47
  214 003a 0022     		movs	r2, #0
@@ -298,15 +298,15 @@ ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s 			page 1
  223              		.loc 4 12 5 is_stmt 1 view .LVU49
  224              	.LBB52:
   12:Lib/DigitalInOut/DigitalInOut.hpp ****         HAL_GPIO_WritePin(port, pin, GPIO_PIN_RESET);
-ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s 			page 6
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc1ioxfv.s 			page 6
 
 
  225              		.loc 4 12 52 is_stmt 0 view .LVU50
- 226 0042 E563     		str	r5, [r4, #60]
+ 226 0042 2564     		str	r5, [r4, #64]
   12:Lib/DigitalInOut/DigitalInOut.hpp ****         HAL_GPIO_WritePin(port, pin, GPIO_PIN_RESET);
  227              		.loc 4 12 64 view .LVU51
  228 0044 4FF48071 		mov	r1, #256
- 229 0048 A4F84010 		strh	r1, [r4, #64]	@ movhi
+ 229 0048 A4F84410 		strh	r1, [r4, #68]	@ movhi
  230              		.loc 4 13 9 is_stmt 1 view .LVU52
  231              		.loc 4 13 26 is_stmt 0 view .LVU53
  232 004c 0022     		movs	r2, #0
@@ -318,18 +318,18 @@ ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s 			page 1
  238              	.LBE51:
  239              		.loc 1 5 14 view .LVU55
  240 0054 4FF48052 		mov	r2, #4096
- 241 0058 2E49     		ldr	r1, .L7+8
- 242 005a 04F14400 		add	r0, r4, #68
+ 241 0058 3149     		ldr	r1, .L7+8
+ 242 005a 04F14800 		add	r0, r4, #72
  243 005e FFF7FEFF 		bl	_ZN6ButtonC1EP12GPIO_TypeDeft
  244              	.LVL14:
  245 0062 0822     		movs	r2, #8
  246 0064 2946     		mov	r1, r5
- 247 0066 04F15800 		add	r0, r4, #88
+ 247 0066 04F15C00 		add	r0, r4, #92
  248 006a FFF7FEFF 		bl	_ZN6ButtonC1EP12GPIO_TypeDeft
  249              	.LVL15:
  250 006e 2022     		movs	r2, #32
  251 0070 2946     		mov	r1, r5
- 252 0072 04F16C00 		add	r0, r4, #108
+ 252 0072 04F17000 		add	r0, r4, #112
  253 0076 FFF7FEFF 		bl	_ZN6ButtonC1EP12GPIO_TypeDeft
  254              	.LVL16:
  255              	.LBB53:
@@ -339,18 +339,18 @@ ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s 			page 1
  258              	.LBB54:
   13:Lib/PWMSingle/PWMSingle.hpp ****       }
  259              		.loc 3 13 13 is_stmt 0 view .LVU57
- 260 007a 274B     		ldr	r3, .L7+12
- 261 007c C4F88030 		str	r3, [r4, #128]
+ 260 007a 2A4B     		ldr	r3, .L7+12
+ 261 007c C4F88430 		str	r3, [r4, #132]
   13:Lib/PWMSingle/PWMSingle.hpp ****       }
  262              		.loc 3 13 26 view .LVU58
  263 0080 0C27     		movs	r7, #12
- 264 0082 C4F88470 		str	r7, [r4, #132]
+ 264 0082 C4F88870 		str	r7, [r4, #136]
   13:Lib/PWMSingle/PWMSingle.hpp ****       }
  265              		.loc 3 13 67 view .LVU59
  266 0086 DA68     		ldr	r2, [r3, #12]
   13:Lib/PWMSingle/PWMSingle.hpp ****       }
  267              		.loc 3 13 45 view .LVU60
- 268 0088 C4F88820 		str	r2, [r4, #136]
+ 268 0088 C4F88C20 		str	r2, [r4, #140]
  269              	.LVL17:
   13:Lib/PWMSingle/PWMSingle.hpp ****       }
  270              		.loc 3 13 45 view .LVU61
@@ -358,7 +358,7 @@ ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s 			page 1
  272              	.LBE53:
  273              	.LBB55:
  274              	.LBI55:
-ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s 			page 7
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc1ioxfv.s 			page 7
 
 
   12:Lib/PWMSingle/PWMSingle.hpp ****           : _htim(htim), _channel(channel), _maxValue(_htim->Init.Period) {
@@ -366,17 +366,17 @@ ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s 			page 1
  276              	.LBB56:
   13:Lib/PWMSingle/PWMSingle.hpp ****       }
  277              		.loc 3 13 13 is_stmt 0 view .LVU63
- 278 008c 2348     		ldr	r0, .L7+16
- 279 008e C4F89000 		str	r0, [r4, #144]
+ 278 008c 2648     		ldr	r0, .L7+16
+ 279 008e C4F89400 		str	r0, [r4, #148]
   13:Lib/PWMSingle/PWMSingle.hpp ****       }
  280              		.loc 3 13 26 view .LVU64
- 281 0092 C4F89460 		str	r6, [r4, #148]
+ 281 0092 C4F89860 		str	r6, [r4, #152]
   13:Lib/PWMSingle/PWMSingle.hpp ****       }
  282              		.loc 3 13 67 view .LVU65
  283 0096 C568     		ldr	r5, [r0, #12]
   13:Lib/PWMSingle/PWMSingle.hpp ****       }
  284              		.loc 3 13 45 view .LVU66
- 285 0098 C4F89850 		str	r5, [r4, #152]
+ 285 0098 C4F89C50 		str	r5, [r4, #156]
  286              	.LVL18:
   13:Lib/PWMSingle/PWMSingle.hpp ****       }
  287              		.loc 3 13 45 view .LVU67
@@ -389,14 +389,14 @@ ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s 			page 1
  293              	.LBB58:
   13:Lib/PWMSingle/PWMSingle.hpp ****       }
  294              		.loc 3 13 13 is_stmt 0 view .LVU69
- 295 009c C4F8A030 		str	r3, [r4, #160]
+ 295 009c C4F8A430 		str	r3, [r4, #164]
   13:Lib/PWMSingle/PWMSingle.hpp ****       }
  296              		.loc 3 13 26 view .LVU70
  297 00a0 0821     		movs	r1, #8
- 298 00a2 C4F8A410 		str	r1, [r4, #164]
+ 298 00a2 C4F8A810 		str	r1, [r4, #168]
   13:Lib/PWMSingle/PWMSingle.hpp ****       }
  299              		.loc 3 13 45 view .LVU71
- 300 00a6 C4F8A820 		str	r2, [r4, #168]
+ 300 00a6 C4F8AC20 		str	r2, [r4, #172]
  301              	.LVL19:
   13:Lib/PWMSingle/PWMSingle.hpp ****       }
  302              		.loc 3 13 45 view .LVU72
@@ -409,21 +409,21 @@ ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s 			page 1
  308              	.LBB60:
   13:Lib/PWMSingle/PWMSingle.hpp ****       }
  309              		.loc 3 13 13 is_stmt 0 view .LVU74
- 310 00aa 1D4B     		ldr	r3, .L7+20
- 311 00ac C4F8B030 		str	r3, [r4, #176]
+ 310 00aa 204B     		ldr	r3, .L7+20
+ 311 00ac C4F8B430 		str	r3, [r4, #180]
   13:Lib/PWMSingle/PWMSingle.hpp ****       }
  312              		.loc 3 13 26 view .LVU75
  313 00b0 0022     		movs	r2, #0
- 314 00b2 C4F8B420 		str	r2, [r4, #180]
+ 314 00b2 C4F8B820 		str	r2, [r4, #184]
   13:Lib/PWMSingle/PWMSingle.hpp ****       }
  315              		.loc 3 13 67 view .LVU76
  316 00b6 DA68     		ldr	r2, [r3, #12]
-ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s 			page 8
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc1ioxfv.s 			page 8
 
 
   13:Lib/PWMSingle/PWMSingle.hpp ****       }
  317              		.loc 3 13 45 view .LVU77
- 318 00b8 C4F8B820 		str	r2, [r4, #184]
+ 318 00b8 C4F8BC20 		str	r2, [r4, #188]
  319              	.LVL20:
   13:Lib/PWMSingle/PWMSingle.hpp ****       }
  320              		.loc 3 13 45 view .LVU78
@@ -436,13 +436,13 @@ ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s 			page 1
  326              	.LBB62:
   13:Lib/PWMSingle/PWMSingle.hpp ****       }
  327              		.loc 3 13 13 is_stmt 0 view .LVU80
- 328 00bc C4F8C030 		str	r3, [r4, #192]
+ 328 00bc C4F8C430 		str	r3, [r4, #196]
   13:Lib/PWMSingle/PWMSingle.hpp ****       }
  329              		.loc 3 13 26 view .LVU81
- 330 00c0 C4F8C460 		str	r6, [r4, #196]
+ 330 00c0 C4F8C860 		str	r6, [r4, #200]
   13:Lib/PWMSingle/PWMSingle.hpp ****       }
  331              		.loc 3 13 45 view .LVU82
- 332 00c4 C4F8C820 		str	r2, [r4, #200]
+ 332 00c4 C4F8CC20 		str	r2, [r4, #204]
  333              	.LVL21:
   13:Lib/PWMSingle/PWMSingle.hpp ****       }
  334              		.loc 3 13 45 view .LVU83
@@ -455,13 +455,13 @@ ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s 			page 1
  340              	.LBB64:
   13:Lib/PWMSingle/PWMSingle.hpp ****       }
  341              		.loc 3 13 13 is_stmt 0 view .LVU85
- 342 00c8 C4F8D030 		str	r3, [r4, #208]
+ 342 00c8 C4F8D430 		str	r3, [r4, #212]
   13:Lib/PWMSingle/PWMSingle.hpp ****       }
  343              		.loc 3 13 26 view .LVU86
- 344 00cc C4F8D410 		str	r1, [r4, #212]
+ 344 00cc C4F8D810 		str	r1, [r4, #216]
   13:Lib/PWMSingle/PWMSingle.hpp ****       }
  345              		.loc 3 13 45 view .LVU87
- 346 00d0 C4F8D820 		str	r2, [r4, #216]
+ 346 00d0 C4F8DC20 		str	r2, [r4, #220]
  347              	.LVL22:
   13:Lib/PWMSingle/PWMSingle.hpp ****       }
  348              		.loc 3 13 45 view .LVU88
@@ -474,16 +474,16 @@ ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s 			page 1
  354              	.LBB66:
   13:Lib/PWMSingle/PWMSingle.hpp ****       }
  355              		.loc 3 13 13 is_stmt 0 view .LVU90
- 356 00d4 C4F8E030 		str	r3, [r4, #224]
+ 356 00d4 C4F8E430 		str	r3, [r4, #228]
   13:Lib/PWMSingle/PWMSingle.hpp ****       }
  357              		.loc 3 13 26 view .LVU91
- 358 00d8 C4F8E470 		str	r7, [r4, #228]
-ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s 			page 9
+ 358 00d8 C4F8E870 		str	r7, [r4, #232]
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc1ioxfv.s 			page 9
 
 
   13:Lib/PWMSingle/PWMSingle.hpp ****       }
  359              		.loc 3 13 45 view .LVU92
- 360 00dc C4F8E820 		str	r2, [r4, #232]
+ 360 00dc C4F8EC20 		str	r2, [r4, #236]
  361              	.LVL23:
   13:Lib/PWMSingle/PWMSingle.hpp ****       }
  362              		.loc 3 13 45 view .LVU93
@@ -496,460 +496,464 @@ ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s 			page 1
  368              	.LBB68:
   12:Lib/Buzzer/Buzzer.hpp ****       }
  369              		.loc 2 12 13 is_stmt 0 view .LVU95
- 370 00e0 C4F8F000 		str	r0, [r4, #240]
+ 370 00e0 C4F8F400 		str	r0, [r4, #244]
   12:Lib/Buzzer/Buzzer.hpp ****       }
  371              		.loc 2 12 26 view .LVU96
- 372 00e4 C4F8F410 		str	r1, [r4, #244]
+ 372 00e4 C4F8F810 		str	r1, [r4, #248]
   12:Lib/Buzzer/Buzzer.hpp ****       }
  373              		.loc 2 12 45 view .LVU97
- 374 00e8 C4F8F850 		str	r5, [r4, #248]
+ 374 00e8 C4F8FC50 		str	r5, [r4, #252]
  375              	.LVL24:
   12:Lib/Buzzer/Buzzer.hpp ****       }
  376              		.loc 2 12 45 view .LVU98
  377              	.LBE68:
  378              	.LBE67:
  379              		.loc 1 5 14 view .LVU99
- 380 00ec 04F1E003 		add	r3, r4, #224
- 381 00f0 0093     		str	r3, [sp]
- 382 00f2 04F1D003 		add	r3, r4, #208
- 383 00f6 04F1C002 		add	r2, r4, #192
- 384 00fa 04F1B001 		add	r1, r4, #176
- 385 00fe 04F58070 		add	r0, r4, #256
- 386 0102 FFF7FEFF 		bl	_ZN10MotorDriveC1EP12PwmSingleOutS1_S1_S1_
- 387              	.LVL25:
- 388              	.LBE42:
+ 380 00ec 04F11E03 		add	r3, r4, #30
+ 381 00f0 0293     		str	r3, [sp, #8]
+ 382 00f2 04F11C03 		add	r3, r4, #28
+ 383 00f6 0193     		str	r3, [sp, #4]
+ 384 00f8 04F1E403 		add	r3, r4, #228
+ 385 00fc 0093     		str	r3, [sp]
+ 386 00fe 04F1D403 		add	r3, r4, #212
+ 387 0102 04F1C402 		add	r2, r4, #196
+ 388 0106 04F1B401 		add	r1, r4, #180
+ 389 010a 04F58270 		add	r0, r4, #260
+ 390 010e FFF7FEFF 		bl	_ZN10MotorDriveC1EP12PwmSingleOutS1_S1_S1_PtS2_
+ 391              	.LVL25:
+ 392              	.LBE42:
    6:src/unit/robot.cpp **** }
- 389              		.loc 1 6 1 view .LVU100
- 390 0106 2046     		mov	r0, r4
- 391 0108 03B0     		add	sp, sp, #12
- 392              	.LCFI4:
- 393              		.cfi_def_cfa_offset 20
- 394              		@ sp needed
- 395 010a F0BD     		pop	{r4, r5, r6, r7, pc}
- 396              	.LVL26:
- 397              	.L8:
- 398              		.loc 1 6 1 view .LVU101
- 399              		.align	2
- 400              	.L7:
- 401 010c 000C0240 		.word	1073875968
- 402 0110 00040240 		.word	1073873920
- 403 0114 00080240 		.word	1073874944
- 404 0118 00000000 		.word	htim3
- 405 011c 00000000 		.word	htim2
- 406 0120 00000000 		.word	htim1
- 407              		.cfi_endproc
-ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s 			page 10
+ 393              		.loc 1 6 1 view .LVU100
+ 394 0112 2046     		mov	r0, r4
+ 395 0114 05B0     		add	sp, sp, #20
+ 396              	.LCFI4:
+ 397              		.cfi_def_cfa_offset 20
+ 398              		@ sp needed
+ 399 0116 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 400              	.LVL26:
+ 401              	.L8:
+ 402              		.loc 1 6 1 view .LVU101
+ 403              		.align	2
+ 404              	.L7:
+ 405 0118 000C0240 		.word	1073875968
+ 406 011c 00040240 		.word	1073873920
+ 407 0120 00080240 		.word	1073874944
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc1ioxfv.s 			page 10
 
 
- 408              	.LFE267:
- 409              		.fnend
- 411              		.global	_ZN5RobotC1Ev
- 412              		.thumb_set _ZN5RobotC1Ev,_ZN5RobotC2Ev
- 413              		.section	.rodata._ZN5Robot12hardwareInitEv.str1.4,"aMS",%progbits,1
- 414              		.align	2
- 415              	.LC1:
- 416 0000 48656C6C 		.ascii	"Hello World\000"
- 416      6F20576F 
- 416      726C6400 
- 417              		.align	2
- 418              	.LC2:
- 419 000c 53797374 		.ascii	"SystemCoreClock = %ld\012\000"
- 419      656D436F 
- 419      7265436C 
- 419      6F636B20 
- 419      3D20256C 
- 420              		.section	.text._ZN5Robot12hardwareInitEv,"ax",%progbits
- 421              		.align	1
- 422              		.global	_ZN5Robot12hardwareInitEv
- 423              		.syntax unified
- 424              		.thumb
- 425              		.thumb_func
- 427              	_ZN5Robot12hardwareInitEv:
- 428              		.fnstart
- 429              	.LVL27:
- 430              	.LFB269:
+ 408 0124 00000000 		.word	htim3
+ 409 0128 00000000 		.word	htim2
+ 410 012c 00000000 		.word	htim1
+ 411              		.cfi_endproc
+ 412              	.LFE267:
+ 413              		.fnend
+ 415              		.global	_ZN5RobotC1Ev
+ 416              		.thumb_set _ZN5RobotC1Ev,_ZN5RobotC2Ev
+ 417              		.section	.rodata._ZN5Robot12hardwareInitEv.str1.4,"aMS",%progbits,1
+ 418              		.align	2
+ 419              	.LC1:
+ 420 0000 48656C6C 		.ascii	"Hello World\000"
+ 420      6F20576F 
+ 420      726C6400 
+ 421              		.align	2
+ 422              	.LC2:
+ 423 000c 53797374 		.ascii	"SystemCoreClock = %ld\012\000"
+ 423      656D436F 
+ 423      7265436C 
+ 423      6F636B20 
+ 423      3D20256C 
+ 424              		.section	.text._ZN5Robot12hardwareInitEv,"ax",%progbits
+ 425              		.align	1
+ 426              		.global	_ZN5Robot12hardwareInitEv
+ 427              		.syntax unified
+ 428              		.thumb
+ 429              		.thumb_func
+ 431              	_ZN5Robot12hardwareInitEv:
+ 432              		.fnstart
+ 433              	.LVL27:
+ 434              	.LFB269:
    7:src/unit/robot.cpp **** 
    8:src/unit/robot.cpp **** void Robot::hardwareInit() {
- 431              		.loc 1 8 28 is_stmt 1 view -0
- 432              		.cfi_startproc
- 433              		@ args = 0, pretend = 0, frame = 0
- 434              		@ frame_needed = 0, uses_anonymous_args = 0
- 435              		.loc 1 8 28 is_stmt 0 view .LVU103
- 436 0000 38B5     		push	{r3, r4, r5, lr}
- 437              		.save {r3, r4, r5, lr}
- 438              	.LCFI5:
- 439              		.cfi_def_cfa_offset 16
- 440              		.cfi_offset 3, -16
- 441              		.cfi_offset 4, -12
- 442              		.cfi_offset 5, -8
- 443              		.cfi_offset 14, -4
- 444 0002 0446     		mov	r4, r0
+ 435              		.loc 1 8 28 is_stmt 1 view -0
+ 436              		.cfi_startproc
+ 437              		@ args = 0, pretend = 0, frame = 0
+ 438              		@ frame_needed = 0, uses_anonymous_args = 0
+ 439              		.loc 1 8 28 is_stmt 0 view .LVU103
+ 440 0000 38B5     		push	{r3, r4, r5, lr}
+ 441              		.save {r3, r4, r5, lr}
+ 442              	.LCFI5:
+ 443              		.cfi_def_cfa_offset 16
+ 444              		.cfi_offset 3, -16
+ 445              		.cfi_offset 4, -12
+ 446              		.cfi_offset 5, -8
+ 447              		.cfi_offset 14, -4
+ 448 0002 0446     		mov	r4, r0
    9:src/unit/robot.cpp ****       printf("Hello World\n");
- 445              		.loc 1 9 7 is_stmt 1 view .LVU104
- 446              		.loc 1 9 13 is_stmt 0 view .LVU105
- 447 0004 1048     		ldr	r0, .L11
- 448              	.LVL28:
- 449              		.loc 1 9 13 view .LVU106
- 450 0006 FFF7FEFF 		bl	puts
- 451              	.LVL29:
+ 449              		.loc 1 9 7 is_stmt 1 view .LVU104
+ 450              		.loc 1 9 13 is_stmt 0 view .LVU105
+ 451 0004 1048     		ldr	r0, .L11
+ 452              	.LVL28:
+ 453              		.loc 1 9 13 view .LVU106
+ 454 0006 FFF7FEFF 		bl	puts
+ 455              	.LVL29:
   10:src/unit/robot.cpp ****       printf("SystemCoreClock = %ld\n", SystemCoreClock);
- 452              		.loc 1 10 7 is_stmt 1 view .LVU107
- 453              		.loc 1 10 13 is_stmt 0 view .LVU108
- 454 000a 104B     		ldr	r3, .L11+4
- 455 000c 1968     		ldr	r1, [r3]
- 456 000e 1048     		ldr	r0, .L11+8
-ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s 			page 11
+ 456              		.loc 1 10 7 is_stmt 1 view .LVU107
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc1ioxfv.s 			page 11
 
 
- 457 0010 FFF7FEFF 		bl	printf
- 458              	.LVL30:
+ 457              		.loc 1 10 13 is_stmt 0 view .LVU108
+ 458 000a 104B     		ldr	r3, .L11+4
+ 459 000c 1968     		ldr	r1, [r3]
+ 460 000e 1048     		ldr	r0, .L11+8
+ 461 0010 FFF7FEFF 		bl	printf
+ 462              	.LVL30:
   11:src/unit/robot.cpp **** 
   12:src/unit/robot.cpp ****       HAL_ADC_Start(&hadc1);
- 459              		.loc 1 12 7 is_stmt 1 view .LVU109
- 460              		.loc 1 12 20 is_stmt 0 view .LVU110
- 461 0014 0F4D     		ldr	r5, .L11+12
- 462 0016 2846     		mov	r0, r5
- 463 0018 FFF7FEFF 		bl	HAL_ADC_Start
- 464              	.LVL31:
+ 463              		.loc 1 12 7 is_stmt 1 view .LVU109
+ 464              		.loc 1 12 20 is_stmt 0 view .LVU110
+ 465 0014 0F4D     		ldr	r5, .L11+12
+ 466 0016 2846     		mov	r0, r5
+ 467 0018 FFF7FEFF 		bl	HAL_ADC_Start
+ 468              	.LVL31:
   13:src/unit/robot.cpp ****       HAL_ADC_Start_DMA(&hadc1, (uint32_t *)&adcGetVal, 14);
- 465              		.loc 1 13 7 is_stmt 1 view .LVU111
- 466              		.loc 1 13 24 is_stmt 0 view .LVU112
- 467 001c 0E22     		movs	r2, #14
- 468 001e 0E49     		ldr	r1, .L11+16
- 469 0020 2846     		mov	r0, r5
- 470 0022 FFF7FEFF 		bl	HAL_ADC_Start_DMA
- 471              	.LVL32:
+ 469              		.loc 1 13 7 is_stmt 1 view .LVU111
+ 470              		.loc 1 13 24 is_stmt 0 view .LVU112
+ 471 001c 0E22     		movs	r2, #14
+ 472 001e 0E49     		ldr	r1, .L11+16
+ 473 0020 2846     		mov	r0, r5
+ 474 0022 FFF7FEFF 		bl	HAL_ADC_Start_DMA
+ 475              	.LVL32:
   14:src/unit/robot.cpp **** 
   15:src/unit/robot.cpp ****       fan.init();
- 472              		.loc 1 15 7 is_stmt 1 view .LVU113
- 473              		.loc 1 15 15 is_stmt 0 view .LVU114
- 474 0026 04F18000 		add	r0, r4, #128
- 475 002a FFF7FEFF 		bl	_ZN12PwmSingleOut4initEv
- 476              	.LVL33:
+ 476              		.loc 1 15 7 is_stmt 1 view .LVU113
+ 477              		.loc 1 15 15 is_stmt 0 view .LVU114
+ 478 0026 04F18400 		add	r0, r4, #132
+ 479 002a FFF7FEFF 		bl	_ZN12PwmSingleOut4initEv
+ 480              	.LVL33:
   16:src/unit/robot.cpp ****       ledH.init();
- 477              		.loc 1 16 7 is_stmt 1 view .LVU115
- 478              		.loc 1 16 16 is_stmt 0 view .LVU116
- 479 002e 04F19000 		add	r0, r4, #144
- 480 0032 FFF7FEFF 		bl	_ZN12PwmSingleOut4initEv
- 481              	.LVL34:
+ 481              		.loc 1 16 7 is_stmt 1 view .LVU115
+ 482              		.loc 1 16 16 is_stmt 0 view .LVU116
+ 483 002e 04F19400 		add	r0, r4, #148
+ 484 0032 FFF7FEFF 		bl	_ZN12PwmSingleOut4initEv
+ 485              	.LVL34:
   17:src/unit/robot.cpp ****       lineLed.init();
- 482              		.loc 1 17 7 is_stmt 1 view .LVU117
- 483              		.loc 1 17 19 is_stmt 0 view .LVU118
- 484 0036 04F1A000 		add	r0, r4, #160
- 485 003a FFF7FEFF 		bl	_ZN12PwmSingleOut4initEv
- 486              	.LVL35:
+ 486              		.loc 1 17 7 is_stmt 1 view .LVU117
+ 487              		.loc 1 17 19 is_stmt 0 view .LVU118
+ 488 0036 04F1A400 		add	r0, r4, #164
+ 489 003a FFF7FEFF 		bl	_ZN12PwmSingleOut4initEv
+ 490              	.LVL35:
   18:src/unit/robot.cpp ****       // motor1a.init();
   19:src/unit/robot.cpp ****       // motor1b.init();
   20:src/unit/robot.cpp ****       // motor2a.init();
   21:src/unit/robot.cpp ****       // motor2b.init();
   22:src/unit/robot.cpp ****       buzzer.init();
- 487              		.loc 1 22 7 is_stmt 1 view .LVU119
- 488              		.loc 1 22 18 is_stmt 0 view .LVU120
- 489 003e 04F1F000 		add	r0, r4, #240
- 490 0042 FFF7FEFF 		bl	_ZN6Buzzer4initEv
- 491              	.LVL36:
+ 491              		.loc 1 22 7 is_stmt 1 view .LVU119
+ 492              		.loc 1 22 18 is_stmt 0 view .LVU120
+ 493 003e 04F1F400 		add	r0, r4, #244
+ 494 0042 FFF7FEFF 		bl	_ZN6Buzzer4initEv
+ 495              	.LVL36:
   23:src/unit/robot.cpp **** }
- 492              		.loc 1 23 1 view .LVU121
- 493 0046 38BD     		pop	{r3, r4, r5, pc}
- 494              	.LVL37:
- 495              	.L12:
- 496              		.loc 1 23 1 view .LVU122
- 497              		.align	2
- 498              	.L11:
- 499 0048 00000000 		.word	.LC1
- 500 004c 00000000 		.word	SystemCoreClock
-ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s 			page 12
+ 496              		.loc 1 23 1 view .LVU121
+ 497 0046 38BD     		pop	{r3, r4, r5, pc}
+ 498              	.LVL37:
+ 499              	.L12:
+ 500              		.loc 1 23 1 view .LVU122
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc1ioxfv.s 			page 12
 
 
- 501 0050 0C000000 		.word	.LC2
- 502 0054 00000000 		.word	hadc1
- 503 0058 00000000 		.word	adcGetVal
- 504              		.cfi_endproc
- 505              	.LFE269:
- 506              		.fnend
- 508              		.section	.text._ZN5Robot10getSensorsEv,"ax",%progbits
- 509              		.align	1
- 510              		.global	_ZN5Robot10getSensorsEv
- 511              		.syntax unified
- 512              		.thumb
- 513              		.thumb_func
- 515              	_ZN5Robot10getSensorsEv:
- 516              		.fnstart
- 517              	.LVL38:
- 518              	.LFB270:
+ 501              		.align	2
+ 502              	.L11:
+ 503 0048 00000000 		.word	.LC1
+ 504 004c 00000000 		.word	SystemCoreClock
+ 505 0050 0C000000 		.word	.LC2
+ 506 0054 00000000 		.word	hadc1
+ 507 0058 00000000 		.word	adcGetVal
+ 508              		.cfi_endproc
+ 509              	.LFE269:
+ 510              		.fnend
+ 512              		.section	.text._ZN5Robot10getSensorsEv,"ax",%progbits
+ 513              		.align	1
+ 514              		.global	_ZN5Robot10getSensorsEv
+ 515              		.syntax unified
+ 516              		.thumb
+ 517              		.thumb_func
+ 519              	_ZN5Robot10getSensorsEv:
+ 520              		.fnstart
+ 521              	.LVL38:
+ 522              	.LFB270:
   24:src/unit/robot.cpp **** 
   25:src/unit/robot.cpp **** void Robot::getSensors() {
- 519              		.loc 1 25 26 is_stmt 1 view -0
- 520              		.cfi_startproc
- 521              		@ args = 0, pretend = 0, frame = 40
- 522              		@ frame_needed = 0, uses_anonymous_args = 0
- 523              		.loc 1 25 26 is_stmt 0 view .LVU124
- 524 0000 10B5     		push	{r4, lr}
- 525              	.LCFI6:
- 526              		.cfi_def_cfa_offset 8
- 527              		.cfi_offset 4, -8
- 528              		.cfi_offset 14, -4
- 529 0002 8AB0     		sub	sp, sp, #40
- 530              	.LCFI7:
- 531              		.cfi_def_cfa_offset 48
- 532 0004 8446     		mov	ip, r0
+ 523              		.loc 1 25 26 is_stmt 1 view -0
+ 524              		.cfi_startproc
+ 525              		@ args = 0, pretend = 0, frame = 40
+ 526              		@ frame_needed = 0, uses_anonymous_args = 0
+ 527              		.loc 1 25 26 is_stmt 0 view .LVU124
+ 528 0000 10B5     		push	{r4, lr}
+ 529              	.LCFI6:
+ 530              		.cfi_def_cfa_offset 8
+ 531              		.cfi_offset 4, -8
+ 532              		.cfi_offset 14, -4
+ 533 0002 8AB0     		sub	sp, sp, #40
+ 534              	.LCFI7:
+ 535              		.cfi_def_cfa_offset 48
+ 536 0004 8446     		mov	ip, r0
   26:src/unit/robot.cpp ****       float lineVectorX[LINE_QTY] = {-4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 4.5};
- 533              		.loc 1 26 7 is_stmt 1 view .LVU125
- 534              		.loc 1 26 13 is_stmt 0 view .LVU126
- 535 0006 EE46     		mov	lr, sp
- 536 0008 2D4C     		ldr	r4, .L17
- 537 000a 0FCC     		ldmia	r4!, {r0, r1, r2, r3}
- 538              	.LVL39:
- 539              		.loc 1 26 13 view .LVU127
- 540 000c AEE80F00 		stmia	lr!, {r0, r1, r2, r3}
- 541 0010 0FCC     		ldmia	r4!, {r0, r1, r2, r3}
- 542 0012 AEE80F00 		stmia	lr!, {r0, r1, r2, r3}
- 543 0016 94E80300 		ldm	r4, {r0, r1}
- 544 001a 8EE80300 		stm	lr, {r0, r1}
+ 537              		.loc 1 26 7 is_stmt 1 view .LVU125
+ 538              		.loc 1 26 13 is_stmt 0 view .LVU126
+ 539 0006 EE46     		mov	lr, sp
+ 540 0008 2D4C     		ldr	r4, .L17
+ 541 000a 0FCC     		ldmia	r4!, {r0, r1, r2, r3}
+ 542              	.LVL39:
+ 543              		.loc 1 26 13 view .LVU127
+ 544 000c AEE80F00 		stmia	lr!, {r0, r1, r2, r3}
+ 545 0010 0FCC     		ldmia	r4!, {r0, r1, r2, r3}
+ 546 0012 AEE80F00 		stmia	lr!, {r0, r1, r2, r3}
+ 547 0016 94E80300 		ldm	r4, {r0, r1}
+ 548 001a 8EE80300 		stm	lr, {r0, r1}
   27:src/unit/robot.cpp ****       line.mainVal[0] = adcGetVal[4];
- 545              		.loc 1 27 7 is_stmt 1 view .LVU128
- 546              		.loc 1 27 36 is_stmt 0 view .LVU129
- 547 001e 294B     		ldr	r3, .L17+4
- 548 0020 1A89     		ldrh	r2, [r3, #8]
- 549              		.loc 1 27 23 view .LVU130
- 550 0022 ACF80020 		strh	r2, [ip]	@ movhi
+ 549              		.loc 1 27 7 is_stmt 1 view .LVU128
+ 550              		.loc 1 27 36 is_stmt 0 view .LVU129
+ 551 001e 294B     		ldr	r3, .L17+4
+ 552 0020 1A89     		ldrh	r2, [r3, #8]
+ 553              		.loc 1 27 23 view .LVU130
+ 554 0022 ACF80020 		strh	r2, [ip]	@ movhi
   28:src/unit/robot.cpp ****       line.mainVal[1] = adcGetVal[5];
- 551              		.loc 1 28 7 is_stmt 1 view .LVU131
- 552              		.loc 1 28 36 is_stmt 0 view .LVU132
- 553 0026 5A89     		ldrh	r2, [r3, #10]
- 554              		.loc 1 28 23 view .LVU133
-ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s 			page 13
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc1ioxfv.s 			page 13
 
 
- 555 0028 ACF80220 		strh	r2, [ip, #2]	@ movhi
+ 555              		.loc 1 28 7 is_stmt 1 view .LVU131
+ 556              		.loc 1 28 36 is_stmt 0 view .LVU132
+ 557 0026 5A89     		ldrh	r2, [r3, #10]
+ 558              		.loc 1 28 23 view .LVU133
+ 559 0028 ACF80220 		strh	r2, [ip, #2]	@ movhi
   29:src/unit/robot.cpp ****       line.mainVal[2] = adcGetVal[6];
- 556              		.loc 1 29 7 is_stmt 1 view .LVU134
- 557              		.loc 1 29 36 is_stmt 0 view .LVU135
- 558 002c 9A89     		ldrh	r2, [r3, #12]
- 559              		.loc 1 29 23 view .LVU136
- 560 002e ACF80420 		strh	r2, [ip, #4]	@ movhi
+ 560              		.loc 1 29 7 is_stmt 1 view .LVU134
+ 561              		.loc 1 29 36 is_stmt 0 view .LVU135
+ 562 002c 9A89     		ldrh	r2, [r3, #12]
+ 563              		.loc 1 29 23 view .LVU136
+ 564 002e ACF80420 		strh	r2, [ip, #4]	@ movhi
   30:src/unit/robot.cpp ****       line.mainVal[3] = adcGetVal[7];
- 561              		.loc 1 30 7 is_stmt 1 view .LVU137
- 562              		.loc 1 30 36 is_stmt 0 view .LVU138
- 563 0032 DA89     		ldrh	r2, [r3, #14]
- 564              		.loc 1 30 23 view .LVU139
- 565 0034 ACF80620 		strh	r2, [ip, #6]	@ movhi
+ 565              		.loc 1 30 7 is_stmt 1 view .LVU137
+ 566              		.loc 1 30 36 is_stmt 0 view .LVU138
+ 567 0032 DA89     		ldrh	r2, [r3, #14]
+ 568              		.loc 1 30 23 view .LVU139
+ 569 0034 ACF80620 		strh	r2, [ip, #6]	@ movhi
   31:src/unit/robot.cpp ****       line.mainVal[4] = adcGetVal[8];
- 566              		.loc 1 31 7 is_stmt 1 view .LVU140
- 567              		.loc 1 31 36 is_stmt 0 view .LVU141
- 568 0038 1A8A     		ldrh	r2, [r3, #16]
- 569              		.loc 1 31 23 view .LVU142
- 570 003a ACF80820 		strh	r2, [ip, #8]	@ movhi
+ 570              		.loc 1 31 7 is_stmt 1 view .LVU140
+ 571              		.loc 1 31 36 is_stmt 0 view .LVU141
+ 572 0038 1A8A     		ldrh	r2, [r3, #16]
+ 573              		.loc 1 31 23 view .LVU142
+ 574 003a ACF80820 		strh	r2, [ip, #8]	@ movhi
   32:src/unit/robot.cpp ****       line.mainVal[5] = adcGetVal[9];
- 571              		.loc 1 32 7 is_stmt 1 view .LVU143
- 572              		.loc 1 32 36 is_stmt 0 view .LVU144
- 573 003e 5A8A     		ldrh	r2, [r3, #18]
- 574              		.loc 1 32 23 view .LVU145
- 575 0040 ACF80A20 		strh	r2, [ip, #10]	@ movhi
+ 575              		.loc 1 32 7 is_stmt 1 view .LVU143
+ 576              		.loc 1 32 36 is_stmt 0 view .LVU144
+ 577 003e 5A8A     		ldrh	r2, [r3, #18]
+ 578              		.loc 1 32 23 view .LVU145
+ 579 0040 ACF80A20 		strh	r2, [ip, #10]	@ movhi
   33:src/unit/robot.cpp ****       line.mainVal[6] = adcGetVal[10];
- 576              		.loc 1 33 7 is_stmt 1 view .LVU146
- 577              		.loc 1 33 37 is_stmt 0 view .LVU147
- 578 0044 9A8A     		ldrh	r2, [r3, #20]
- 579              		.loc 1 33 23 view .LVU148
- 580 0046 ACF80C20 		strh	r2, [ip, #12]	@ movhi
+ 580              		.loc 1 33 7 is_stmt 1 view .LVU146
+ 581              		.loc 1 33 37 is_stmt 0 view .LVU147
+ 582 0044 9A8A     		ldrh	r2, [r3, #20]
+ 583              		.loc 1 33 23 view .LVU148
+ 584 0046 ACF80C20 		strh	r2, [ip, #12]	@ movhi
   34:src/unit/robot.cpp ****       line.mainVal[7] = adcGetVal[11];
- 581              		.loc 1 34 7 is_stmt 1 view .LVU149
- 582              		.loc 1 34 37 is_stmt 0 view .LVU150
- 583 004a DA8A     		ldrh	r2, [r3, #22]
- 584              		.loc 1 34 23 view .LVU151
- 585 004c ACF80E20 		strh	r2, [ip, #14]	@ movhi
+ 585              		.loc 1 34 7 is_stmt 1 view .LVU149
+ 586              		.loc 1 34 37 is_stmt 0 view .LVU150
+ 587 004a DA8A     		ldrh	r2, [r3, #22]
+ 588              		.loc 1 34 23 view .LVU151
+ 589 004c ACF80E20 		strh	r2, [ip, #14]	@ movhi
   35:src/unit/robot.cpp ****       line.mainVal[8] = adcGetVal[12];
- 586              		.loc 1 35 7 is_stmt 1 view .LVU152
- 587              		.loc 1 35 37 is_stmt 0 view .LVU153
- 588 0050 1A8B     		ldrh	r2, [r3, #24]
- 589              		.loc 1 35 23 view .LVU154
- 590 0052 ACF81020 		strh	r2, [ip, #16]	@ movhi
+ 590              		.loc 1 35 7 is_stmt 1 view .LVU152
+ 591              		.loc 1 35 37 is_stmt 0 view .LVU153
+ 592 0050 1A8B     		ldrh	r2, [r3, #24]
+ 593              		.loc 1 35 23 view .LVU154
+ 594 0052 ACF81020 		strh	r2, [ip, #16]	@ movhi
   36:src/unit/robot.cpp ****       line.mainVal[9] = adcGetVal[13];
- 591              		.loc 1 36 7 is_stmt 1 view .LVU155
- 592              		.loc 1 36 37 is_stmt 0 view .LVU156
- 593 0056 5B8B     		ldrh	r3, [r3, #26]
- 594              		.loc 1 36 23 view .LVU157
- 595 0058 ACF81230 		strh	r3, [ip, #18]	@ movhi
+ 595              		.loc 1 36 7 is_stmt 1 view .LVU155
+ 596              		.loc 1 36 37 is_stmt 0 view .LVU156
+ 597 0056 5B8B     		ldrh	r3, [r3, #26]
+ 598              		.loc 1 36 23 view .LVU157
+ 599 0058 ACF81230 		strh	r3, [ip, #18]	@ movhi
   37:src/unit/robot.cpp ****       line.position = 0;
- 596              		.loc 1 37 7 is_stmt 1 view .LVU158
- 597              		.loc 1 37 21 is_stmt 0 view .LVU159
- 598 005c 0023     		movs	r3, #0
- 599 005e ACF81830 		strh	r3, [ip, #24]	@ movhi
+ 600              		.loc 1 37 7 is_stmt 1 view .LVU158
+ 601              		.loc 1 37 21 is_stmt 0 view .LVU159
+ 602 005c 0023     		movs	r3, #0
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc1ioxfv.s 			page 14
+
+
+ 603 005e ACF81830 		strh	r3, [ip, #24]	@ movhi
   38:src/unit/robot.cpp ****       for (uint8_t i = 0; i < 10; i++) {
- 600              		.loc 1 38 7 is_stmt 1 view .LVU160
- 601              	.LVL40:
-ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s 			page 14
-
-
- 602              	.LBB69:
- 603              		.loc 1 38 7 is_stmt 0 view .LVU161
- 604 0062 1CE0     		b	.L14
- 605              	.LVL41:
- 606              	.L15:
+ 604              		.loc 1 38 7 is_stmt 1 view .LVU160
+ 605              	.LVL40:
+ 606              	.LBB69:
+ 607              		.loc 1 38 7 is_stmt 0 view .LVU161
+ 608 0062 1CE0     		b	.L14
+ 609              	.LVL41:
+ 610              	.L15:
   39:src/unit/robot.cpp ****             line.position += line.mainVal[i] * lineVectorX[i];
- 607              		.loc 1 39 13 is_stmt 1 discriminator 3 view .LVU162
- 608              		.loc 1 39 18 is_stmt 0 discriminator 3 view .LVU163
- 609 0064 BCF91820 		ldrsh	r2, [ip, #24]
- 610 0068 07EE902A 		vmov	s15, r2	@ int
- 611              		.loc 1 39 44 discriminator 3 view .LVU164
- 612 006c 3CF81320 		ldrh	r2, [ip, r3, lsl #1]
- 613 0070 07EE102A 		vmov	s14, r2	@ int
- 614              		.loc 1 39 61 discriminator 3 view .LVU165
- 615 0074 0AAA     		add	r2, sp, #40
- 616 0076 02EB8302 		add	r2, r2, r3, lsl #2
- 617 007a 52ED0A6A 		vldr.32	s13, [r2, #-40]
- 618              		.loc 1 39 46 discriminator 3 view .LVU166
- 619 007e B8EEC77A 		vcvt.f32.s32	s14, s14
- 620 0082 27EE267A 		vmul.f32	s14, s14, s13
- 621              		.loc 1 39 27 discriminator 3 view .LVU167
- 622 0086 F8EEE77A 		vcvt.f32.s32	s15, s15
- 623 008a 77EE877A 		vadd.f32	s15, s15, s14
- 624 008e FDEEE77A 		vcvt.s32.f32	s15, s15
- 625 0092 17EE902A 		vmov	r2, s15	@ int
- 626 0096 ACF81820 		strh	r2, [ip, #24]	@ movhi
+ 611              		.loc 1 39 13 is_stmt 1 discriminator 3 view .LVU162
+ 612              		.loc 1 39 18 is_stmt 0 discriminator 3 view .LVU163
+ 613 0064 BCF91820 		ldrsh	r2, [ip, #24]
+ 614 0068 07EE902A 		vmov	s15, r2	@ int
+ 615              		.loc 1 39 44 discriminator 3 view .LVU164
+ 616 006c 3CF81320 		ldrh	r2, [ip, r3, lsl #1]
+ 617 0070 07EE102A 		vmov	s14, r2	@ int
+ 618              		.loc 1 39 61 discriminator 3 view .LVU165
+ 619 0074 0AAA     		add	r2, sp, #40
+ 620 0076 02EB8302 		add	r2, r2, r3, lsl #2
+ 621 007a 52ED0A6A 		vldr.32	s13, [r2, #-40]
+ 622              		.loc 1 39 46 discriminator 3 view .LVU166
+ 623 007e B8EEC77A 		vcvt.f32.s32	s14, s14
+ 624 0082 27EE267A 		vmul.f32	s14, s14, s13
+ 625              		.loc 1 39 27 discriminator 3 view .LVU167
+ 626 0086 F8EEE77A 		vcvt.f32.s32	s15, s15
+ 627 008a 77EE877A 		vadd.f32	s15, s15, s14
+ 628 008e FDEEE77A 		vcvt.s32.f32	s15, s15
+ 629 0092 17EE902A 		vmov	r2, s15	@ int
+ 630 0096 ACF81820 		strh	r2, [ip, #24]	@ movhi
   38:src/unit/robot.cpp ****       for (uint8_t i = 0; i < 10; i++) {
- 627              		.loc 1 38 7 is_stmt 1 discriminator 3 view .LVU168
- 628 009a 0133     		adds	r3, r3, #1
- 629              	.LVL42:
+ 631              		.loc 1 38 7 is_stmt 1 discriminator 3 view .LVU168
+ 632 009a 0133     		adds	r3, r3, #1
+ 633              	.LVL42:
   38:src/unit/robot.cpp ****       for (uint8_t i = 0; i < 10; i++) {
- 630              		.loc 1 38 7 is_stmt 0 discriminator 3 view .LVU169
- 631 009c DBB2     		uxtb	r3, r3
- 632              	.LVL43:
- 633              	.L14:
+ 634              		.loc 1 38 7 is_stmt 0 discriminator 3 view .LVU169
+ 635 009c DBB2     		uxtb	r3, r3
+ 636              	.LVL43:
+ 637              	.L14:
   38:src/unit/robot.cpp ****       for (uint8_t i = 0; i < 10; i++) {
- 634              		.loc 1 38 29 is_stmt 1 discriminator 1 view .LVU170
- 635 009e 092B     		cmp	r3, #9
- 636 00a0 E0D9     		bls	.L15
- 637              	.LBE69:
+ 638              		.loc 1 38 29 is_stmt 1 discriminator 1 view .LVU170
+ 639 009e 092B     		cmp	r3, #9
+ 640 00a0 E0D9     		bls	.L15
+ 641              	.LBE69:
   40:src/unit/robot.cpp ****       }
   41:src/unit/robot.cpp ****       line.position *= -1;
- 638              		.loc 1 41 7 view .LVU171
- 639              		.loc 1 41 12 is_stmt 0 view .LVU172
- 640 00a2 BCF81830 		ldrh	r3, [ip, #24]
- 641              	.LVL44:
- 642              		.loc 1 41 21 view .LVU173
- 643 00a6 5B42     		rsbs	r3, r3, #0
- 644 00a8 ACF81830 		strh	r3, [ip, #24]	@ movhi
+ 642              		.loc 1 41 7 view .LVU171
+ 643              		.loc 1 41 12 is_stmt 0 view .LVU172
+ 644 00a2 BCF81830 		ldrh	r3, [ip, #24]
+ 645              	.LVL44:
+ 646              		.loc 1 41 21 view .LVU173
+ 647 00a6 5B42     		rsbs	r3, r3, #0
+ 648 00a8 ACF81830 		strh	r3, [ip, #24]	@ movhi
   42:src/unit/robot.cpp **** 
-  43:src/unit/robot.cpp ****       line.leftVal = adcGetVal[0];
- 645              		.loc 1 43 7 is_stmt 1 view .LVU174
- 646              		.loc 1 43 33 is_stmt 0 view .LVU175
- 647 00ac 054B     		ldr	r3, .L17+4
- 648 00ae 1A88     		ldrh	r2, [r3]
- 649              		.loc 1 43 20 view .LVU176
- 650 00b0 ACF81420 		strh	r2, [ip, #20]	@ movhi
-ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s 			page 15
+  43:src/unit/robot.cpp ****       encoderLeft = adcGetVal[0];
+ 649              		.loc 1 43 7 is_stmt 1 view .LVU174
+ 650              		.loc 1 43 32 is_stmt 0 view .LVU175
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc1ioxfv.s 			page 15
 
 
-  44:src/unit/robot.cpp ****       line.rightVal = adcGetVal[1];
- 651              		.loc 1 44 7 is_stmt 1 view .LVU177
- 652              		.loc 1 44 34 is_stmt 0 view .LVU178
- 653 00b4 5B88     		ldrh	r3, [r3, #2]
- 654              		.loc 1 44 21 view .LVU179
- 655 00b6 ACF81630 		strh	r3, [ip, #22]	@ movhi
+ 651 00ac 054B     		ldr	r3, .L17+4
+ 652 00ae 1A88     		ldrh	r2, [r3]
+ 653              		.loc 1 43 19 view .LVU176
+ 654 00b0 ACF81C20 		strh	r2, [ip, #28]	@ movhi
+  44:src/unit/robot.cpp ****       encoderRight = adcGetVal[1];
+ 655              		.loc 1 44 7 is_stmt 1 view .LVU177
+ 656              		.loc 1 44 33 is_stmt 0 view .LVU178
+ 657 00b4 5B88     		ldrh	r3, [r3, #2]
+ 658              		.loc 1 44 20 view .LVU179
+ 659 00b6 ACF81E30 		strh	r3, [ip, #30]	@ movhi
   45:src/unit/robot.cpp **** }...
- 656              		.loc 1 45 1 view .LVU180
- 657 00ba 0AB0     		add	sp, sp, #40
- 658              	.LCFI8:
- 659              		.cfi_def_cfa_offset 8
- 660              		@ sp needed
- 661 00bc 10BD     		pop	{r4, pc}
- 662              	.L18:
- 663 00be 00BF     		.align	2
- 664              	.L17:
- 665 00c0 00000000 		.word	.LANCHOR0
- 666 00c4 00000000 		.word	adcGetVal
- 667              		.cfi_endproc
- 668              	.LFE270:
- 669              		.cantunwind
- 670              		.fnend
- 672              		.global	adcGetVal
- 673              		.section	.bss.adcGetVal,"aw",%nobits
- 674              		.align	2
- 677              	adcGetVal:
- 678 0000 00000000 		.space	28
- 678      00000000 
- 678      00000000 
- 678      00000000 
- 678      00000000 
- 679              		.section	.rodata
- 680              		.align	2
- 681              		.set	.LANCHOR0,. + 0
- 682              	.LC0:
- 683 0000 000090C0 		.word	-1064304640
- 684 0004 000060C0 		.word	-1067450368
- 685 0008 000020C0 		.word	-1071644672
- 686 000c 0000C0BF 		.word	-1077936128
- 687 0010 000000BF 		.word	-1090519040
- 688 0014 0000003F 		.word	1056964608
- 689 0018 0000C03F 		.word	1069547520
- 690 001c 00002040 		.word	1075838976
- 691 0020 00006040 		.word	1080033280
- 692 0024 00009040 		.word	1083179008
- 693              		.text
- 694              	.Letext0:
- 695              		.file 5 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/machine/_default_ty
- 696              		.file 6 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/sys/_stdint.h"
- 697              		.file 7 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f446xx.h"
- 698              		.file 8 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
- 699              		.file 9 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/lib/gcc/arm-none-eabi/12.3.1/include/stdd
- 700              		.file 10 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
- 701              		.file 11 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
- 702              		.file 12 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
- 703              		.file 13 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h"
- 704              		.file 14 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h"
-ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s 			page 16
+ 660              		.loc 1 45 1 view .LVU180
+ 661 00ba 0AB0     		add	sp, sp, #40
+ 662              	.LCFI8:
+ 663              		.cfi_def_cfa_offset 8
+ 664              		@ sp needed
+ 665 00bc 10BD     		pop	{r4, pc}
+ 666              	.L18:
+ 667 00be 00BF     		.align	2
+ 668              	.L17:
+ 669 00c0 00000000 		.word	.LANCHOR0
+ 670 00c4 00000000 		.word	adcGetVal
+ 671              		.cfi_endproc
+ 672              	.LFE270:
+ 673              		.cantunwind
+ 674              		.fnend
+ 676              		.global	adcGetVal
+ 677              		.section	.bss.adcGetVal,"aw",%nobits
+ 678              		.align	2
+ 681              	adcGetVal:
+ 682 0000 00000000 		.space	28
+ 682      00000000 
+ 682      00000000 
+ 682      00000000 
+ 682      00000000 
+ 683              		.section	.rodata
+ 684              		.align	2
+ 685              		.set	.LANCHOR0,. + 0
+ 686              	.LC0:
+ 687 0000 000090C0 		.word	-1064304640
+ 688 0004 000060C0 		.word	-1067450368
+ 689 0008 000020C0 		.word	-1071644672
+ 690 000c 0000C0BF 		.word	-1077936128
+ 691 0010 000000BF 		.word	-1090519040
+ 692 0014 0000003F 		.word	1056964608
+ 693 0018 0000C03F 		.word	1069547520
+ 694 001c 00002040 		.word	1075838976
+ 695 0020 00006040 		.word	1080033280
+ 696 0024 00009040 		.word	1083179008
+ 697              		.text
+ 698              	.Letext0:
+ 699              		.file 5 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/machine/_default_ty
+ 700              		.file 6 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/sys/_stdint.h"
+ 701              		.file 7 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f446xx.h"
+ 702              		.file 8 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ 703              		.file 9 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/lib/gcc/arm-none-eabi/12.3.1/include/stdd
+ 704              		.file 10 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc1ioxfv.s 			page 16
 
 
- 705              		.file 15 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
- 706              		.file 16 "Lib/Timer/Timer.hpp"
- 707              		.file 17 "Lib/Button/Button.hpp"
- 708              		.file 18 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
- 709              		.file 19 "Core/Inc/tim.h"
- 710              		.file 20 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/c++/12.3.1/cstdio"
- 711              		.file 21 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/c++/12.3.1/arm-non
- 712              		.file 22 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/sys/_types.h"
- 713              		.file 23 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/sys/reent.h"
- 714              		.file 24 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/sys/lock.h"
- 715              		.file 25 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/stdio.h"
- 716              		.file 26 "Core/Inc/adc.h"
- 717              		.file 27 "src/unit/motorDrive.hpp"
- 718              		.file 28 "src/unit/robot.hpp"
-ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s 			page 17
+ 705              		.file 11 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+ 706              		.file 12 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 707              		.file 13 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h"
+ 708              		.file 14 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h"
+ 709              		.file 15 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+ 710              		.file 16 "Lib/Timer/Timer.hpp"
+ 711              		.file 17 "Lib/Button/Button.hpp"
+ 712              		.file 18 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
+ 713              		.file 19 "Core/Inc/tim.h"
+ 714              		.file 20 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/c++/12.3.1/cstdio"
+ 715              		.file 21 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/c++/12.3.1/arm-non
+ 716              		.file 22 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/sys/_types.h"
+ 717              		.file 23 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/sys/reent.h"
+ 718              		.file 24 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/sys/lock.h"
+ 719              		.file 25 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/stdio.h"
+ 720              		.file 26 "Core/Inc/adc.h"
+ 721              		.file 27 "src/unit/motorDrive.hpp"
+ 722              		.file 28 "src/unit/robot.hpp"
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc1ioxfv.s 			page 17
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 robot.cpp
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s:21     .text._ZN6Buzzer4initEv:00000000 $t
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s:27     .text._ZN6Buzzer4initEv:00000000 _ZN6Buzzer4initEv
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc1ioxfv.s:21     .text._ZN6Buzzer4initEv:00000000 $t
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc1ioxfv.s:27     .text._ZN6Buzzer4initEv:00000000 _ZN6Buzzer4initEv
 .ARM.exidx.text._ZN6Buzzer4initEv:00000000 $d
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s:67     .text._ZN12PwmSingleOut4initEv:00000000 $t
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s:73     .text._ZN12PwmSingleOut4initEv:00000000 _ZN12PwmSingleOut4initEv
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc1ioxfv.s:67     .text._ZN12PwmSingleOut4initEv:00000000 $t
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc1ioxfv.s:73     .text._ZN12PwmSingleOut4initEv:00000000 _ZN12PwmSingleOut4initEv
 .ARM.exidx.text._ZN12PwmSingleOut4initEv:00000000 $d
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s:113    .text._ZN5RobotC2Ev:00000000 $t
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s:119    .text._ZN5RobotC2Ev:00000000 _ZN5RobotC2Ev
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s:401    .text._ZN5RobotC2Ev:0000010c $d
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc1ioxfv.s:113    .text._ZN5RobotC2Ev:00000000 $t
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc1ioxfv.s:119    .text._ZN5RobotC2Ev:00000000 _ZN5RobotC2Ev
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc1ioxfv.s:405    .text._ZN5RobotC2Ev:00000118 $d
     .ARM.exidx.text._ZN5RobotC2Ev:00000000 $d
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s:119    .text._ZN5RobotC2Ev:00000000 _ZN5RobotC1Ev
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s:414    .rodata._ZN5Robot12hardwareInitEv.str1.4:00000000 $d
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s:421    .text._ZN5Robot12hardwareInitEv:00000000 $t
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s:427    .text._ZN5Robot12hardwareInitEv:00000000 _ZN5Robot12hardwareInitEv
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s:499    .text._ZN5Robot12hardwareInitEv:00000048 $d
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s:677    .bss.adcGetVal:00000000 adcGetVal
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc1ioxfv.s:119    .text._ZN5RobotC2Ev:00000000 _ZN5RobotC1Ev
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc1ioxfv.s:418    .rodata._ZN5Robot12hardwareInitEv.str1.4:00000000 $d
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc1ioxfv.s:425    .text._ZN5Robot12hardwareInitEv:00000000 $t
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc1ioxfv.s:431    .text._ZN5Robot12hardwareInitEv:00000000 _ZN5Robot12hardwareInitEv
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc1ioxfv.s:503    .text._ZN5Robot12hardwareInitEv:00000048 $d
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc1ioxfv.s:681    .bss.adcGetVal:00000000 adcGetVal
 .ARM.exidx.text._ZN5Robot12hardwareInitEv:00000000 $d
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s:509    .text._ZN5Robot10getSensorsEv:00000000 $t
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s:515    .text._ZN5Robot10getSensorsEv:00000000 _ZN5Robot10getSensorsEv
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s:665    .text._ZN5Robot10getSensorsEv:000000c0 $d
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc1ioxfv.s:513    .text._ZN5Robot10getSensorsEv:00000000 $t
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc1ioxfv.s:519    .text._ZN5Robot10getSensorsEv:00000000 _ZN5Robot10getSensorsEv
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc1ioxfv.s:669    .text._ZN5Robot10getSensorsEv:000000c0 $d
 .ARM.exidx.text._ZN5Robot10getSensorsEv:00000000 $d
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s:674    .bss.adcGetVal:00000000 $d
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc4WNnXk.s:680    .rodata:00000000 $d
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc1ioxfv.s:678    .bss.adcGetVal:00000000 $d
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cc1ioxfv.s:684    .rodata:00000000 $d
 
 UNDEFINED SYMBOLS
 HAL_TIM_PWM_Start
 __aeabi_unwind_cpp_pr0
 HAL_GPIO_WritePin
 _ZN6ButtonC1EP12GPIO_TypeDeft
-_ZN10MotorDriveC1EP12PwmSingleOutS1_S1_S1_
+_ZN10MotorDriveC1EP12PwmSingleOutS1_S1_S1_PtS2_
 htim3
 htim2
 htim1

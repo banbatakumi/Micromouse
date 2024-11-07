@@ -1,7 +1,9 @@
 #include "motorDrive.hpp"
 
-MotorDrive::MotorDrive(PwmSingleOut *motor1a, PwmSingleOut *motor1b, PwmSingleOut *motor2a, PwmSingleOut *motor2b)
+MotorDrive::MotorDrive(PwmSingleOut *motor1a, PwmSingleOut *motor1b, PwmSingleOut *motor2a, PwmSingleOut *motor2b, uint16_t *encoderLeft, uint16_t *encoderRight)
     : _motor1a(motor1a), _motor1b(motor1b), _motor2a(motor2a), _motor2b(motor2b) {
+      this->_encoderLeft = encoderLeft;
+      this->_encoderRight = encoderRight;
 }
 
 void MotorDrive::init() {
@@ -10,6 +12,12 @@ void MotorDrive::init() {
       _motor2a->init();
       _motor2b->init();
 }
+
+void MotorDrive::encoderCompute() {
+      speedLeft = preEncoderLeft - *_encoderLeft;
+      preEncoderLeft = *_encoderLeft;
+}
+
 void MotorDrive::drive(int8_t left, int8_t right) {
       float left_power = left * 0.01f;
       float right_power = right * 0.01f;
