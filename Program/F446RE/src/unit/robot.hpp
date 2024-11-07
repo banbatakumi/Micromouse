@@ -9,9 +9,11 @@
 #include "adc.h"
 #include "config.h"
 #include "main.h"
+#include "motorDrive.hpp"
 
-typedef struct {
-      // local
+class Robot {
+     public:
+      Robot();
       struct {
             uint16_t mainVal[LINE_QTY];
             uint16_t leftVal;
@@ -20,11 +22,6 @@ typedef struct {
             bool isLeft;
             bool isRight;
       } line;
-} RobotInfo;
-class Robot {
-     public:
-      Robot();
-      RobotInfo info;
 
       DigitalOut led1 = DigitalOut(LED1_GPIO_Port, LED1_Pin);
       DigitalOut led2 = DigitalOut(LED2_GPIO_Port, LED2_Pin);
@@ -44,6 +41,8 @@ class Robot {
       PwmSingleOut motor2a = PwmSingleOut(&htim1, TIM_CHANNEL_3);
       PwmSingleOut motor2b = PwmSingleOut(&htim1, TIM_CHANNEL_4);
       Buzzer buzzer = Buzzer(&htim2, TIM_CHANNEL_3);
+
+      MotorDrive motor = MotorDrive(&motor1a, &motor1b, &motor2a, &motor2b);
 
       void hardwareInit();
       void getSensors();

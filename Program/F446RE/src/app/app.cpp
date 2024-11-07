@@ -26,5 +26,7 @@ void setup() {
 }
 
 void main_app() {
-      while (1) mainMode.loop();
+      while (1) {
+            mainMode.loop();
+      }
 }
