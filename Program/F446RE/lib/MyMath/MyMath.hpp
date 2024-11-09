@@ -25,6 +25,7 @@ extern "C" {
 #define Round(x) ((x) >= 0 ? (long)((x) + 0.5) : (long)((x) - 0.5))
 #define Radians(deg) ((deg) * DEG_TO_RAD)
 #define Degrees(rad) ((rad) * RAD_TO_DEG)
+#define Map(value, low1, high1, low2, high2) low2 + (high2 - low2) * ((value - low1) / (high1 - low1))
 
 #define SIN0 0
 #define SIN1 0.0174524064372835
@@ -135,7 +136,7 @@ float gapRadians180(float rad1, float rad2);
 float gapRadians(float rad1, float rad2);
 float sqrt(float x);
 void printBit(char c);
-} // namespace MyMath
+}  // namespace MyMath
 }
 #endif
 #endif

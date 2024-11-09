@@ -4,15 +4,17 @@
 #include "PWMSingle.hpp"
 #include "Timer.hpp"
 
+#define MAX_POWER 600
+#define MIN_POWER 140
 class MotorDrive {
      public:
       MotorDrive(PwmSingleOut *motor1a, PwmSingleOut *motor1b, PwmSingleOut *motor2a, PwmSingleOut *motor2b, uint16_t *encoderValLeft, uint16_t *encoderValRight);
 
-      void drive(int8_t left, int8_t right);
+      void drive(int16_t left, int16_t right);
+      void run();
       void brake();
       void init();
       void encoderCompute();
-      float speedLeft, speedRight;
 
      private:
       PwmSingleOut *_motor1a;
@@ -23,11 +25,22 @@ class MotorDrive {
       uint16_t *_encoderValRight;
 
       Timer periodTimer;
+      struct {
+            double speedLeft, speedRight;
+            double preRadLeft, preRadRight;
+            double radLeft, radRight;
+            double difRadLeft, difRadRight;
+            uint16_t maxValLeft, maxValRight;
+      } encoder;
 
-      float preRadLeft, preRadRight;
-      float RadLeft, RadRight;
-      float difRadLeft, difRadRight;
-      uint16_t MaxValLeft, MaxValRight;
+      int16_t powerLeft, powerRight;
+      int16_t speedLeft, speedRight;
+
+      double dLeft, dRight;
+      double iLeft, iRight;
+
+      double dt;
+      double Kp, Ki;
 };
 
 #endif

@@ -9,7 +9,7 @@
             "cwd": "${workspaceFolder}",
             "liveWatch": {
                 "enabled": true,
-                "samplesPerSecond": 4
+                "samplesPerSecond": 10
             },
             "type": "cortex-debug",
             "executable": "./build/F446RE.elf",

@@ -10,9 +10,6 @@ void TimInterrupt1khz() {
       robot.heartBeat();
 }
 
-void TimInterrupt10khz() {
-}
-
 void setup() {
       robot.hardwareInit();
       robot.lineLed.write(1);
@@ -24,7 +21,7 @@ void setup() {
 
       for (float i = 0; i < 0.05; i += 0.001) {
             robot.fan.write(i);
-            HAL_Delay(100);
+            HAL_Delay(10);
       }
 }
 

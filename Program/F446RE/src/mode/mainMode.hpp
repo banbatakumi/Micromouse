@@ -1,5 +1,7 @@
 #include "robot.hpp"
 
+#define DEBUG_PERIOD 10  // ms
+#define DEBUG_CNT_NUM (int)((DEBUG_PERIOD * 1000) / PERIOD_US)
 class MainMode {
      public:
       MainMode();
@@ -10,6 +12,7 @@ class MainMode {
       // Robot *robot;
       Robot robot;
 
-      uint32_t ProcessTime;  // us
-      uint32_t debugCnt;
+      uint16_t processTime;  // us
+      uint16_t debugCnt;
+      int16_t debugVal[4][DEBUG_CNT_NUM];
 };
