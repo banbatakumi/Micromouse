@@ -6,4 +6,6 @@
 
 #define LINE_QTY 10
 
+#define MAIN_FREQ 10000  // Hz
+
 #endif

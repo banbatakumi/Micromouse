@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s 			page 1
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccOWhnll.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s 			page 1
   27:src/app/app.cpp ****             HAL_Delay(100);
   28:src/app/app.cpp ****       }
   29:src/app/app.cpp **** }
-ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s 			page 2
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccOWhnll.s 			page 2
 
 
   30:src/app/app.cpp **** 
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s 			page 1
   75              		.fnend
   77              		.global	__aeabi_ui2d
   78              		.global	__aeabi_dmul
-ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s 			page 3
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccOWhnll.s 			page 3
 
 
   79              		.global	__aeabi_d2iz
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s 			page 1
  112              		.loc 2 22 35 view .LVU13
  113 000a 5A60     		str	r2, [r3, #4]
   23:Lib/Buzzer/Buzzer.hpp ****             _htim->Init.Period = (SystemCoreClock / (period * (_htim->Init.Prescaler + 1))) - 1;
-ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s 			page 4
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccOWhnll.s 			page 4
 
 
  114              		.loc 2 23 13 is_stmt 1 view .LVU14
@@ -238,7 +238,7 @@ ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s 			page 1
  160 0046 2368     		ldr	r3, [r4]
  161 0048 1B68     		ldr	r3, [r3]
  162 004a FCEEE77A 		vcvt.u32.f32	s15, s15
-ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s 			page 5
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccOWhnll.s 			page 5
 
 
  163              	.LVL15:
@@ -298,7 +298,7 @@ ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s 			page 1
  208              	.LVL22:
  209              	.L23:
   31:Lib/Buzzer/Buzzer.hpp ****             HAL_Delay(time);
-ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s 			page 6
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccOWhnll.s 			page 6
 
 
  210              		.loc 2 31 13 discriminator 3 view .LVU44
@@ -358,7 +358,7 @@ ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s 			page 1
  256 00c2 CFE7     		b	.L11
  257              	.L28:
  258              		.align	2
-ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s 			page 7
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccOWhnll.s 			page 7
 
 
  259              	.L27:
@@ -418,7 +418,7 @@ ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s 			page 1
  293              		.loc 3 22 26 is_stmt 0 view .LVU57
  294 0004 B5EEC00A 		vcmpe.f32	s0, #0
  295 0008 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
-ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s 			page 8
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccOWhnll.s 			page 8
 
 
  296 000c 10D4     		bmi	.L35
@@ -478,7 +478,7 @@ ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s 			page 1
  349              	.L29:
   24:Lib/PWMSingle/PWMSingle.hpp ****       }
  350              		.loc 3 24 7 view .LVU70
-ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s 			page 9
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccOWhnll.s 			page 9
 
 
  351 005e D0BD     		pop	{r4, r6, r7, pc}
@@ -538,7 +538,7 @@ ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s 			page 1
  398              		.section	.text.TimInterrupt1khz,"ax",%progbits
  399              		.align	1
  400              		.global	TimInterrupt1khz
-ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s 			page 10
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccOWhnll.s 			page 10
 
 
  401              		.syntax unified
@@ -582,57 +582,54 @@ ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s 			page 1
   16:src/unit/robot.hpp ****       Robot();
   17:src/unit/robot.hpp ****       struct {
   18:src/unit/robot.hpp ****             uint16_t mainVal[LINE_QTY];
-  19:src/unit/robot.hpp ****             uint16_t leftVal;
-  20:src/unit/robot.hpp ****             uint16_t rightVal;
-  21:src/unit/robot.hpp ****             int16_t position;
-  22:src/unit/robot.hpp ****             bool isLeft;
-  23:src/unit/robot.hpp ****             bool isRight;
-  24:src/unit/robot.hpp ****       } line;
-  25:src/unit/robot.hpp ****       uint16_t encoderLeft;
-  26:src/unit/robot.hpp ****       uint16_t encoderRight;
-  27:src/unit/robot.hpp **** 
-  28:src/unit/robot.hpp ****       DigitalOut led1 = DigitalOut(LED1_GPIO_Port, LED1_Pin);
-  29:src/unit/robot.hpp ****       DigitalOut led2 = DigitalOut(LED2_GPIO_Port, LED2_Pin);
-  30:src/unit/robot.hpp ****       DigitalOut led3 = DigitalOut(LED3_GPIO_Port, LED3_Pin);
-  31:src/unit/robot.hpp ****       DigitalOut led4 = DigitalOut(LED4_GPIO_Port, LED4_Pin);
-  32:src/unit/robot.hpp ****       DigitalOut led5 = DigitalOut(LED5_GPIO_Port, LED5_Pin);
-  33:src/unit/robot.hpp **** 
-  34:src/unit/robot.hpp ****       Button button1 = Button(BUTTON1_GPIO_Port, BUTTON1_Pin);
-ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s 			page 11
+  19:src/unit/robot.hpp ****             uint16_t leftVal, rightVal;
+  20:src/unit/robot.hpp ****             int16_t position;
+  21:src/unit/robot.hpp ****             bool isLeft, isRight;
+  22:src/unit/robot.hpp ****       } line;
+  23:src/unit/robot.hpp ****       uint16_t encoderValLeft, encoderValRight;
+  24:src/unit/robot.hpp **** 
+  25:src/unit/robot.hpp ****       DigitalOut led1 = DigitalOut(LED1_GPIO_Port, LED1_Pin);
+  26:src/unit/robot.hpp ****       DigitalOut led2 = DigitalOut(LED2_GPIO_Port, LED2_Pin);
+  27:src/unit/robot.hpp ****       DigitalOut led3 = DigitalOut(LED3_GPIO_Port, LED3_Pin);
+  28:src/unit/robot.hpp ****       DigitalOut led4 = DigitalOut(LED4_GPIO_Port, LED4_Pin);
+  29:src/unit/robot.hpp ****       DigitalOut led5 = DigitalOut(LED5_GPIO_Port, LED5_Pin);
+  30:src/unit/robot.hpp **** 
+  31:src/unit/robot.hpp ****       Button button1 = Button(BUTTON1_GPIO_Port, BUTTON1_Pin);
+  32:src/unit/robot.hpp ****       Button button2 = Button(GPIOB, BUTTON2_Pin);
+  33:src/unit/robot.hpp ****       Button button3 = Button(GPIOB, BUTTON3_Pin);
+  34:src/unit/robot.hpp **** 
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccOWhnll.s 			page 11
 
 
-  35:src/unit/robot.hpp ****       Button button2 = Button(GPIOB, BUTTON2_Pin);
-  36:src/unit/robot.hpp ****       Button button3 = Button(GPIOB, BUTTON3_Pin);
-  37:src/unit/robot.hpp **** 
-  38:src/unit/robot.hpp ****       PwmSingleOut fan = PwmSingleOut(&htim3, TIM_CHANNEL_4);
-  39:src/unit/robot.hpp ****       PwmSingleOut ledH = PwmSingleOut(&htim2, TIM_CHANNEL_2);
-  40:src/unit/robot.hpp ****       PwmSingleOut lineLed = PwmSingleOut(&htim3, TIM_CHANNEL_3);
-  41:src/unit/robot.hpp ****       PwmSingleOut motor1a = PwmSingleOut(&htim1, TIM_CHANNEL_1);
-  42:src/unit/robot.hpp ****       PwmSingleOut motor1b = PwmSingleOut(&htim1, TIM_CHANNEL_2);
-  43:src/unit/robot.hpp ****       PwmSingleOut motor2a = PwmSingleOut(&htim1, TIM_CHANNEL_3);
-  44:src/unit/robot.hpp ****       PwmSingleOut motor2b = PwmSingleOut(&htim1, TIM_CHANNEL_4);
-  45:src/unit/robot.hpp ****       Buzzer buzzer = Buzzer(&htim2, TIM_CHANNEL_3);
-  46:src/unit/robot.hpp **** 
-  47:src/unit/robot.hpp ****       MotorDrive motor = MotorDrive(&motor1a, &motor1b, &motor2a, &motor2b, &encoderLeft, &encoderR
+  35:src/unit/robot.hpp ****       PwmSingleOut fan = PwmSingleOut(&htim3, TIM_CHANNEL_4);
+  36:src/unit/robot.hpp ****       PwmSingleOut ledH = PwmSingleOut(&htim2, TIM_CHANNEL_2);
+  37:src/unit/robot.hpp ****       PwmSingleOut lineLed = PwmSingleOut(&htim3, TIM_CHANNEL_3);
+  38:src/unit/robot.hpp ****       PwmSingleOut motor1a = PwmSingleOut(&htim1, TIM_CHANNEL_1);
+  39:src/unit/robot.hpp ****       PwmSingleOut motor1b = PwmSingleOut(&htim1, TIM_CHANNEL_2);
+  40:src/unit/robot.hpp ****       PwmSingleOut motor2a = PwmSingleOut(&htim1, TIM_CHANNEL_3);
+  41:src/unit/robot.hpp ****       PwmSingleOut motor2b = PwmSingleOut(&htim1, TIM_CHANNEL_4);
+  42:src/unit/robot.hpp ****       Buzzer buzzer = Buzzer(&htim2, TIM_CHANNEL_3);
+  43:src/unit/robot.hpp **** 
+  44:src/unit/robot.hpp ****       MotorDrive motor = MotorDrive(&motor1a, &motor1b, &motor2a, &motor2b, &encoderValLeft, &encod
+  45:src/unit/robot.hpp **** 
+  46:src/unit/robot.hpp ****       void hardwareInit();
+  47:src/unit/robot.hpp ****       void getSensors();
   48:src/unit/robot.hpp **** 
-  49:src/unit/robot.hpp ****       void hardwareInit();
-  50:src/unit/robot.hpp ****       void getSensors();
-  51:src/unit/robot.hpp **** 
-  52:src/unit/robot.hpp ****       inline __attribute__((always_inline)) void heartBeat() {
- 423              		.loc 4 52 50 view .LVU82
+  49:src/unit/robot.hpp ****       inline __attribute__((always_inline)) void heartBeat() {
+ 423              		.loc 4 49 50 view .LVU82
  424              	.LBB5:
-  53:src/unit/robot.hpp ****             static int i = 0;
- 425              		.loc 4 53 13 view .LVU83
-  54:src/unit/robot.hpp ****             i++;
- 426              		.loc 4 54 13 view .LVU84
- 427              		.loc 4 54 14 is_stmt 0 view .LVU85
+  50:src/unit/robot.hpp ****             static int i = 0;
+ 425              		.loc 4 50 13 view .LVU83
+  51:src/unit/robot.hpp ****             i++;
+ 426              		.loc 4 51 13 view .LVU84
+ 427              		.loc 4 51 14 is_stmt 0 view .LVU85
  428 0002 1E4A     		ldr	r2, .L50
  429 0004 1368     		ldr	r3, [r2]
  430 0006 0133     		adds	r3, r3, #1
  431 0008 1360     		str	r3, [r2]
-  55:src/unit/robot.hpp ****             ledH.write(abs(MyMath::sinDeg(int(i * (360.0f / 2000.0f)))));
- 432              		.loc 4 55 13 is_stmt 1 view .LVU86
- 433              		.loc 4 55 24 is_stmt 0 view .LVU87
+  52:src/unit/robot.hpp ****             ledH.write(abs(MyMath::sinDeg(int(i * (360.0f / 2000.0f)))));
+ 432              		.loc 4 52 13 is_stmt 1 view .LVU86
+ 433              		.loc 4 52 24 is_stmt 0 view .LVU87
  434 000a 07EE903A 		vmov	s15, r3	@ int
  435 000e F8EEE77A 		vcvt.f32.s32	s15, s15
  436 0012 9FED1B7A 		vldr.32	s14, .L50+4
@@ -641,11 +638,11 @@ ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s 			page 1
  439 001e 17EE900A 		vmov	r0, s15	@ int
  440 0022 FFF7FEFF 		bl	sinDeg
  441              	.LVL44:
- 442              		.loc 4 55 23 view .LVU88
+ 442              		.loc 4 52 23 view .LVU88
  443 0026 B5EEC00A 		vcmpe.f32	s0, #0
  444 002a F1EE10FA 		vmrs	APSR_nzcv, FPSCR
  445 002e 12DD     		ble	.L48
- 446              		.loc 4 55 24 view .LVU89
+ 446              		.loc 4 52 24 view .LVU89
  447 0030 124B     		ldr	r3, .L50
  448 0032 D3ED007A 		vldr.32	s15, [r3]	@ int
  449 0036 F8EEE77A 		vcvt.f32.s32	s15, s15
@@ -656,14 +653,14 @@ ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s 			page 1
  454 004a FFF7FEFF 		bl	sinDeg
  455              	.LVL45:
  456              	.L46:
- 457              		.loc 4 55 23 view .LVU90
+ 457              		.loc 4 52 23 view .LVU90
  458 004e 0D48     		ldr	r0, .L50+8
-ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s 			page 12
-
-
  459 0050 FFF7FEFF 		bl	_ZN12PwmSingleOut5writeEf
  460              	.LVL46:
- 461              		.loc 4 55 23 view .LVU91
+ 461              		.loc 4 52 23 view .LVU91
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccOWhnll.s 			page 12
+
+
  462              	.LBE5:
  463              	.LBE4:
   11:src/app/app.cpp **** }
@@ -673,7 +670,7 @@ ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s 			page 1
  467              	.L48:
  468              	.LBB7:
  469              	.LBB6:
- 470              		.loc 4 55 24 view .LVU93
+ 470              		.loc 4 52 24 view .LVU93
  471 0056 094B     		ldr	r3, .L50
  472 0058 D3ED007A 		vldr.32	s15, [r3]	@ int
  473 005c F8EEE77A 		vcvt.f32.s32	s15, s15
@@ -683,7 +680,7 @@ ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s 			page 1
  477 006c 17EE900A 		vmov	r0, s15	@ int
  478 0070 FFF7FEFF 		bl	sinDeg
  479              	.LVL48:
- 480              		.loc 4 55 23 view .LVU94
+ 480              		.loc 4 52 23 view .LVU94
  481 0074 B1EE400A 		vneg.f32	s0, s0
  482 0078 E9E7     		b	.L46
  483              	.L51:
@@ -718,12 +715,12 @@ ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s 			page 1
  512              		.cfi_endproc
  513              	.LFE267:
  514              		.cantunwind
-ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s 			page 13
-
-
  515              		.fnend
  517              		.global	__aeabi_dadd
  518              		.global	__aeabi_d2f
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccOWhnll.s 			page 13
+
+
  519              		.global	__aeabi_dcmplt
  520              		.section	.text.setup,"ax",%progbits
  521              		.align	1
@@ -778,12 +775,12 @@ ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s 			page 1
   21:src/app/app.cpp ****       HAL_Delay(50);
  563              		.loc 1 21 16 is_stmt 0 view .LVU105
  564 0024 3220     		movs	r0, #50
-ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s 			page 14
-
-
  565 0026 FFF7FEFF 		bl	HAL_Delay
  566              	.LVL52:
   22:src/app/app.cpp ****       robot.buzzer.sound(1500, 50);
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccOWhnll.s 			page 14
+
+
  567              		.loc 1 22 7 is_stmt 1 view .LVU106
   22:src/app/app.cpp ****       robot.buzzer.sound(1500, 50);
  568              		.loc 1 22 25 is_stmt 0 view .LVU107
@@ -838,12 +835,12 @@ ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s 			page 1
  606 005e FFF7FEFF 		bl	__aeabi_d2f
  607              	.LVL59:
  608 0062 0446     		mov	r4, r0	@ float
-ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s 			page 15
-
-
  609              	.LVL60:
  610              	.L54:
   25:src/app/app.cpp ****       for (float i = 0; i < 0.05; i += 0.001) {
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccOWhnll.s 			page 15
+
+
  611              		.loc 1 25 27 is_stmt 1 discriminator 1 view .LVU119
   25:src/app/app.cpp ****       for (float i = 0; i < 0.05; i += 0.001) {
  612              		.loc 1 25 25 is_stmt 0 discriminator 1 view .LVU120
@@ -898,12 +895,12 @@ ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s 			page 1
  659              	.LCFI5:
  660              		.cfi_def_cfa_offset 8
  661              		.cfi_offset 3, -8
-ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s 			page 16
-
-
  662              		.cfi_offset 14, -4
  663              	.L60:
   32:src/app/app.cpp ****       while (1) {
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccOWhnll.s 			page 16
+
+
  664              		.loc 1 32 7 discriminator 1 view .LVU125
   33:src/app/app.cpp ****             mainMode.loop();
  665              		.loc 1 33 13 discriminator 1 view .LVU126
@@ -956,19 +953,19 @@ ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s 			page 1
  713              		.section	.bss.mainMode,"aw",%nobits
  714              		.align	2
  717              	mainMode:
- 718 0000 00000000 		.space	296
+ 718 0000 00000000 		.space	336
  718      00000000 
-ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s 			page 17
+ 718      00000000 
+ 718      00000000 
+ 718      00000000 
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccOWhnll.s 			page 17
 
 
- 718      00000000 
- 718      00000000 
- 718      00000000 
  719              		.global	robot
  720              		.section	.bss.robot,"aw",%nobits
  721              		.align	2
  724              	robot:
- 725 0000 00000000 		.space	292
+ 725 0000 00000000 		.space	324
  725      00000000 
  725      00000000 
  725      00000000 
@@ -1003,50 +1000,50 @@ ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s 			page 1
  755              		.file 25 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
  756              		.file 26 "Lib/MyMath/MyMath.hpp"
  757              		.file 27 "Core/Inc/main.h"
-ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s 			page 18
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccOWhnll.s 			page 18
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 app.cpp
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s:21     .text._Z41__static_initialization_and_destruction_0ii:00000000 $t
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s:26     .text._Z41__static_initialization_and_destruction_0ii:00000000 _Z41__static_initialization_and_destruction_0ii
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s:70     .text._Z41__static_initialization_and_destruction_0ii:00000020 $d
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s:724    .bss.robot:00000000 robot
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s:717    .bss.mainMode:00000000 mainMode
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccOWhnll.s:21     .text._Z41__static_initialization_and_destruction_0ii:00000000 $t
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccOWhnll.s:26     .text._Z41__static_initialization_and_destruction_0ii:00000000 _Z41__static_initialization_and_destruction_0ii
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccOWhnll.s:70     .text._Z41__static_initialization_and_destruction_0ii:00000020 $d
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccOWhnll.s:724    .bss.robot:00000000 robot
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccOWhnll.s:717    .bss.mainMode:00000000 mainMode
 .ARM.exidx.text._Z41__static_initialization_and_destruction_0ii:00000000 $d
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s:81     .text._ZN6Buzzer5soundEtt:00000000 $t
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s:87     .text._ZN6Buzzer5soundEtt:00000000 _ZN6Buzzer5soundEtt
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s:260    .text._ZN6Buzzer5soundEtt:000000c4 $d
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccOWhnll.s:81     .text._ZN6Buzzer5soundEtt:00000000 $t
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccOWhnll.s:87     .text._ZN6Buzzer5soundEtt:00000000 _ZN6Buzzer5soundEtt
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccOWhnll.s:260    .text._ZN6Buzzer5soundEtt:000000c4 $d
 .ARM.exidx.text._ZN6Buzzer5soundEtt:00000000 $d
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s:268    .text._ZN12PwmSingleOut5writeEf:00000000 $t
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s:274    .text._ZN12PwmSingleOut5writeEf:00000000 _ZN12PwmSingleOut5writeEf
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s:392    .text._ZN12PwmSingleOut5writeEf:00000094 $d
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccOWhnll.s:268    .text._ZN12PwmSingleOut5writeEf:00000000 $t
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccOWhnll.s:274    .text._ZN12PwmSingleOut5writeEf:00000000 _ZN12PwmSingleOut5writeEf
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccOWhnll.s:392    .text._ZN12PwmSingleOut5writeEf:00000094 $d
 .ARM.exidx.text._ZN12PwmSingleOut5writeEf:00000000 $d
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s:399    .text.TimInterrupt1khz:00000000 $t
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s:405    .text.TimInterrupt1khz:00000000 TimInterrupt1khz
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s:486    .text.TimInterrupt1khz:0000007c $d
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s:731    .bss._ZZN5Robot9heartBeatEvE1i:00000000 _ZZN5Robot9heartBeatEvE1i
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccOWhnll.s:399    .text.TimInterrupt1khz:00000000 $t
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccOWhnll.s:405    .text.TimInterrupt1khz:00000000 TimInterrupt1khz
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccOWhnll.s:486    .text.TimInterrupt1khz:0000007c $d
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccOWhnll.s:731    .bss._ZZN5Robot9heartBeatEvE1i:00000000 _ZZN5Robot9heartBeatEvE1i
  .ARM.extab.text.TimInterrupt1khz:00000000 $d
  .ARM.exidx.text.TimInterrupt1khz:00000000 $d
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s:496    .text.TimInterrupt10khz:00000000 $t
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s:502    .text.TimInterrupt10khz:00000000 TimInterrupt10khz
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccOWhnll.s:496    .text.TimInterrupt10khz:00000000 $t
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccOWhnll.s:502    .text.TimInterrupt10khz:00000000 TimInterrupt10khz
 .ARM.exidx.text.TimInterrupt10khz:00000000 $d
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s:521    .text.setup:00000000 $t
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s:527    .text.setup:00000000 setup
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s:633    .text.setup:00000080 $d
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccOWhnll.s:521    .text.setup:00000000 $t
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccOWhnll.s:527    .text.setup:00000000 setup
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccOWhnll.s:633    .text.setup:00000080 $d
             .ARM.exidx.text.setup:00000000 $d
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s:644    .text.main_app:00000000 $t
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s:650    .text.main_app:00000000 main_app
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s:675    .text.main_app:0000000c $d
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccOWhnll.s:644    .text.main_app:00000000 $t
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccOWhnll.s:650    .text.main_app:00000000 main_app
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccOWhnll.s:675    .text.main_app:0000000c $d
          .ARM.extab.text.main_app:00000000 $d
          .ARM.exidx.text.main_app:00000000 $d
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s:681    .text._GLOBAL__sub_I_robot:00000000 $t
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s:686    .text._GLOBAL__sub_I_robot:00000000 _GLOBAL__sub_I_robot
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccOWhnll.s:681    .text._GLOBAL__sub_I_robot:00000000 $t
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccOWhnll.s:686    .text._GLOBAL__sub_I_robot:00000000 _GLOBAL__sub_I_robot
 .ARM.exidx.text._GLOBAL__sub_I_robot:00000000 $d
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s:710    .init_array:00000000 $d
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s:714    .bss.mainMode:00000000 $d
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s:721    .bss.robot:00000000 $d
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s:728    .bss._ZZN5Robot9heartBeatEvE1i:00000000 $d
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccOWhnll.s:710    .init_array:00000000 $d
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccOWhnll.s:714    .bss.mainMode:00000000 $d
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccOWhnll.s:721    .bss.robot:00000000 $d
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccOWhnll.s:728    .bss._ZZN5Robot9heartBeatEvE1i:00000000 $d
 
 UNDEFINED SYMBOLS
 _ZN5RobotC1Ev
@@ -1063,7 +1060,7 @@ __aeabi_f2d
 sinDeg
 __aeabi_unwind_cpp_pr1
 __aeabi_dadd
-ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccrmeF79.s 			page 19
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccOWhnll.s 			page 19
 
 
 __aeabi_d2f

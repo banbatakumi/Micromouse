@@ -16,14 +16,11 @@ class Robot {
       Robot();
       struct {
             uint16_t mainVal[LINE_QTY];
-            uint16_t leftVal;
-            uint16_t rightVal;
+            uint16_t leftVal, rightVal;
             int16_t position;
-            bool isLeft;
-            bool isRight;
+            bool isLeft, isRight;
       } line;
-      uint16_t encoderLeft;
-      uint16_t encoderRight;
+      uint16_t encoderValLeft, encoderValRight;
 
       DigitalOut led1 = DigitalOut(LED1_GPIO_Port, LED1_Pin);
       DigitalOut led2 = DigitalOut(LED2_GPIO_Port, LED2_Pin);
@@ -44,7 +41,7 @@ class Robot {
       PwmSingleOut motor2b = PwmSingleOut(&htim1, TIM_CHANNEL_4);
       Buzzer buzzer = Buzzer(&htim2, TIM_CHANNEL_3);
 
-      MotorDrive motor = MotorDrive(&motor1a, &motor1b, &motor2a, &motor2b, &encoderLeft, &encoderRight);
+      MotorDrive motor = MotorDrive(&motor1a, &motor1b, &motor2a, &motor2b, &encoderValLeft, &encoderValRight);
 
       void hardwareInit();
       void getSensors();

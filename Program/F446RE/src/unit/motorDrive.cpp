@@ -1,9 +1,9 @@
 #include "motorDrive.hpp"
 
-MotorDrive::MotorDrive(PwmSingleOut *motor1a, PwmSingleOut *motor1b, PwmSingleOut *motor2a, PwmSingleOut *motor2b, uint16_t *encoderLeft, uint16_t *encoderRight)
+MotorDrive::MotorDrive(PwmSingleOut *motor1a, PwmSingleOut *motor1b, PwmSingleOut *motor2a, PwmSingleOut *motor2b, uint16_t *encoderValLeft, uint16_t *encoderValRight)
     : _motor1a(motor1a), _motor1b(motor1b), _motor2a(motor2a), _motor2b(motor2b) {
-      this->_encoderLeft = encoderLeft;
-      this->_encoderRight = encoderRight;
+      this->_encoderValLeft = encoderValLeft;
+      this->_encoderValRight = encoderValRight;
 }
 
 void MotorDrive::init() {
@@ -14,8 +14,24 @@ void MotorDrive::init() {
 }
 
 void MotorDrive::encoderCompute() {
-      speedLeft = preEncoderLeft - *_encoderLeft;
-      preEncoderLeft = *_encoderLeft;
+      // 最大値を求める
+      if (*_encoderValLeft > MaxValLeft) MaxValLeft = *_encoderValLeft;
+      RadLeft = *_encoderValLeft * (2 * PI / MaxValLeft);
+      if (*_encoderValRight > MaxValRight) MaxValRight = *_encoderValRight;
+      RadRight = *_encoderValRight * (2 * PI / MaxValRight);
+
+      // 角度の差を求める
+      difRadLeft = preRadLeft - RadLeft;
+      difRadRight = preRadRight - RadRight;
+      // PI以上変わった時に修正
+      if (abs(difRadLeft) > PI) difRadLeft -= 2 * PI * (abs(difRadLeft) / difRadLeft);
+      if (abs(difRadRight) > PI) difRadRight -= 2 * PI * (abs(difRadRight) / difRadRight);
+
+      // rad/sに変換
+      speedLeft = difRadLeft / (periodTimer.read_us() / 1000000.0f);
+      speedRight = difRadRight / (periodTimer.read_us() / 1000000.0f);
+      preRadLeft = RadLeft;
+      periodTimer.reset();
 }
 
 void MotorDrive::drive(int8_t left, int8_t right) {

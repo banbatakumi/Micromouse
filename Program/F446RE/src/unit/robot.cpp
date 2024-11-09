@@ -15,10 +15,10 @@ void Robot::hardwareInit() {
       fan.init();
       ledH.init();
       lineLed.init();
-      // motor1a.init();
-      // motor1b.init();
-      // motor2a.init();
-      // motor2b.init();
+      motor1a.init();
+      motor1b.init();
+      motor2a.init();
+      motor2b.init();
       buzzer.init();
 }
 
@@ -40,6 +40,6 @@ void Robot::getSensors() {
       }
       line.position *= -1;
 
-      encoderLeft = adcGetVal[0];
-      encoderRight = adcGetVal[1];
+      encoderValLeft = adcGetVal[0];
+      encoderValRight = adcGetVal[1];
 }
