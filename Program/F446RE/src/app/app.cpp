@@ -19,7 +19,7 @@ void setup() {
       robot.buzzer.sound(1500, 50);
       HAL_Delay(50);
 
-      for (float i = 0; i < 0.05; i += 0.001) {
+      for (float i = 0; i < 0.01; i += 0.001) {
             robot.fan.write(i);
             HAL_Delay(10);
       }

@@ -13,6 +13,7 @@ void Robot::hardwareInit() {
       HAL_ADC_Start_DMA(&hadc1, (uint32_t *)&adcGetVal, 14);
       printf("ADC_DMA start\n");
 
+      // 諸々の初期化
       fan.init();
       ledH.init();
       lineLed.init();

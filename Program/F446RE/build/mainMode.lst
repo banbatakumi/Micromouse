@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccXBtsOw.s 			page 1
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccJ8Um5h.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccXBtsOw.s 			page 1
   51              	.LBE2:
    6:src/mode/mainMode.cpp **** }
   52              		.loc 1 6 1 view .LVU4
-ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccXBtsOw.s 			page 2
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccJ8Um5h.s 			page 2
 
 
   53 0010 2046     		mov	r0, r4
@@ -118,108 +118,133 @@ ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccXBtsOw.s 			page 1
  101              		.loc 1 11 7 is_stmt 1 view .LVU12
  102              		.loc 1 11 23 is_stmt 0 view .LVU13
  103 0012 04F10800 		add	r0, r4, #8
-ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccXBtsOw.s 			page 3
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccJ8Um5h.s 			page 3
 
 
  104 0016 FFF7FEFF 		bl	_ZN5Robot10getSensorsEv
  105              	.LVL6:
-  12:src/mode/mainMode.cpp ****       robot.motor.drive(150, 150);
+  12:src/mode/mainMode.cpp ****       int16_t left, right;
  106              		.loc 1 12 7 is_stmt 1 view .LVU14
- 107              		.loc 1 12 24 is_stmt 0 view .LVU15
- 108 001a 9622     		movs	r2, #150
- 109 001c 1146     		mov	r1, r2
- 110 001e 2846     		mov	r0, r5
- 111 0020 FFF7FEFF 		bl	_ZN10MotorDrive5driveEss
- 112              	.LVL7:
-  13:src/mode/mainMode.cpp **** 
-  14:src/mode/mainMode.cpp ****       // 定周期処理
-  15:src/mode/mainMode.cpp ****       processTime = processTimer.read_us();
- 113              		.loc 1 15 7 is_stmt 1 view .LVU16
- 114              		.loc 1 15 41 is_stmt 0 view .LVU17
- 115 0024 2046     		mov	r0, r4
- 116 0026 FFF7FEFF 		bl	_ZN5Timer7read_usEv
- 117              	.LVL8:
- 118              		.loc 1 15 19 view .LVU18
- 119 002a 80B2     		uxth	r0, r0
- 120 002c A4F8B801 		strh	r0, [r4, #440]	@ movhi
-  16:src/mode/mainMode.cpp ****       if (processTime < PERIOD_US) {
- 121              		.loc 1 16 7 is_stmt 1 view .LVU19
- 122 0030 C728     		cmp	r0, #199
- 123 0032 05D8     		bhi	.L4
- 124              	.L5:
-  17:src/mode/mainMode.cpp ****             while (processTimer.read_us() < PERIOD_US);
- 125              		.loc 1 17 43 discriminator 1 view .LVU20
- 126              		.loc 1 17 40 is_stmt 0 discriminator 1 view .LVU21
- 127 0034 2046     		mov	r0, r4
- 128 0036 FFF7FEFF 		bl	_ZN5Timer7read_usEv
- 129              	.LVL9:
- 130              		.loc 1 17 43 discriminator 1 view .LVU22
- 131 003a C728     		cmp	r0, #199
- 132 003c FAD9     		bls	.L5
- 133              	.L3:
-  18:src/mode/mainMode.cpp ****       } else {
-  19:src/mode/mainMode.cpp ****             printf("OverProcess! ");
-  20:src/mode/mainMode.cpp ****       }
-  21:src/mode/mainMode.cpp **** }...
- 134              		.loc 1 21 1 view .LVU23
- 135 003e 38BD     		pop	{r3, r4, r5, pc}
- 136              	.LVL10:
- 137              	.L4:
-  19:src/mode/mainMode.cpp ****             printf("OverProcess! ");
- 138              		.loc 1 19 13 is_stmt 1 view .LVU24
-  19:src/mode/mainMode.cpp ****             printf("OverProcess! ");
- 139              		.loc 1 19 19 is_stmt 0 view .LVU25
- 140 0040 0148     		ldr	r0, .L8
- 141 0042 FFF7FEFF 		bl	printf
- 142              	.LVL11:
- 143              		.loc 1 21 1 view .LVU26
- 144 0046 FAE7     		b	.L3
- 145              	.L9:
- 146              		.align	2
- 147              	.L8:
- 148 0048 00000000 		.word	.LC0
-ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccXBtsOw.s 			page 4
+  13:src/mode/mainMode.cpp ****       left = robot.line.position / 50;
+ 107              		.loc 1 13 7 view .LVU15
+  14:src/mode/mainMode.cpp ****       right = robot.line.position / -50;
+ 108              		.loc 1 14 7 view .LVU16
+  15:src/mode/mainMode.cpp ****       if (abs(left) > 75) left = 75 * (abs(left) / left);
+ 109              		.loc 1 15 7 view .LVU17
+  16:src/mode/mainMode.cpp ****       if (abs(right) > 75) right = 75 * (abs(right) / right);
+ 110              		.loc 1 16 7 view .LVU18
+  17:src/mode/mainMode.cpp ****       if (abs(robot.line.position) < 1000) {
+ 111              		.loc 1 17 7 view .LVU19
+  18:src/mode/mainMode.cpp ****             left += 90;
+  19:src/mode/mainMode.cpp ****             right += 90;
+  20:src/mode/mainMode.cpp ****       } else {
+  21:src/mode/mainMode.cpp ****             left += 30;
+  22:src/mode/mainMode.cpp ****             right += 30;
+  23:src/mode/mainMode.cpp ****       }
+  24:src/mode/mainMode.cpp ****       if (abs(left) > 150) left = 150 * (abs(left) / left);
+ 112              		.loc 1 24 7 view .LVU20
+  25:src/mode/mainMode.cpp ****       if (abs(right) > 150) right = 150 * (abs(right) / right);
+ 113              		.loc 1 25 7 view .LVU21
+  26:src/mode/mainMode.cpp ****       robot.motor.drive(200, 0);
+ 114              		.loc 1 26 7 view .LVU22
+ 115              		.loc 1 26 24 is_stmt 0 view .LVU23
+ 116 001a 0022     		movs	r2, #0
+ 117 001c C821     		movs	r1, #200
+ 118 001e 2846     		mov	r0, r5
+ 119 0020 FFF7FEFF 		bl	_ZN10MotorDrive5driveEss
+ 120              	.LVL7:
+  27:src/mode/mainMode.cpp **** 
+  28:src/mode/mainMode.cpp ****       // 定周期処理
+  29:src/mode/mainMode.cpp ****       processTime = processTimer.read_us();
+ 121              		.loc 1 29 7 is_stmt 1 view .LVU24
+ 122              		.loc 1 29 41 is_stmt 0 view .LVU25
+ 123 0024 2046     		mov	r0, r4
+ 124 0026 FFF7FEFF 		bl	_ZN5Timer7read_usEv
+ 125              	.LVL8:
+ 126              		.loc 1 29 19 view .LVU26
+ 127 002a 80B2     		uxth	r0, r0
+ 128 002c A4F8C801 		strh	r0, [r4, #456]	@ movhi
+  30:src/mode/mainMode.cpp ****       if (processTime < PERIOD_US) {
+ 129              		.loc 1 30 7 is_stmt 1 view .LVU27
+ 130 0030 6328     		cmp	r0, #99
+ 131 0032 05D8     		bhi	.L4
+ 132              	.L5:
+  31:src/mode/mainMode.cpp ****             while (processTimer.read_us() < PERIOD_US);
+ 133              		.loc 1 31 43 discriminator 1 view .LVU28
+ 134              		.loc 1 31 40 is_stmt 0 discriminator 1 view .LVU29
+ 135 0034 2046     		mov	r0, r4
+ 136 0036 FFF7FEFF 		bl	_ZN5Timer7read_usEv
+ 137              	.LVL9:
+ 138              		.loc 1 31 43 discriminator 1 view .LVU30
+ 139 003a 6328     		cmp	r0, #99
+ 140 003c FAD9     		bls	.L5
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccJ8Um5h.s 			page 4
 
 
- 149              		.cfi_endproc
- 150              	.LFE269:
- 151              		.fnend
- 153              		.text
- 154              	.Letext0:
- 155              		.file 2 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/machine/_default_ty
- 156              		.file 3 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/sys/_stdint.h"
- 157              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f446xx.h"
- 158              		.file 5 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/lib/gcc/arm-none-eabi/12.3.1/include/stdd
- 159              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
- 160              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
- 161              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h"
- 162              		.file 9 "Lib/DigitalInOut/DigitalInOut.hpp"
- 163              		.file 10 "Lib/Timer/Timer.hpp"
- 164              		.file 11 "Lib/Button/Button.hpp"
- 165              		.file 12 "Lib/Buzzer/Buzzer.hpp"
- 166              		.file 13 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/c++/12.3.1/cstdio"
- 167              		.file 14 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/c++/12.3.1/arm-non
- 168              		.file 15 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/sys/_types.h"
- 169              		.file 16 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/sys/reent.h"
- 170              		.file 17 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/sys/lock.h"
- 171              		.file 18 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/stdio.h"
- 172              		.file 19 "Lib/PWMSingle/PWMSingle.hpp"
- 173              		.file 20 "src/unit/motorDrive.hpp"
- 174              		.file 21 "src/unit/robot.hpp"
- 175              		.file 22 "src/mode/mainMode.hpp"
-ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccXBtsOw.s 			page 5
+ 141              	.L3:
+  32:src/mode/mainMode.cpp **** #ifdef DEBUG
+  33:src/mode/mainMode.cpp ****             printf("%d\n", robot.line.position);
+  34:src/mode/mainMode.cpp **** #endif
+  35:src/mode/mainMode.cpp ****       } else {
+  36:src/mode/mainMode.cpp ****             printf("OverProcess! ");
+  37:src/mode/mainMode.cpp ****       }
+  38:src/mode/mainMode.cpp **** }...
+ 142              		.loc 1 38 1 view .LVU31
+ 143 003e 38BD     		pop	{r3, r4, r5, pc}
+ 144              	.LVL10:
+ 145              	.L4:
+  36:src/mode/mainMode.cpp ****             printf("OverProcess! ");
+ 146              		.loc 1 36 13 is_stmt 1 view .LVU32
+  36:src/mode/mainMode.cpp ****             printf("OverProcess! ");
+ 147              		.loc 1 36 19 is_stmt 0 view .LVU33
+ 148 0040 0148     		ldr	r0, .L8
+ 149 0042 FFF7FEFF 		bl	printf
+ 150              	.LVL11:
+ 151              		.loc 1 38 1 view .LVU34
+ 152 0046 FAE7     		b	.L3
+ 153              	.L9:
+ 154              		.align	2
+ 155              	.L8:
+ 156 0048 00000000 		.word	.LC0
+ 157              		.cfi_endproc
+ 158              	.LFE269:
+ 159              		.fnend
+ 161              		.text
+ 162              	.Letext0:
+ 163              		.file 2 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/machine/_default_ty
+ 164              		.file 3 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/sys/_stdint.h"
+ 165              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f446xx.h"
+ 166              		.file 5 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/lib/gcc/arm-none-eabi/12.3.1/include/stdd
+ 167              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 168              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 169              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h"
+ 170              		.file 9 "Lib/DigitalInOut/DigitalInOut.hpp"
+ 171              		.file 10 "Lib/Timer/Timer.hpp"
+ 172              		.file 11 "Lib/Button/Button.hpp"
+ 173              		.file 12 "Lib/Buzzer/Buzzer.hpp"
+ 174              		.file 13 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/c++/12.3.1/cstdio"
+ 175              		.file 14 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/c++/12.3.1/arm-non
+ 176              		.file 15 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/sys/_types.h"
+ 177              		.file 16 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/sys/reent.h"
+ 178              		.file 17 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/sys/lock.h"
+ 179              		.file 18 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/stdio.h"
+ 180              		.file 19 "Lib/PWMSingle/PWMSingle.hpp"
+ 181              		.file 20 "src/unit/motorDrive.hpp"
+ 182              		.file 21 "src/unit/robot.hpp"
+ 183              		.file 22 "src/mode/mainMode.hpp"
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccJ8Um5h.s 			page 5
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 mainMode.cpp
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccXBtsOw.s:21     .text._ZN8MainModeC2Ev:00000000 $t
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccXBtsOw.s:27     .text._ZN8MainModeC2Ev:00000000 _ZN8MainModeC2Ev
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccJ8Um5h.s:21     .text._ZN8MainModeC2Ev:00000000 $t
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccJ8Um5h.s:27     .text._ZN8MainModeC2Ev:00000000 _ZN8MainModeC2Ev
  .ARM.exidx.text._ZN8MainModeC2Ev:00000000 $d
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccXBtsOw.s:27     .text._ZN8MainModeC2Ev:00000000 _ZN8MainModeC1Ev
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccXBtsOw.s:63     .rodata._ZN8MainMode4loopEv.str1.4:00000000 $d
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccXBtsOw.s:67     .text._ZN8MainMode4loopEv:00000000 $t
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccXBtsOw.s:73     .text._ZN8MainMode4loopEv:00000000 _ZN8MainMode4loopEv
-/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccXBtsOw.s:148    .text._ZN8MainMode4loopEv:00000048 $d
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccJ8Um5h.s:27     .text._ZN8MainModeC2Ev:00000000 _ZN8MainModeC1Ev
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccJ8Um5h.s:63     .rodata._ZN8MainMode4loopEv.str1.4:00000000 $d
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccJ8Um5h.s:67     .text._ZN8MainMode4loopEv:00000000 $t
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccJ8Um5h.s:73     .text._ZN8MainMode4loopEv:00000000 _ZN8MainMode4loopEv
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//ccJ8Um5h.s:156    .text._ZN8MainMode4loopEv:00000048 $d
 .ARM.exidx.text._ZN8MainMode4loopEv:00000000 $d
 
 UNDEFINED SYMBOLS
