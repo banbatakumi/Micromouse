@@ -1,6 +1,6 @@
 #include "robot.hpp"
 
-uint16_t adcGetVal[14];
+uint16_t adc_get_val[14];
 
 Robot::Robot() {
 }
@@ -10,7 +10,7 @@ void Robot::hardwareInit() {
       printf("SystemCoreClock = %ld\n", SystemCoreClock);
 
       HAL_ADC_Start(&hadc1);
-      HAL_ADC_Start_DMA(&hadc1, (uint32_t *)&adcGetVal, 14);
+      HAL_ADC_Start_DMA(&hadc1, (uint32_t *)&adc_get_val, 14);
       printf("ADC_DMA start\n");
 
       // 諸々の初期化
@@ -25,23 +25,55 @@ void Robot::hardwareInit() {
 }
 
 void Robot::getSensors() {
-      float lineVectorX[LINE_QTY] = {-4.5, -3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5, 4.5};
-      line.mainVal[0] = adcGetVal[4];
-      line.mainVal[1] = adcGetVal[5];
-      line.mainVal[2] = adcGetVal[6];
-      line.mainVal[3] = adcGetVal[7];
-      line.mainVal[4] = adcGetVal[8];
-      line.mainVal[5] = adcGetVal[9];
-      line.mainVal[6] = adcGetVal[10];
-      line.mainVal[7] = adcGetVal[11];
-      line.mainVal[8] = adcGetVal[12];
-      line.mainVal[9] = adcGetVal[13];
-      line.position = 0;
-      for (uint8_t i = 0; i < 10; i++) {
-            line.position += line.mainVal[i] * lineVectorX[i];
-      }
-      line.position *= -1;
+      line.val[0] = adc_get_val[13];
+      line.val[1] = adc_get_val[12];
+      line.val[2] = adc_get_val[11];
+      line.val[3] = adc_get_val[10];
+      line.val[4] = adc_get_val[9];
+      line.val[5] = adc_get_val[8];
+      line.val[6] = adc_get_val[7];
+      line.val[7] = adc_get_val[6];
+      line.val[8] = adc_get_val[5];
+      line.val[9] = adc_get_val[4];
 
-      encoderValLeft = adcGetVal[0];
-      encoderValRight = adcGetVal[1];
+      encoder_val_left = adc_get_val[0];
+      encoder_val_right = adc_get_val[1];
+      line.left_val = adc_get_val[2];
+      line.right_val = adc_get_val[3];
+      LineConmpute();
+}
+
+void Robot::LineConmpute() {
+      float lineVectorX[LINE_QTY] = {-45, -35, -25, -15, -5, 5, 15, 25, 35, 45};
+      uint16_t max_val = 0;
+      int8_t max_val_num;
+      for (uint8_t i = 0; i < 10; i++) {
+            if (max_val < line.val[i]) {
+                  max_val = line.val[i];
+                  max_val_num = i;
+            }
+      }
+      uint32_t sum = 0;
+      float val[10];
+      for (int8_t i = 0; i < LINE_QTY; i++) {
+            val[i] = line.val[i];
+            if (abs(max_val_num - i) > 2) val[i] = 0;
+      }
+      uint16_t min_val = 50000;
+      for (uint8_t i = 0; i < LINE_QTY; i++) {
+            if (min_val > val[i] && val[i] != 0) {
+                  min_val = val[i];
+            }
+      }
+      for (int8_t i = 0; i < LINE_QTY; i++) {
+            if (val[i] != 0) val[i] -= min_val;
+            sum += val[i];
+      }
+      for (uint8_t i = 0; i < LINE_QTY; i++) {
+            val[i] *= (1.0f / sum);
+      }
+      line.position = 0;
+      for (uint8_t i = 0; i < LINE_QTY; i++) {
+            line.position += val[i] * lineVectorX[i];
+      }
 }

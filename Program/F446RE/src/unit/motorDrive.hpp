@@ -4,41 +4,43 @@
 #include "PWMSingle.hpp"
 #include "Timer.hpp"
 
-#define MAX_POWER 750
+#define MAX_POWER 300
+
 class MotorDrive {
      public:
-      MotorDrive(PwmSingleOut *motor1a, PwmSingleOut *motor1b, PwmSingleOut *motor2a, PwmSingleOut *motor2b, uint16_t *encoderValLeft, uint16_t *encoderValRight);
+      MotorDrive(PwmSingleOut *motor1a, PwmSingleOut *motor1b, PwmSingleOut *motor2a, PwmSingleOut *motor2b, uint16_t *encoder_val_left, uint16_t *encoder_val_right);
 
-      void drive(int16_t left, int16_t right);
-      void run();
-      void brake();
-      void init();
-      void encoderCompute();
+      void Drive(int16_t left, int16_t right);
+      void Run(double left, double right);
+      void SpeedControl();
+      void Brake();
+      void Init();
+      void EncoderCompute();
 
      private:
-      PwmSingleOut *_motor1a;
-      PwmSingleOut *_motor1b;
-      PwmSingleOut *_motor2a;
-      PwmSingleOut *_motor2b;
-      uint16_t *_encoderValLeft;
-      uint16_t *_encoderValRight;
+      PwmSingleOut *motor1a_;
+      PwmSingleOut *motor1b_;
+      PwmSingleOut *motor2a_;
+      PwmSingleOut *motor2b_;
+      uint16_t *encoder_val_left_;
+      uint16_t *encoder_val_right_;
 
       Timer periodTimer;
       struct {
-            double speedLeft, speedRight;
-            double preRadLeft, preRadRight;
-            double radLeft, radRight;
-            double difRadLeft, difRadRight;
-            uint16_t maxValLeft, maxValRight;
+            double speed_left, speed_right;
+            double pre_rad_left, pre_rad_right;
+            double rad_left, rad_right;
+            double dif_rad_left, dif_rad_right;
+            uint16_t max_val_left, max_val_right;
       } encoder;
 
-      int16_t speedLeft, speedRight;
-      double powerLeft, powerRight;
-      double dLeft, dRight;
-      double iLeft, iRight;
+      int16_t speed_left_, speed_right_;
+      double power_left_, power_right_;
+      double p_left_, p_right_;
+      double i_left_, i_right_;
 
       double dt;
-      double Kp, Ki;
+      double kp, ki;
 };
 
 #endif

@@ -15,12 +15,12 @@ class Robot {
      public:
       Robot();
       struct {
-            uint16_t mainVal[LINE_QTY];
-            uint16_t leftVal, rightVal;
-            int16_t position;
-            bool isLeft, isRight;
+            uint16_t val[LINE_QTY];
+            uint16_t left_val, right_val;
+            float position;
+            bool is_left, is_right;
       } line;
-      uint16_t encoderValLeft, encoderValRight;
+      uint16_t encoder_val_left, encoder_val_right;
 
       DigitalOut led1 = DigitalOut(LED1_GPIO_Port, LED1_Pin);
       DigitalOut led2 = DigitalOut(LED2_GPIO_Port, LED2_Pin);
@@ -41,10 +41,11 @@ class Robot {
       PwmSingleOut motor2b = PwmSingleOut(&htim1, TIM_CHANNEL_4);
       Buzzer buzzer = Buzzer(&htim2, TIM_CHANNEL_3);
 
-      MotorDrive motor = MotorDrive(&motor1a, &motor1b, &motor2a, &motor2b, &encoderValLeft, &encoderValRight);
+      MotorDrive motor = MotorDrive(&motor1a, &motor1b, &motor2a, &motor2b, &encoder_val_left, &encoder_val_right);
 
       void hardwareInit();
       void getSensors();
+      void LineConmpute();
 
       inline __attribute__((always_inline)) void heartBeat() {
             static int i = 0;

@@ -1,107 +1,118 @@
 #include "motorDrive.hpp"
 
-MotorDrive::MotorDrive(PwmSingleOut *motor1a, PwmSingleOut *motor1b, PwmSingleOut *motor2a, PwmSingleOut *motor2b, uint16_t *encoderValLeft, uint16_t *encoderValRight)
-    : _motor1a(motor1a), _motor1b(motor1b), _motor2a(motor2a), _motor2b(motor2b) {
-      this->_encoderValLeft = encoderValLeft;
-      this->_encoderValRight = encoderValRight;
-      this->Kp = 6;
-      this->Ki = 3;
+MotorDrive::MotorDrive(PwmSingleOut *motor1a, PwmSingleOut *motor1b, PwmSingleOut *motor2a, PwmSingleOut *motor2b, uint16_t *encoder_val_left, uint16_t *encoder_val_right)
+    : motor1a_(motor1a), motor1b_(motor1b), motor2a_(motor2a), motor2b_(motor2b) {
+      this->encoder_val_left_ = encoder_val_left;
+      this->encoder_val_right_ = encoder_val_right;
+      this->kp = 3;
+      this->ki = 3;
 }
 
-void MotorDrive::init() {
-      _motor1a->init();
-      _motor1b->init();
-      _motor2a->init();
-      _motor2b->init();
+void MotorDrive::Init() {
+      motor1a_->init();
+      motor1b_->init();
+      motor2a_->init();
+      motor2b_->init();
 }
-void MotorDrive::encoderCompute() {
-      if (*_encoderValLeft != 0 && *_encoderValRight != 0) {  // 初期状態で値が代入されておらずnanになるのを防ぐ
+void MotorDrive::EncoderCompute() {
+      if (*encoder_val_left_ != 0 && *encoder_val_right_ != 0) {  // 初期状態で値が代入されておらずnanになるのを防ぐ
             // 最大値を求める
-            if (*_encoderValLeft > encoder.maxValLeft) encoder.maxValLeft = *_encoderValLeft;
-            encoder.radLeft = *_encoderValLeft * (2 * PI / encoder.maxValLeft);
-            if (*_encoderValRight > encoder.maxValRight) encoder.maxValRight = *_encoderValRight;
-            encoder.radRight = *_encoderValRight * (2 * PI / encoder.maxValRight);
-            run();
+            if (*encoder_val_left_ > encoder.max_val_left) encoder.max_val_left = *encoder_val_left_;
+            if (*encoder_val_right_ > encoder.max_val_right) encoder.max_val_right = *encoder_val_right_;
+            // radianに変換
+            encoder.rad_left = *encoder_val_left_ * (2 * PI / encoder.max_val_left);
+            encoder.rad_right = *encoder_val_right_ * (2 * PI / encoder.max_val_right);
+            SpeedControl();
       }
 }
 
-void MotorDrive::run() {
-      printf("%f, %f\n", encoder.radLeft, encoder.radRight);
-      if (encoder.preRadLeft != encoder.radLeft || encoder.preRadRight != encoder.radRight) {  // 更新されたら
-            dt = periodTimer.read_us() / 1000000.0f;                                           // s
+void MotorDrive::SpeedControl() {
+      if (encoder.pre_rad_left != encoder.rad_left || encoder.pre_rad_right != encoder.rad_right) {  // 更新されたら
+            dt = periodTimer.read_us() * 0.000001f;                                                  // s
             periodTimer.reset();
 
             // 角度の差を求める
-            encoder.difRadLeft = encoder.radLeft - encoder.preRadLeft;
-            encoder.difRadRight = encoder.radRight - encoder.preRadRight;
-            encoder.preRadLeft = encoder.radLeft;
-            encoder.preRadRight = encoder.radRight;
+            encoder.dif_rad_left = encoder.rad_left - encoder.pre_rad_left;
+            encoder.dif_rad_right = encoder.rad_right - encoder.pre_rad_right;
+            encoder.pre_rad_left = encoder.rad_left;
+            encoder.pre_rad_right = encoder.rad_right;
 
             // PI以上変わった時に修正
-            if (abs(encoder.difRadLeft) > PI) encoder.difRadLeft -= 2 * PI * (abs(encoder.difRadLeft) / encoder.difRadLeft);
-            if (abs(encoder.difRadRight) > PI) encoder.difRadRight -= 2 * PI * (abs(encoder.difRadRight) / encoder.difRadRight);
+            if (abs(encoder.dif_rad_left) > PI) encoder.dif_rad_left -= 2 * PI * (abs(encoder.dif_rad_left) / encoder.dif_rad_left);
+            if (abs(encoder.dif_rad_right) > PI) encoder.dif_rad_right -= 2 * PI * (abs(encoder.dif_rad_right) / encoder.dif_rad_right);
 
             // rad/sに変換
-            encoder.speedLeft = encoder.difRadLeft / dt * -1;
-            encoder.speedRight = encoder.difRadRight / dt;
+            encoder.speed_left = encoder.dif_rad_left / dt * -1;
+            encoder.speed_right = encoder.dif_rad_right / dt;
 
             // PIの計算
             // 比例成分
-            dLeft = encoder.speedLeft - speedLeft;
-            dRight = encoder.speedRight - speedRight;
+            p_left_ = encoder.speed_left - speed_left_;
+            p_right_ = encoder.speed_right - speed_right_;
             // 積分成分
-            iLeft += dLeft * dt;
-            iRight += dRight * dt;
+            i_left_ += p_left_ * dt;
+            i_right_ += p_right_ * dt;
             // 積分値の範囲制限
-            if (abs(iLeft * Ki) > 300) iLeft = 300 / Ki * (abs(iLeft) / iLeft);
-            if (abs(iRight * Ki) > 300) iRight = 300 / Ki * (abs(iRight) / iRight);
+            if (abs(i_left_ * ki) > 300) i_left_ = 300 / ki * (abs(i_left_) / i_left_);
+            if (abs(i_right_ * ki) > 300) i_right_ = 300 / ki * (abs(i_right_) / i_right_);
             // speedが0に指定されたらi成分を減らしていく
-            if (speedLeft == 0) iLeft *= 0.5;
-            if (speedRight == 0) iRight *= 0.5;
+            if (speed_left_ == 0) i_left_ *= 0.5;
+            if (speed_right_ == 0) i_right_ *= 0.5;
             // 合算
-            powerLeft = 0 - Kp * dLeft - Ki * iLeft;
-            powerRight = 0 - Kp * dRight - Ki * iRight;
+            power_left_ = 0 - kp * p_left_ - ki * i_left_;
+            power_right_ = 0 - kp * p_right_ - ki * i_right_;
 
             // スピードが正の値であればパワーも正の値・これがなかったら動かない
-            if (speedLeft > 0 && powerLeft < 1) powerLeft = 1;
-            if (speedRight > 0 && powerRight < 1) powerRight = 1;
-            if (speedLeft < 0 && powerLeft > -1) powerLeft = -1;
-            if (speedRight < 0 && powerRight > -1) powerRight = -1;
+            if (speed_left_ > 0 && power_left_ < 1) power_left_ = 1;
+            if (speed_right_ > 0 && power_right_ < 1) power_right_ = 1;
+            if (speed_left_ < 0 && power_left_ > -1) power_left_ = -1;
+            if (speed_right_ < 0 && power_right_ > -1) power_right_ = -1;
 
-            // 範囲保証
-            if (abs(powerLeft) > MAX_POWER) powerLeft = MAX_POWER * (abs(powerLeft) / powerLeft);
-            if (abs(powerRight) > MAX_POWER) powerRight = MAX_POWER * (abs(powerRight) / powerRight);
+            Run(power_left_, power_right_);
+      }
+}
 
-            // 出力
-            init();  // なぜか毎回PWMをリセットしないと動かない
-            if (powerLeft > 0) {
-                  _motor1a->write(powerLeft * 0.001f);
-                  _motor1b->write(0);
+void MotorDrive::Run(double left, double right) {
+      double output_left = left;
+      double output_right = right;
+
+      // 範囲保証
+      if (abs(output_left) > MAX_POWER) output_left = MAX_POWER * (abs(output_left) / output_left);
+      if (abs(output_right) > MAX_POWER) output_right = MAX_POWER * (abs(output_right) / output_right);
+
+      // 出力
+      Init();  // なぜか毎回PWMをリセットしないと動かない
+      if (speed_left_ != 0) {
+            if (output_left > 0) {
+                  motor1a_->write(output_left * 0.001f);
+                  motor1b_->write(0);
             } else {
-                  _motor1a->write(0);
-                  _motor1b->write(powerLeft * -0.001f);
+                  motor1a_->write(0);
+                  motor1b_->write(output_left * -0.001f);
             }
-            if (powerRight > 0) {
-                  _motor2a->write(powerRight * 0.001f);
-                  _motor2b->write(0);
+      }
+      if (speed_right_ != 0) {
+            if (output_right > 0) {
+                  motor2a_->write(output_right * 0.001f);
+                  motor2b_->write(0);
             } else {
-                  _motor2a->write(0);
-                  _motor2b->write(powerRight * -0.001f);
+                  motor2a_->write(0);
+                  motor2b_->write(output_right * -0.001f);
             }
       }
 }
 
-void MotorDrive::drive(int16_t left, int16_t right) {
-      speedLeft = left;
-      speedRight = right;
-      // 範囲保証
-      if (abs(speedLeft) > MAX_POWER) speedLeft = MAX_POWER * (abs(speedLeft) / speedLeft);
-      if (abs(speedRight) > MAX_POWER) speedRight = MAX_POWER * (abs(speedRight) / speedRight);
+void MotorDrive::Drive(int16_t left, int16_t right) {
+      speed_left_ = left;
+      speed_right_ = right;
+      // スピードの範囲保証
+      if (abs(speed_left_) > MAX_POWER) speed_left_ = MAX_POWER * (abs(speed_left_) / speed_left_);
+      if (abs(speed_right_) > MAX_POWER) speed_right_ = MAX_POWER * (abs(speed_right_) / speed_right_);
 }
 
-void MotorDrive::brake() {
-      _motor1a->write(1);
-      _motor1b->write(1);
-      _motor2a->write(1);
-      _motor2b->write(1);
+void MotorDrive::Brake() {
+      motor1a_->write(1);
+      motor1b_->write(1);
+      motor2a_->write(1);
+      motor2b_->write(1);
 }
