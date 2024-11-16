@@ -4,7 +4,7 @@
 #include "PWMSingle.hpp"
 #include "Timer.hpp"
 
-#define MAX_POWER 300
+#define MAX_POWER 600
 
 class MotorDrive {
      public:
@@ -41,6 +41,9 @@ class MotorDrive {
 
       double dt;
       double kp, ki;
+
+      double output_left;
+      double output_right;
 };
 
 #endif

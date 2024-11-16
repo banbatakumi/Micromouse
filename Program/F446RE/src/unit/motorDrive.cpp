@@ -4,8 +4,8 @@ MotorDrive::MotorDrive(PwmSingleOut *motor1a, PwmSingleOut *motor1b, PwmSingleOu
     : motor1a_(motor1a), motor1b_(motor1b), motor2a_(motor2a), motor2b_(motor2b) {
       this->encoder_val_left_ = encoder_val_left;
       this->encoder_val_right_ = encoder_val_right;
-      this->kp = 3;
-      this->ki = 3;
+      this->kp = 4;
+      this->ki = 4;
 }
 
 void MotorDrive::Init() {
@@ -73,8 +73,10 @@ void MotorDrive::SpeedControl() {
 }
 
 void MotorDrive::Run(double left, double right) {
-      double output_left = left;
-      double output_right = right;
+      // output_left += abs(left - output_left) / (left - output_left);
+      // output_right += abs(right - output_right) / (right - output_right);
+      output_left = left;
+      output_right = right;
 
       // 範囲保証
       if (abs(output_left) > MAX_POWER) output_left = MAX_POWER * (abs(output_left) / output_left);

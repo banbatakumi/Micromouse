@@ -38,15 +38,16 @@ void Robot::getSensors() {
 
       encoder_val_left = adc_get_val[0];
       encoder_val_right = adc_get_val[1];
-      line.left_val = adc_get_val[2];
-      line.right_val = adc_get_val[3];
+      line.left_val = adc_get_val[3];
+      line.right_val = adc_get_val[2];
+      printf("%d ,%d \n", line.left_val, line.right_val);
       LineConmpute();
 }
 
 void Robot::LineConmpute() {
       float lineVectorX[LINE_QTY] = {-45, -35, -25, -15, -5, 5, 15, 25, 35, 45};
       uint16_t max_val = 0;
-      int8_t max_val_num;
+      uint8_t max_val_num;
       for (uint8_t i = 0; i < 10; i++) {
             if (max_val < line.val[i]) {
                   max_val = line.val[i];
@@ -55,7 +56,7 @@ void Robot::LineConmpute() {
       }
       uint32_t sum = 0;
       float val[10];
-      for (int8_t i = 0; i < LINE_QTY; i++) {
+      for (uint8_t i = 0; i < LINE_QTY; i++) {
             val[i] = line.val[i];
             if (abs(max_val_num - i) > 2) val[i] = 0;
       }
