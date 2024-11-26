@@ -1,6 +1,6 @@
 #include "app.h"
 
-#include "mainMode.hpp"
+#include "main_mode.hpp"
 #include "robot.hpp"
 
 Robot robot;
@@ -19,7 +19,7 @@ void setup() {
       robot.buzzer.sound(1500, 50);
       HAL_Delay(50);
 
-      for (float i = 0; i < 0.4; i += 0.001) {
+      for (float i = 0; i < 0.1; i += 0.001) {
             robot.fan.write(i);
             HAL_Delay(10);
       }

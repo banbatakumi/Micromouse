@@ -9,15 +9,17 @@
 #include "adc.h"
 #include "config.h"
 #include "main.h"
-#include "motorDrive.hpp"
+#include "motor_drive.hpp"
 
 class Robot {
      public:
       Robot();
       struct {
             uint16_t val[LINE_QTY];
-            uint16_t left_val, right_val;
             float position;
+
+            uint16_t left_val, right_val;
+            uint16_t left_th, right_th;
             bool is_left, is_right;
       } line;
       uint16_t encoder_val_left, encoder_val_right;
@@ -45,7 +47,7 @@ class Robot {
 
       void hardwareInit();
       void getSensors();
-      void LineConmpute();
+      void LineCompute();
 
       inline __attribute__((always_inline)) void heartBeat() {
             static int i = 0;

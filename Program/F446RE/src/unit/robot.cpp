@@ -11,6 +11,9 @@ void Robot::hardwareInit() {
 
       HAL_ADC_Start(&hadc1);
       HAL_ADC_Start_DMA(&hadc1, (uint32_t *)&adc_get_val, 14);
+      for (uint8_t i = 0; i < LINE_QTY; i++) {
+            // while (!(adc_get_val[i] > 0));
+      }
       printf("ADC_DMA start\n");
 
       // 諸々の初期化
@@ -40,12 +43,45 @@ void Robot::getSensors() {
       encoder_val_right = adc_get_val[1];
       line.left_val = adc_get_val[3];
       line.right_val = adc_get_val[2];
-      printf("%d ,%d \n", line.left_val, line.right_val);
-      LineConmpute();
+      LineCompute();
 }
 
-void Robot::LineConmpute() {
+void Robot::LineCompute() {
       float lineVectorX[LINE_QTY] = {-45, -35, -25, -15, -5, 5, 15, 25, 35, 45};
+#ifdef WHITE_LINE
+      uint16_t min_val = 65535;
+      uint8_t min_val_num;
+      for (uint8_t i = 0; i < 10; i++) {
+            if (min_val > line.val[i]) {
+                  min_val = line.val[i];
+                  min_val_num = i;
+            }
+      }
+      uint32_t sum = 0;
+      float val[10];
+      for (uint8_t i = 0; i < LINE_QTY; i++) {
+            val[i] = line.val[i];
+            if (abs(min_val_num - i) > 2) val[i] = 0;
+      }
+      uint16_t max_val = 0;
+      for (uint8_t i = 0; i < LINE_QTY; i++) {
+            if (max_val < val[i] && val[i] != 0) {
+                  max_val = val[i];
+            }
+      }
+      for (int8_t i = 0; i < LINE_QTY; i++) {
+            if (val[i] != 0) val[i] = max_val - val[i];
+            sum += val[i];
+      }
+      for (uint8_t i = 0; i < LINE_QTY; i++) {
+            val[i] *= (1.0f / sum);
+      }
+      line.position = 0;
+      for (uint8_t i = 0; i < LINE_QTY; i++) {
+            line.position += val[i] * lineVectorX[i];
+      }
+#endif
+#ifdef BLACK_LINE
       uint16_t max_val = 0;
       uint8_t max_val_num;
       for (uint8_t i = 0; i < 10; i++) {
@@ -60,7 +96,7 @@ void Robot::LineConmpute() {
             val[i] = line.val[i];
             if (abs(max_val_num - i) > 2) val[i] = 0;
       }
-      uint16_t min_val = 50000;
+      uint16_t min_val = 65535;
       for (uint8_t i = 0; i < LINE_QTY; i++) {
             if (min_val > val[i] && val[i] != 0) {
                   min_val = val[i];
@@ -77,4 +113,5 @@ void Robot::LineConmpute() {
       for (uint8_t i = 0; i < LINE_QTY; i++) {
             line.position += val[i] * lineVectorX[i];
       }
+#endif
 }
