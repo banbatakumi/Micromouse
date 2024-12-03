@@ -7,6 +7,10 @@
 #include "Wire.h"
 #include "simplify_deg.h"
 
+const int led1 = 25;
+const int led2 = 26;
+const int led3 = 27;
+
 MPU6050 mpu;
 BluetoothSerial SerialBT;
 
@@ -61,6 +65,9 @@ void setup() {
             Serial.print(devStatus);
             Serial.println(F(")"));
       }
+      pinMode(led1, OUTPUT);
+      pinMode(led2, OUTPUT);
+      pinMode(led3, OUTPUT);
 }
 
 void loop() {
@@ -73,4 +80,8 @@ void loop() {
       }
       Serial.println(yaw);
       SerialBT.println(yaw);
+
+      digitalWrite(led1, HIGH);
+      digitalWrite(led2, HIGH);
+      digitalWrite(led3, HIGH);
 }
