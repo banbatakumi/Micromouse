@@ -12,9 +12,10 @@ void Robot::hardwareInit() {
       HAL_ADC_Start(&hadc1);
       HAL_ADC_Start_DMA(&hadc1, (uint32_t *)&adc_get_val, 14);
       for (uint8_t i = 0; i < LINE_QTY; i++) {
-            // while (!(adc_get_val[i] > 0));
+            while (!(adc_get_val[i] > 0));
       }
       printf("ADC_DMA start\n");
+      aveLinePosition.SetLength(20);
 
       // 諸々の初期化
       fan.init();
@@ -73,13 +74,6 @@ void Robot::LineCompute() {
             if (val[i] != 0) val[i] = max_val - val[i];
             sum += val[i];
       }
-      for (uint8_t i = 0; i < LINE_QTY; i++) {
-            val[i] *= (1.0f / sum);
-      }
-      line.position = 0;
-      for (uint8_t i = 0; i < LINE_QTY; i++) {
-            line.position += val[i] * lineVectorX[i];
-      }
 #endif
 #ifdef BLACK_LINE
       uint16_t max_val = 0;
@@ -106,6 +100,7 @@ void Robot::LineCompute() {
             if (val[i] != 0) val[i] -= min_val;
             sum += val[i];
       }
+#endif
       for (uint8_t i = 0; i < LINE_QTY; i++) {
             val[i] *= (1.0f / sum);
       }
@@ -113,5 +108,5 @@ void Robot::LineCompute() {
       for (uint8_t i = 0; i < LINE_QTY; i++) {
             line.position += val[i] * lineVectorX[i];
       }
-#endif
+      aveLinePosition.Compute(&line.position);
 }

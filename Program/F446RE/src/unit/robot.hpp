@@ -4,6 +4,7 @@
 #include "Button.hpp"
 #include "Buzzer.hpp"
 #include "DigitalInOut.hpp"
+#include "MovingAve.hpp"
 #include "PWMSingle.hpp"
 #include "Timer.hpp"
 #include "adc.h"
@@ -16,7 +17,7 @@ class Robot {
       Robot();
       struct {
             uint16_t val[LINE_QTY];
-            float position;
+            double position;
 
             uint16_t left_val, right_val;
             uint16_t left_th, right_th;
@@ -42,6 +43,8 @@ class Robot {
       PwmSingleOut motor2a = PwmSingleOut(&htim1, TIM_CHANNEL_3);
       PwmSingleOut motor2b = PwmSingleOut(&htim1, TIM_CHANNEL_4);
       Buzzer buzzer = Buzzer(&htim2, TIM_CHANNEL_3);
+
+      MovingAve aveLinePosition;
 
       MotorDrive motor = MotorDrive(&motor1a, &motor1b, &motor2a, &motor2b, &encoder_val_left, &encoder_val_right);
 

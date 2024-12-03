@@ -6,6 +6,9 @@ MotorDrive::MotorDrive(PwmSingleOut *motor1a, PwmSingleOut *motor1b, PwmSingleOu
       this->encoder_val_right_ = encoder_val_right;
       this->kp = 3;
       this->ki = 3;
+
+      aveEncoderLeft.SetLength(10);
+      aveEncoderRight.SetLength(10);
 }
 
 void MotorDrive::Init() {
@@ -23,6 +26,8 @@ void MotorDrive::EncoderCompute() {
             // radianに変換
             encoder.rad_left = *encoder_val_left_ * (2 * PI / encoder.max_val_left);
             encoder.rad_right = *encoder_val_right_ * (2 * PI / encoder.max_val_right);
+            aveEncoderLeft.Compute(&encoder.rad_left);
+            aveEncoderRight.Compute(&encoder.rad_right);
             SpeedControl();
       }
 }
@@ -74,8 +79,6 @@ void MotorDrive::SpeedControl() {
 }
 
 void MotorDrive::Run(double left, double right) {
-      // output_left += abs(left - output_left) / (left - output_left);
-      // output_right += abs(right - output_right) / (right - output_right);
       output_left = left;
       output_right = right;
 
