@@ -1,110 +1,100 @@
+#include "main.h"
+
 #include <Arduino.h>
-#include <WiFi.h>
 
-#include "Adafruit_NeoPixel.h"
-#include "I2Cdev.h"
-#include "MPU6050_6Axis_MotionApps20.h"
-#include "Wire.h"
-#include "simplify_deg.h"
+#include "core0a_main.h"
+#include "core1a_main.h"
+#include "core1b_main.h"
 
-const char *ssid = "MycroMouseESP32";
-const char *password = "12345678";
+void Core0a(void *args) {
+      const uint32_t control_period = (1.0f) / CORE0A_CONTROL_FREQ * 1000000;  // Hz→μsに変換
+      Core0a_setup();
 
-WiFiServer server(8000);
+      while (1) {
+            uint64_t current_time = micros();  // 現在経過時間を取得
 
-const int led1 = 25;
-const int led2 = 26;
-const int led3 = 27;
+            Core0a_loop();
 
-MPU6050 mpu;
+            delay(1);
+            int32_t extra_time = control_period - (micros() - current_time);  // 処理にかかった時間と余剰時間の差
+            if (extra_time > 0) {
+                  delayMicroseconds(extra_time);
+            } else {
+                  // Serial.println("Core0a processing time exceeded");
+            }
+      }
+}
 
-// MPU control/status vars
-uint8_t devStatus;       // return status after each device operation (0 = success, !0 = error)
-uint16_t packetSize;     // expected DMP packet size (default is 42 bytes)
-uint8_t fifoBuffer[64];  // FIFO storage buffer
+void Core1a(void *args) {
+      const uint32_t control_period = (1.0f) / CORE1A_CONTROL_FREQ * 1000000;  // Hz→μsに変換
+      Core1a_setup();
+      while (1) {
+            uint64_t current_time = micros();  // 現在経過時間を取得
+            Core1a_loop();
 
-// orientation/motion vars
-Quaternion q;         // [w, x, y, z]         quaternion container
-VectorFloat gravity;  // [x, y, z]            gravity vector
-float ypr[3];         // [yaw, pitch, roll]   yaw/pitch/roll container and gravity vector
+            delay(1);
+            int32_t extra_time = control_period - (micros() - current_time);  // 処理にかかった時間と余剰時間の差
+            if (extra_time > 0) {
+                  delayMicroseconds(extra_time);
+            } else {
+                  // Serial.println("Core0b processing time exceeded");
+            }
+      }
+}
+void Core1b(void *args) {
+      const uint32_t control_period = (1.0f) / CORE1B_CONTROL_FREQ * 1000000;  // Hz→μsに変換
+      Core1b_setup();
 
-float yaw_correction;  // yaw軸の補正値
-int16_t yaw;
-Adafruit_NeoPixel strip = Adafruit_NeoPixel(6, 32, NEO_GRB + NEO_KHZ800);
+      while (1) {
+            uint64_t current_time = micros();  // 現在経過時間を取得
+            Core1b_loop();
+
+            delay(1);
+            int32_t extra_time = control_period - (micros() - current_time);  // 処理にかかった時間と余剰時間の差
+            if (extra_time > 0) {
+                  delayMicroseconds(extra_time);
+            } else {
+                  // Serial.println("Core0b processing time exceeded");
+            }
+      }
+}
 
 void setup() {
       Serial.begin(115200);
       Serial.println("device start");
-      Wire.begin();
-      Wire.setClock(400000);
+
       strip.begin();
       for (uint8_t i = 0; i < 6; i++) {
             for (uint8_t j = 0; j < 20; j++) {
-                  strip.setPixelColor(i, strip.Color(0, 0, j));
+                  strip.setPixelColor(i, strip.Color(j, 0, j));
                   strip.show();
                   delay(1);
             }
       }
 
-      mpu.initialize();
-
-      devStatus = mpu.dmpInitialize();
-      mpu.setXAccelOffset(-3428);
-      mpu.setYAccelOffset(-308);
-      mpu.setZAccelOffset(882);
-      mpu.setXGyroOffset(-328);
-      mpu.setYGyroOffset(-534);
-      mpu.setZGyroOffset(-106);
-      if (devStatus == 0) {
-            // mpu.CalibrateAccel(5);
-            // mpu.CalibrateGyro(5);
-            // mpu.PrintActiveOffsets();
-
-            mpu.setDMPEnabled(true);
-
-            packetSize = mpu.dmpGetFIFOPacketSize();
-      } else {
-            Serial.print(F("DMP Initialization failed (code "));
-            Serial.print(devStatus);
-            Serial.println(F(")"));
-      }
       pinMode(led1, OUTPUT);
       pinMode(led2, OUTPUT);
       pinMode(led3, OUTPUT);
 
-      // WiFiネットワークを作成
-      WiFi.softAP(ssid, password);
-      IPAddress IP = WiFi.softAPIP();
-      Serial.print("AP IP address: ");
-      Serial.println(IP);
+      main_setup();
 
-      server.begin();  // サーバーを起動
+      xTaskCreatePinnedToCore(Core0a, "Core0a", 4096, NULL, 1, &thp[0], 0);
+      xTaskCreatePinnedToCore(Core1a, "Core1a", 4096, NULL, 2, &thp[1], 1);
+      xTaskCreatePinnedToCore(Core1b, "Core1b", 4096, NULL, 3, &thp[2], 1);
 }
 
 void loop() {
-      // Serial.println(yaw);
-      WiFiClient client = server.available();  // 接続の待機
+      const uint32_t control_period = (1.0f) / MAIN_CONTROL_FREQ * 1000000;  // Hz→μsに変換
+      while (1) {
+            uint64_t current_time = micros();  // 現在経過時間を取得
 
-      if (client) {  // 接続されたとき
-            Serial.println("New Client.");
+            main_loop();
 
-            while (client.connected()) {  // 接続されている間はデータの受信を続ける
-                  // put your main code here, to run repeatedly:if (mpu.dmpGetCurrentFIFOPacket(fifoBuffer)) {  //  read a packet from FIFO
-
-                  digitalWrite(led1, HIGH);
-                  digitalWrite(led2, HIGH);
-                  digitalWrite(led3, HIGH);
-
-                  if (mpu.dmpGetCurrentFIFOPacket(fifoBuffer)) {  //  read a packet from FIFO
-                        mpu.dmpGetQuaternion(&q, fifoBuffer);
-                        mpu.dmpGetGravity(&gravity, &q);
-                        mpu.dmpGetYawPitchRoll(ypr, &q, &gravity);
-                        yaw = SimplifyDeg(ypr[0] * 180 / M_PI - yaw_correction);
-                  }
-                  int cnt = yaw;
-
-                  client.println(cnt);
-                  delay(1);
+            int32_t extra_time = control_period - (micros() - current_time);  // 処理にかかった時間と余剰時間の差
+            if (extra_time > 0) {
+                  delayMicroseconds(extra_time);
+            } else {
+                  // Serial.println("Core0b processing time exceeded");
             }
       }
 }
