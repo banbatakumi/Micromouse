@@ -1,7 +1,6 @@
 #ifndef __MOTORDRIVE__
 #define __MOTORDRIVE__
 
-#include "MovingAve.hpp"
 #include "PWMSingle.hpp"
 #include "Timer.hpp"
 
@@ -34,9 +33,6 @@ class MotorDrive {
       PwmSingleOut *motor2b_;
       uint16_t *encoder_val_left_;
       uint16_t *encoder_val_right_;
-
-      MovingAve aveEncoderLeft;
-      MovingAve aveEncoderRight;
 
       Timer periodTimer;
 

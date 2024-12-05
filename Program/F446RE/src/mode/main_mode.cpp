@@ -4,15 +4,14 @@
 
 MainMode::MainMode() {
 }
-
 float p, i, d, pid, pre_p;
+
 void MainMode::loop() {
       processTimer.reset();
       robot.motor.EncoderCompute();
       robot.getSensors();
 
-      // const float Kp = 2.5, Ki = 1, Kd = 0.05;
-      const float Kp = 3, Ki = 3, Kd = 0.01;
+      const float Kp = 2.5, Ki = 1, Kd = 0.02;
       int16_t left, right;
       p = robot.line.position - 0;
       i += p * processTime * 0.000001f;
@@ -24,16 +23,16 @@ void MainMode::loop() {
       right = pid * -2;
       if (abs(left) > 200) left = 200 * (abs(left) / left);
       if (abs(right) > 200) right = 200 * (abs(right) / right);
-      // if (abs(robot.line.position) < 5) {
-      //       left += 130;
-      //       right += 130;
-      // } else {
-      //       left += 80;
-      //       right += 80;
-      // }
+      if (abs(robot.line.position) < 5) {
+            left += 120;
+            right += 120;
+      } else {
+            left += 60;
+            right += 60;
+      }
       if (abs(left) > 300) left = 300 * (abs(left) / left);
       if (abs(right) > 300) right = 300 * (abs(right) / right);
-      // robot.motor.Drive(left, right);
+      // robot.motor.Drive(20, 20);
       // printf("left = %d, right = %d\n", left, right);
 
       //  定周期処理

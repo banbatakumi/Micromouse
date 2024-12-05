@@ -15,7 +15,7 @@ void Robot::hardwareInit() {
             while (!(adc_get_val[i] > 0));
       }
       printf("ADC_DMA start\n");
-      aveLinePosition.SetLength(20);
+      aveLinePosition.SetLength(10);
 
       // 諸々の初期化
       fan.init();
