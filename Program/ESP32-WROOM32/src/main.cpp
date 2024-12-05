@@ -1,18 +1,22 @@
 #include <Arduino.h>
+#include <WiFi.h>
 
 #include "Adafruit_NeoPixel.h"
-#include "BluetoothSerial.h"
 #include "I2Cdev.h"
 #include "MPU6050_6Axis_MotionApps20.h"
 #include "Wire.h"
 #include "simplify_deg.h"
+
+const char *ssid = "MycroMouseESP32";
+const char *password = "12345678";
+
+WiFiServer server(8000);
 
 const int led1 = 25;
 const int led2 = 26;
 const int led3 = 27;
 
 MPU6050 mpu;
-BluetoothSerial SerialBT;
 
 // MPU control/status vars
 uint8_t devStatus;       // return status after each device operation (0 = success, !0 = error)
@@ -31,7 +35,6 @@ Adafruit_NeoPixel strip = Adafruit_NeoPixel(6, 32, NEO_GRB + NEO_KHZ800);
 void setup() {
       Serial.begin(115200);
       Serial.println("device start");
-      SerialBT.begin("MicroMouse");
       Wire.begin();
       Wire.setClock(400000);
       strip.begin();
@@ -68,20 +71,40 @@ void setup() {
       pinMode(led1, OUTPUT);
       pinMode(led2, OUTPUT);
       pinMode(led3, OUTPUT);
+
+      // WiFiネットワークを作成
+      WiFi.softAP(ssid, password);
+      IPAddress IP = WiFi.softAPIP();
+      Serial.print("AP IP address: ");
+      Serial.println(IP);
+
+      server.begin();  // サーバーを起動
 }
 
 void loop() {
-      // put your main code here, to run repeatedly:if (mpu.dmpGetCurrentFIFOPacket(fifoBuffer)) {  //  read a packet from FIFO
-      if (mpu.dmpGetCurrentFIFOPacket(fifoBuffer)) {  //  read a packet from FIFO
-            mpu.dmpGetQuaternion(&q, fifoBuffer);
-            mpu.dmpGetGravity(&gravity, &q);
-            mpu.dmpGetYawPitchRoll(ypr, &q, &gravity);
-            yaw = SimplifyDeg(ypr[0] * 180 / M_PI - yaw_correction);
-      }
-      Serial.println(yaw);
-      SerialBT.println(yaw);
+      // Serial.println(yaw);
+      WiFiClient client = server.available();  // 接続の待機
 
-      digitalWrite(led1, HIGH);
-      digitalWrite(led2, HIGH);
-      digitalWrite(led3, HIGH);
+      if (client) {  // 接続されたとき
+            Serial.println("New Client.");
+
+            while (client.connected()) {  // 接続されている間はデータの受信を続ける
+                  // put your main code here, to run repeatedly:if (mpu.dmpGetCurrentFIFOPacket(fifoBuffer)) {  //  read a packet from FIFO
+
+                  digitalWrite(led1, HIGH);
+                  digitalWrite(led2, HIGH);
+                  digitalWrite(led3, HIGH);
+
+                  if (mpu.dmpGetCurrentFIFOPacket(fifoBuffer)) {  //  read a packet from FIFO
+                        mpu.dmpGetQuaternion(&q, fifoBuffer);
+                        mpu.dmpGetGravity(&gravity, &q);
+                        mpu.dmpGetYawPitchRoll(ypr, &q, &gravity);
+                        yaw = SimplifyDeg(ypr[0] * 180 / M_PI - yaw_correction);
+                  }
+                  int cnt = yaw;
+
+                  client.println(cnt);
+                  delay(1);
+            }
+      }
 }
