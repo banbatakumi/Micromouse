@@ -1,6 +1,7 @@
 #ifndef __ROBOT__
 #define __ROBOT__
 
+#include "BufferedSerial.hpp"
 #include "Button.hpp"
 #include "Buzzer.hpp"
 #include "DigitalInOut.hpp"
@@ -25,6 +26,8 @@ class Robot {
       } line;
       uint16_t encoder_val_left, encoder_val_right;
 
+      int yaw;
+
       DigitalOut led1 = DigitalOut(LED1_GPIO_Port, LED1_Pin);
       DigitalOut led2 = DigitalOut(LED2_GPIO_Port, LED2_Pin);
       DigitalOut led3 = DigitalOut(LED3_GPIO_Port, LED3_Pin);
@@ -43,6 +46,8 @@ class Robot {
       PwmSingleOut motor2a = PwmSingleOut(&htim1, TIM_CHANNEL_3);
       PwmSingleOut motor2b = PwmSingleOut(&htim1, TIM_CHANNEL_4);
       Buzzer buzzer = Buzzer(&htim2, TIM_CHANNEL_3);
+
+      BufferedSerial serial6 = BufferedSerial(&huart6, 128);
 
       MovingAve aveLinePosition;
 
