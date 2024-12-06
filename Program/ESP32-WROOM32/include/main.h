@@ -3,7 +3,7 @@
 
 #include "setup.h"
 
-#define MAIN_CONTROL_FREQ 100
+#define MAIN_CONTROL_FREQ 10
 
 void main_setup() {
       // WiFiネットワークを作成

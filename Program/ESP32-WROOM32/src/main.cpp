@@ -79,8 +79,8 @@ void setup() {
       main_setup();
 
       xTaskCreatePinnedToCore(Core0a, "Core0a", 4096, NULL, 1, &thp[0], 0);
-      xTaskCreatePinnedToCore(Core1a, "Core1a", 4096, NULL, 2, &thp[1], 1);
-      xTaskCreatePinnedToCore(Core1b, "Core1b", 4096, NULL, 3, &thp[2], 1);
+      // xTaskCreatePinnedToCore(Core1a, "Core1a", 4096, NULL, 2, &thp[1], 1);
+      // xTaskCreatePinnedToCore(Core1b, "Core1b", 4096, NULL, 3, &thp[2], 1);
 }
 
 void loop() {
