@@ -6,6 +6,9 @@ MotorDrive::MotorDrive(PwmSingleOut *motor1a, PwmSingleOut *motor1b, PwmSingleOu
       this->encoder_val_right_ = encoder_val_right;
       this->kp = 5;
       this->ki = 5;
+
+      speedLeft.SetLength(3);
+      speedRight.SetLength(3);
 }
 
 void MotorDrive::Init() {
@@ -45,6 +48,8 @@ void MotorDrive::SpeedControl() {
             // rad/sに変換
             encoder.speed_left = encoder.dif_rad_left / dt * -1;
             encoder.speed_right = encoder.dif_rad_right / dt;
+            speedLeft.Compute(&encoder.speed_left);
+            speedRight.Compute(&encoder.speed_right);
 
             // PIの計算
             // 比例成分

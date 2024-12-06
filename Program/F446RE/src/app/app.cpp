@@ -1,10 +1,10 @@
 #include "app.h"
 
-#include "main_mode.hpp"
+#include "mode.hpp"
 #include "robot.hpp"
 
 Robot robot;
-MainMode mainMode;
+Mode mode(&robot);
 
 void TimInterrupt1khz() {
       robot.heartBeat();
@@ -27,6 +27,6 @@ void setup() {
 
 void main_app() {
       while (1) {
-            mainMode.loop();
+            mode.MainMode();
       }
 }

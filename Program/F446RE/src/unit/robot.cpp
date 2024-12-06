@@ -26,7 +26,7 @@ void Robot::hardwareInit() {
       motor2a.init();
       motor2b.init();
       buzzer.init();
-      serial6.init();
+      // serial6.init();
 }
 
 void Robot::getSensors() {
@@ -53,40 +53,40 @@ void Robot::getSensors() {
       static uint8_t index = 0;             // 受信したデータのインデックスカウンター
       static uint8_t data[dataSize] = {0};  // 受信したデータ
 
-      if (serial6.available()) {
-            // 1バイト読み込み
-            uint8_t receivedByte = serial6.read();
-            // printf("received %d\n ", receivedByte);
+      // if (serial6.available()) {
+      //       // 1バイト読み込み
+      //       uint8_t receivedByte = serial6.read();
+      //       // printf("received %d\n ", receivedByte);
 
-            if (!headerReceived) {
-                  index = 0;
-                  if (receivedByte == HEADER) {
-                        // ヘッダを受信したらデータの受信を開始
-                        headerReceived = true;  // ヘッダを受信したフラグを立てる
-                                                // printf("header received %d\n ", receivedByte);
-                  } else {
-                        headerReceived = false;  // ヘッダではないのでフラグをリセット
-                                                 // printf("error: Header is not received %d\n", receivedByte);
-                  }
-            } else {  // ヘッダを受信した後の処理
-                  if (index < dataSize) {
-                        // データ受信
-                        data[index] = receivedByte;
-                        // printf("data[%d]: %d\n", index, data[index]);
-                        index++;
+      //       if (!headerReceived) {
+      //             index = 0;
+      //             if (receivedByte == HEADER) {
+      //                   // ヘッダを受信したらデータの受信を開始
+      //                   headerReceived = true;  // ヘッダを受信したフラグを立てる
+      //                                           // printf("header received %d\n ", receivedByte);
+      //             } else {
+      //                   headerReceived = false;  // ヘッダではないのでフラグをリセット
+      //                                            // printf("error: Header is not received %d\n", receivedByte);
+      //             }
+      //       } else {  // ヘッダを受信した後の処理
+      //             if (index < dataSize) {
+      //                   // データ受信
+      //                   data[index] = receivedByte;
+      //                   // printf("data[%d]: %d\n", index, data[index]);
+      //                   index++;
 
-                        if (index == dataSize) {
-                              // データ受信完了
-                              yaw = data[0] * 2 - 180;
-                              int a = data[1];
+      //                   if (index == dataSize) {
+      //                         // データ受信完了
+      //                         yaw = data[0] * 2 - 180;
+      //                         int a = data[1];
 
-                              headerReceived = false;  // 次のヘッダを待つ準備をする
-                              index = 0;               // インデックスをリセット
-                        }
-                  }
-            }
-            printf("yaw = %d\n", yaw);
-      }
+      //                         headerReceived = false;  // 次のヘッダを待つ準備をする
+      //                         index = 0;               // インデックスをリセット
+      //                   }
+      //             }
+      //       }
+      //       printf("yaw = %d\n", yaw);
+      // }
 }
 
 void Robot::LineCompute() {

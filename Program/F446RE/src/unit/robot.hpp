@@ -47,7 +47,7 @@ class Robot {
       PwmSingleOut motor2b = PwmSingleOut(&htim1, TIM_CHANNEL_4);
       Buzzer buzzer = Buzzer(&htim2, TIM_CHANNEL_3);
 
-      BufferedSerial serial6 = BufferedSerial(&huart6, 128);
+      // BufferedSerial serial6 = BufferedSerial(&huart6, 128);
 
       MovingAve aveLinePosition;
 

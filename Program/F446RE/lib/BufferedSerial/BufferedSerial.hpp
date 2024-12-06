@@ -27,7 +27,7 @@ class BufferedSerial {
       void init(bool dma = false) {
             _useDMA = dma;
             HAL_UART_Receive_DMA(_huart, _rxBuf, _rxBufSize);
-            printf("- Serial init\n");
+            // printf("- Serial init\n");
       }
 
       bool available() {
