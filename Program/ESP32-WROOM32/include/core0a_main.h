@@ -31,6 +31,7 @@ void Core0a_setup() {
             Serial.print(devStatus);
             Serial.println(F(")"));
       }
+      Serial2.begin(115200, SERIAL_8N1, 16, 17);
 }
 
 void Core0a_loop() {
@@ -41,6 +42,18 @@ void Core0a_loop() {
             yaw = SimplifyDeg(ypr[0] * 180 / M_PI - yaw_correction);
       }
       Serial.println(yaw);
+
+      // UART送信
+      const uint8_t send_byte_num = 3;
+      uint8_t send_byte[send_byte_num];
+      send_byte[0] = 0xFF;
+      send_byte[1] = yaw / 2 + 90;
+      send_byte[2] = 0xAA;
+      Serial2.write(send_byte, send_byte_num);
+      Serial.flush();
+
+      // UART受信
+      uint8_t recv_data = Serial2.read();
 }
 
 #endif
