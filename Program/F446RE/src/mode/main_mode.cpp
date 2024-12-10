@@ -1,6 +1,6 @@
 #include "mode.hpp"
 
-#define DEBUG
+// #define DEBUG
 
 void Mode::MainMode() {
       processTimer.reset();

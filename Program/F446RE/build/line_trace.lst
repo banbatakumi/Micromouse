@@ -1,0 +1,439 @@
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cctZdEla.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"line_trace.cpp"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "src/mode/line_trace.cpp"
+  20              		.global	__aeabi_d2f
+  21              		.global	__aeabi_dcmpgt
+  22              		.global	__aeabi_dcmplt
+  23              		.section	.text._ZN4Mode9LineTraceEv,"ax",%progbits
+  24              		.align	1
+  25              		.global	_ZN4Mode9LineTraceEv
+  26              		.syntax unified
+  27              		.thumb
+  28              		.thumb_func
+  30              	_ZN4Mode9LineTraceEv:
+  31              		.fnstart
+  32              	.LVL0:
+  33              	.LFB278:
+   1:src/mode/line_trace.cpp **** #ifndef __LINE_TRACE__
+   2:src/mode/line_trace.cpp **** #define __LINE_TRACE__
+   3:src/mode/line_trace.cpp **** 
+   4:src/mode/line_trace.cpp **** #include "mode.hpp"
+   5:src/mode/line_trace.cpp **** 
+   6:src/mode/line_trace.cpp **** float p, i, d, pid, pre_p;
+   7:src/mode/line_trace.cpp **** 
+   8:src/mode/line_trace.cpp **** void Mode::LineTrace() {
+  34              		.loc 1 8 24 view -0
+  35              		.cfi_startproc
+  36              		@ args = 0, pretend = 0, frame = 0
+  37              		@ frame_needed = 0, uses_anonymous_args = 0
+  38              		.loc 1 8 24 is_stmt 0 view .LVU1
+  39 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+  40              		.save {r4, r5, r6, r7, r8, lr}
+  41              	.LCFI0:
+  42              		.cfi_def_cfa_offset 24
+  43              		.cfi_offset 4, -24
+  44              		.cfi_offset 5, -20
+  45              		.cfi_offset 6, -16
+  46              		.cfi_offset 7, -12
+  47              		.cfi_offset 8, -8
+  48              		.cfi_offset 14, -4
+  49 0004 0446     		mov	r4, r0
+   9:src/mode/line_trace.cpp ****       const float Kp = 1.5, Ki = 2, Kd = 0.03;
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cctZdEla.s 			page 2
+
+
+  50              		.loc 1 9 7 is_stmt 1 view .LVU2
+  51              	.LVL1:
+  10:src/mode/line_trace.cpp ****       int16_t left, right;
+  52              		.loc 1 10 7 view .LVU3
+  11:src/mode/line_trace.cpp ****       p = robot->line.position - 0;
+  53              		.loc 1 11 7 view .LVU4
+  54              		.loc 1 11 11 is_stmt 0 view .LVU5
+  55 0006 4568     		ldr	r5, [r0, #4]
+  56              		.loc 1 11 23 view .LVU6
+  57 0008 D5E90667 		ldrd	r6, [r5, #24]
+  58              		.loc 1 11 32 view .LVU7
+  59 000c 3046     		mov	r0, r6
+  60              	.LVL2:
+  61              		.loc 1 11 32 view .LVU8
+  62 000e 3946     		mov	r1, r7
+  63 0010 FFF7FEFF 		bl	__aeabi_d2f
+  64              	.LVL3:
+  65 0014 07EE100A 		vmov	s14, r0
+  66              		.loc 1 11 9 view .LVU9
+  67 0018 5C4B     		ldr	r3, .L20
+  68 001a 1860     		str	r0, [r3]	@ float
+  12:src/mode/line_trace.cpp ****       i += p * process_time_ * 0.000001f;
+  69              		.loc 1 12 7 is_stmt 1 view .LVU10
+  70              		.loc 1 12 16 is_stmt 0 view .LVU11
+  71 001c 2389     		ldrh	r3, [r4, #8]
+  72 001e 07EE903A 		vmov	s15, r3	@ int
+  73              		.loc 1 12 14 view .LVU12
+  74 0022 F8EEE77A 		vcvt.f32.s32	s15, s15
+  75 0026 67EE276A 		vmul.f32	s13, s14, s15
+  76              		.loc 1 12 30 view .LVU13
+  77 002a 9FED596A 		vldr.32	s12, .L20+4
+  78 002e 66EE866A 		vmul.f32	s13, s13, s12
+  79              		.loc 1 12 9 view .LVU14
+  80 0032 584B     		ldr	r3, .L20+8
+  81 0034 D3ED005A 		vldr.32	s11, [r3]
+  82 0038 76EEA56A 		vadd.f32	s13, s13, s11
+  83 003c C3ED006A 		vstr.32	s13, [r3]
+  13:src/mode/line_trace.cpp ****       d = (p - pre_p) / (process_time_ * 0.000001f);
+  84              		.loc 1 13 7 is_stmt 1 view .LVU15
+  85              		.loc 1 13 14 is_stmt 0 view .LVU16
+  86 0040 554B     		ldr	r3, .L20+12
+  87 0042 D3ED005A 		vldr.32	s11, [r3]
+  88 0046 77EE655A 		vsub.f32	s11, s14, s11
+  89              		.loc 1 13 40 view .LVU17
+  90 004a 67EE867A 		vmul.f32	s15, s15, s12
+  91              		.loc 1 13 23 view .LVU18
+  92 004e 85EEA76A 		vdiv.f32	s12, s11, s15
+  93              		.loc 1 13 9 view .LVU19
+  94 0052 524A     		ldr	r2, .L20+16
+  95 0054 82ED006A 		vstr.32	s12, [r2]
+  14:src/mode/line_trace.cpp ****       pre_p = p;
+  96              		.loc 1 14 7 is_stmt 1 view .LVU20
+  97              		.loc 1 14 13 is_stmt 0 view .LVU21
+  98 0058 1860     		str	r0, [r3]	@ float
+  15:src/mode/line_trace.cpp ****       pid = p * Kp + i * Ki + d * Kd;
+  99              		.loc 1 15 7 is_stmt 1 view .LVU22
+ 100              		.loc 1 15 15 is_stmt 0 view .LVU23
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cctZdEla.s 			page 3
+
+
+ 101 005a F7EE087A 		vmov.f32	s15, #1.5e+0
+ 102 005e 67EE277A 		vmul.f32	s15, s14, s15
+ 103              		.loc 1 15 24 view .LVU24
+ 104 0062 76EEA66A 		vadd.f32	s13, s13, s13
+ 105              		.loc 1 15 20 view .LVU25
+ 106 0066 77EEA67A 		vadd.f32	s15, s15, s13
+ 107              		.loc 1 15 33 view .LVU26
+ 108 006a DFED4D6A 		vldr.32	s13, .L20+20
+ 109 006e 26EE266A 		vmul.f32	s12, s12, s13
+ 110              		.loc 1 15 29 view .LVU27
+ 111 0072 77EE867A 		vadd.f32	s15, s15, s12
+ 112              		.loc 1 15 11 view .LVU28
+ 113 0076 4B4B     		ldr	r3, .L20+24
+ 114 0078 C3ED007A 		vstr.32	s15, [r3]
+  16:src/mode/line_trace.cpp ****       if (abs(p) < 1) i = 0.5;
+ 115              		.loc 1 16 7 is_stmt 1 view .LVU29
+ 116              		.loc 1 16 11 is_stmt 0 view .LVU30
+ 117 007c B5EEC07A 		vcmpe.f32	s14, #0
+ 118 0080 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 119 0084 70DD     		ble	.L17
+ 120              	.L2:
+ 121              		.loc 1 16 7 discriminator 4 view .LVU31
+ 122 0086 F7EE006A 		vmov.f32	s13, #1.0e+0
+ 123 008a B4EEE67A 		vcmpe.f32	s14, s13
+ 124 008e F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 125 0092 6CD4     		bmi	.L18
+ 126              	.L3:
+  17:src/mode/line_trace.cpp ****       left = pid * 2;
+ 127              		.loc 1 17 7 is_stmt 1 view .LVU32
+ 128              		.loc 1 17 18 is_stmt 0 view .LVU33
+ 129 0094 77EEA77A 		vadd.f32	s15, s15, s15
+ 130              		.loc 1 17 12 view .LVU34
+ 131 0098 BDEEE77A 		vcvt.s32.f32	s14, s15
+ 132 009c 17EE103A 		vmov	r3, s14	@ int
+ 133 00a0 0FFA83F8 		sxth	r8, r3
+ 134              	.LVL4:
+  18:src/mode/line_trace.cpp ****       right = pid * -2;
+ 135              		.loc 1 18 7 is_stmt 1 view .LVU35
+ 136              		.loc 1 18 13 is_stmt 0 view .LVU36
+ 137 00a4 F1EE677A 		vneg.f32	s15, s15
+ 138 00a8 FDEEE77A 		vcvt.s32.f32	s15, s15
+ 139 00ac 17EE903A 		vmov	r3, s15	@ int
+ 140 00b0 1CB2     		sxth	r4, r3
+ 141              	.LVL5:
+  19:src/mode/line_trace.cpp ****       if (abs(left) > 500) left = 500 * (abs(left) / left);
+ 142              		.loc 1 19 7 is_stmt 1 view .LVU37
+ 143              		.loc 1 19 11 is_stmt 0 view .LVU38
+ 144 00b2 88EAE873 		eor	r3, r8, r8, asr #31
+ 145 00b6 A3EBE873 		sub	r3, r3, r8, asr #31
+ 146 00ba 9BB2     		uxth	r3, r3
+ 147              		.loc 1 19 7 view .LVU39
+ 148 00bc B3F5FA7F 		cmp	r3, #500
+ 149 00c0 08D9     		bls	.L5
+ 150              		.loc 1 19 28 is_stmt 1 discriminator 1 view .LVU40
+ 151              		.loc 1 19 52 is_stmt 0 discriminator 1 view .LVU41
+ 152 00c2 93FBF8F3 		sdiv	r3, r3, r8
+ 153              		.loc 1 19 33 discriminator 1 view .LVU42
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cctZdEla.s 			page 4
+
+
+ 154 00c6 C3EB4312 		rsb	r2, r3, r3, lsl #5
+ 155 00ca 03EB8203 		add	r3, r3, r2, lsl #2
+ 156 00ce 9B00     		lsls	r3, r3, #2
+ 157 00d0 0FFA83F8 		sxth	r8, r3
+ 158              	.LVL6:
+ 159              	.L5:
+  20:src/mode/line_trace.cpp ****       if (abs(right) > 500) right = 500 * (abs(right) / right);
+ 160              		.loc 1 20 7 is_stmt 1 view .LVU43
+ 161              		.loc 1 20 11 is_stmt 0 view .LVU44
+ 162 00d4 84EAE473 		eor	r3, r4, r4, asr #31
+ 163 00d8 A3EBE473 		sub	r3, r3, r4, asr #31
+ 164 00dc 9BB2     		uxth	r3, r3
+ 165              		.loc 1 20 7 view .LVU45
+ 166 00de B3F5FA7F 		cmp	r3, #500
+ 167 00e2 07D9     		bls	.L6
+ 168              		.loc 1 20 29 is_stmt 1 discriminator 1 view .LVU46
+ 169              		.loc 1 20 55 is_stmt 0 discriminator 1 view .LVU47
+ 170 00e4 93FBF4F3 		sdiv	r3, r3, r4
+ 171              		.loc 1 20 35 discriminator 1 view .LVU48
+ 172 00e8 C3EB4312 		rsb	r2, r3, r3, lsl #5
+ 173 00ec 03EB8203 		add	r3, r3, r2, lsl #2
+ 174 00f0 9B00     		lsls	r3, r3, #2
+ 175 00f2 1CB2     		sxth	r4, r3
+ 176              	.LVL7:
+ 177              	.L6:
+  21:src/mode/line_trace.cpp ****       if (abs(robot->line.position) < 5) {
+ 178              		.loc 1 21 7 is_stmt 1 view .LVU49
+ 179              		.loc 1 21 11 is_stmt 0 view .LVU50
+ 180 00f4 0022     		movs	r2, #0
+ 181 00f6 0023     		movs	r3, #0
+ 182 00f8 3046     		mov	r0, r6
+ 183 00fa 3946     		mov	r1, r7
+ 184 00fc FFF7FEFF 		bl	__aeabi_dcmpgt
+ 185              	.LVL8:
+ 186 0100 0028     		cmp	r0, #0
+ 187 0102 39D0     		beq	.L19
+ 188              	.L7:
+ 189              		.loc 1 21 7 discriminator 4 view .LVU51
+ 190 0104 0022     		movs	r2, #0
+ 191 0106 284B     		ldr	r3, .L20+28
+ 192 0108 3046     		mov	r0, r6
+ 193 010a 3946     		mov	r1, r7
+ 194 010c FFF7FEFF 		bl	__aeabi_dcmplt
+ 195              	.LVL9:
+ 196 0110 B0B3     		cbz	r0, .L15
+  22:src/mode/line_trace.cpp ****             left += 120;
+ 197              		.loc 1 22 13 is_stmt 1 view .LVU52
+ 198              		.loc 1 22 18 is_stmt 0 view .LVU53
+ 199 0112 08F17801 		add	r1, r8, #120
+ 200 0116 09B2     		sxth	r1, r1
+ 201              	.LVL10:
+  23:src/mode/line_trace.cpp ****             right += 120;
+ 202              		.loc 1 23 13 is_stmt 1 view .LVU54
+ 203              		.loc 1 23 19 is_stmt 0 view .LVU55
+ 204 0118 7834     		adds	r4, r4, #120
+ 205              	.LVL11:
+ 206              		.loc 1 23 19 view .LVU56
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cctZdEla.s 			page 5
+
+
+ 207 011a 22B2     		sxth	r2, r4
+ 208              	.LVL12:
+ 209              	.L10:
+  24:src/mode/line_trace.cpp ****       } else {
+  25:src/mode/line_trace.cpp ****             left += 60;
+  26:src/mode/line_trace.cpp ****             right += 60;
+  27:src/mode/line_trace.cpp ****       }
+  28:src/mode/line_trace.cpp ****       if (abs(left) > 600) left = 600 * (abs(left) / left);
+ 210              		.loc 1 28 7 is_stmt 1 view .LVU57
+ 211              		.loc 1 28 11 is_stmt 0 view .LVU58
+ 212 011c 81EAE173 		eor	r3, r1, r1, asr #31
+ 213 0120 A3EBE173 		sub	r3, r3, r1, asr #31
+ 214 0124 9BB2     		uxth	r3, r3
+ 215              		.loc 1 28 7 view .LVU59
+ 216 0126 B3F5167F 		cmp	r3, #600
+ 217 012a 07D9     		bls	.L11
+ 218              		.loc 1 28 28 is_stmt 1 discriminator 1 view .LVU60
+ 219              		.loc 1 28 52 is_stmt 0 discriminator 1 view .LVU61
+ 220 012c 93FBF1F3 		sdiv	r3, r3, r1
+ 221              		.loc 1 28 33 discriminator 1 view .LVU62
+ 222 0130 03EB8303 		add	r3, r3, r3, lsl #2
+ 223 0134 C3EB0313 		rsb	r3, r3, r3, lsl #4
+ 224 0138 DB00     		lsls	r3, r3, #3
+ 225 013a 19B2     		sxth	r1, r3
+ 226              	.LVL13:
+ 227              	.L11:
+  29:src/mode/line_trace.cpp ****       if (abs(right) > 600) right = 600 * (abs(right) / right);
+ 228              		.loc 1 29 7 is_stmt 1 view .LVU63
+ 229              		.loc 1 29 11 is_stmt 0 view .LVU64
+ 230 013c 82EAE273 		eor	r3, r2, r2, asr #31
+ 231 0140 A3EBE273 		sub	r3, r3, r2, asr #31
+ 232 0144 9BB2     		uxth	r3, r3
+ 233              		.loc 1 29 7 view .LVU65
+ 234 0146 B3F5167F 		cmp	r3, #600
+ 235 014a 07D9     		bls	.L12
+ 236              		.loc 1 29 29 is_stmt 1 discriminator 1 view .LVU66
+ 237              		.loc 1 29 55 is_stmt 0 discriminator 1 view .LVU67
+ 238 014c 93FBF2F3 		sdiv	r3, r3, r2
+ 239              		.loc 1 29 35 discriminator 1 view .LVU68
+ 240 0150 03EB8303 		add	r3, r3, r3, lsl #2
+ 241 0154 C3EB0313 		rsb	r3, r3, r3, lsl #4
+ 242 0158 DB00     		lsls	r3, r3, #3
+ 243 015a 1AB2     		sxth	r2, r3
+ 244              	.LVL14:
+ 245              	.L12:
+  30:src/mode/line_trace.cpp ****       robot->motor.Drive(left, right);
+ 246              		.loc 1 30 7 is_stmt 1 view .LVU69
+ 247              		.loc 1 30 25 is_stmt 0 view .LVU70
+ 248 015c 05F58960 		add	r0, r5, #1096
+ 249 0160 FFF7FEFF 		bl	_ZN10MotorDrive5DriveEss
+ 250              	.LVL15:
+  31:src/mode/line_trace.cpp ****       // printf("left = %d, right = %d\n", left, right);
+  32:src/mode/line_trace.cpp ****       // robot->motor.Drive(200, 0);
+  33:src/mode/line_trace.cpp **** }
+ 251              		.loc 1 33 1 view .LVU71
+ 252 0164 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 253              	.LVL16:
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cctZdEla.s 			page 6
+
+
+ 254              	.L17:
+  16:src/mode/line_trace.cpp ****       left = pid * 2;
+ 255              		.loc 1 16 11 discriminator 2 view .LVU72
+ 256 0168 B1EE477A 		vneg.f32	s14, s14
+ 257 016c 8BE7     		b	.L2
+ 258              	.L18:
+  16:src/mode/line_trace.cpp ****       left = pid * 2;
+ 259              		.loc 1 16 23 is_stmt 1 discriminator 5 view .LVU73
+  16:src/mode/line_trace.cpp ****       left = pid * 2;
+ 260              		.loc 1 16 25 is_stmt 0 discriminator 5 view .LVU74
+ 261 016e 094B     		ldr	r3, .L20+8
+ 262 0170 4FF07C52 		mov	r2, #1056964608
+ 263 0174 1A60     		str	r2, [r3]	@ float
+ 264 0176 8DE7     		b	.L3
+ 265              	.LVL17:
+ 266              	.L19:
+  21:src/mode/line_trace.cpp ****             left += 120;
+ 267              		.loc 1 21 11 discriminator 2 view .LVU75
+ 268 0178 07F10043 		add	r3, r7, #-2147483648
+ 269 017c 1F46     		mov	r7, r3
+ 270 017e C1E7     		b	.L7
+ 271              	.L15:
+  25:src/mode/line_trace.cpp ****             right += 60;
+ 272              		.loc 1 25 13 is_stmt 1 view .LVU76
+  25:src/mode/line_trace.cpp ****             right += 60;
+ 273              		.loc 1 25 18 is_stmt 0 view .LVU77
+ 274 0180 08F13C01 		add	r1, r8, #60
+ 275 0184 09B2     		sxth	r1, r1
+ 276              	.LVL18:
+  26:src/mode/line_trace.cpp ****       }
+ 277              		.loc 1 26 13 is_stmt 1 view .LVU78
+  26:src/mode/line_trace.cpp ****       }
+ 278              		.loc 1 26 19 is_stmt 0 view .LVU79
+ 279 0186 3C34     		adds	r4, r4, #60
+ 280              	.LVL19:
+  26:src/mode/line_trace.cpp ****       }
+ 281              		.loc 1 26 19 view .LVU80
+ 282 0188 22B2     		sxth	r2, r4
+ 283              	.LVL20:
+  26:src/mode/line_trace.cpp ****       }
+ 284              		.loc 1 26 19 view .LVU81
+ 285 018a C7E7     		b	.L10
+ 286              	.L21:
+ 287              		.align	2
+ 288              	.L20:
+ 289 018c 00000000 		.word	p
+ 290 0190 BD378635 		.word	897988541
+ 291 0194 00000000 		.word	i
+ 292 0198 00000000 		.word	pre_p
+ 293 019c 00000000 		.word	d
+ 294 01a0 8FC2F53C 		.word	1022739087
+ 295 01a4 00000000 		.word	pid
+ 296 01a8 00001440 		.word	1075052544
+ 297              		.cfi_endproc
+ 298              	.LFE278:
+ 299              		.fnend
+ 301              		.global	pre_p
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cctZdEla.s 			page 7
+
+
+ 302              		.section	.bss.pre_p,"aw",%nobits
+ 303              		.align	2
+ 306              	pre_p:
+ 307 0000 00000000 		.space	4
+ 308              		.global	pid
+ 309              		.section	.bss.pid,"aw",%nobits
+ 310              		.align	2
+ 313              	pid:
+ 314 0000 00000000 		.space	4
+ 315              		.global	d
+ 316              		.section	.bss.d,"aw",%nobits
+ 317              		.align	2
+ 320              	d:
+ 321 0000 00000000 		.space	4
+ 322              		.global	i
+ 323              		.section	.bss.i,"aw",%nobits
+ 324              		.align	2
+ 327              	i:
+ 328 0000 00000000 		.space	4
+ 329              		.global	p
+ 330              		.section	.bss.p,"aw",%nobits
+ 331              		.align	2
+ 334              	p:
+ 335 0000 00000000 		.space	4
+ 336              		.text
+ 337              	.Letext0:
+ 338              		.file 2 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/machine/_default_ty
+ 339              		.file 3 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/lib/gcc/arm-none-eabi/12.3.1/include/stdd
+ 340              		.file 4 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/sys/_types.h"
+ 341              		.file 5 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/sys/reent.h"
+ 342              		.file 6 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/sys/lock.h"
+ 343              		.file 7 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/stdio.h"
+ 344              		.file 8 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/sys/_stdint.h"
+ 345              		.file 9 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f446xx.h"
+ 346              		.file 10 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ 347              		.file 11 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 348              		.file 12 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 349              		.file 13 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h"
+ 350              		.file 14 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+ 351              		.file 15 "Lib/DigitalInOut/DigitalInOut.hpp"
+ 352              		.file 16 "Lib/Timer/Timer.hpp"
+ 353              		.file 17 "Lib/Button/Button.hpp"
+ 354              		.file 18 "Lib/Buzzer/Buzzer.hpp"
+ 355              		.file 19 "Lib/MovingAve/MovingAve.hpp"
+ 356              		.file 20 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/c++/12.3.1/cstdio"
+ 357              		.file 21 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/c++/12.3.1/arm-non
+ 358              		.file 22 "Lib/PWMSingle/PWMSingle.hpp"
+ 359              		.file 23 "src/unit/motor_drive.hpp"
+ 360              		.file 24 "src/unit/robot.hpp"
+ 361              		.file 25 "src/mode/mode.hpp"
+ARM GAS  /var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cctZdEla.s 			page 8
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 line_trace.cpp
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cctZdEla.s:24     .text._ZN4Mode9LineTraceEv:00000000 $t
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cctZdEla.s:30     .text._ZN4Mode9LineTraceEv:00000000 _ZN4Mode9LineTraceEv
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cctZdEla.s:289    .text._ZN4Mode9LineTraceEv:0000018c $d
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cctZdEla.s:334    .bss.p:00000000 p
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cctZdEla.s:327    .bss.i:00000000 i
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cctZdEla.s:306    .bss.pre_p:00000000 pre_p
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cctZdEla.s:320    .bss.d:00000000 d
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cctZdEla.s:313    .bss.pid:00000000 pid
+.ARM.exidx.text._ZN4Mode9LineTraceEv:00000000 $d
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cctZdEla.s:303    .bss.pre_p:00000000 $d
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cctZdEla.s:310    .bss.pid:00000000 $d
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cctZdEla.s:317    .bss.d:00000000 $d
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cctZdEla.s:324    .bss.i:00000000 $d
+/var/folders/5c/srt4fy4j1pd641bjfx75k5000000gn/T//cctZdEla.s:331    .bss.p:00000000 $d
+
+UNDEFINED SYMBOLS
+__aeabi_d2f
+__aeabi_dcmpgt
+__aeabi_dcmplt
+_ZN10MotorDrive5DriveEss
+__aeabi_unwind_cpp_pr0

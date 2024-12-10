@@ -1,5 +1,13 @@
 #include "motor_drive.hpp"
 
+// Cortex-Debug用グローバル変数
+double debug_rad_left;
+double debug_rad_right;
+double debug_speed_left;
+double debug_speed_right;
+double debug_power_left;
+double debug_power_right;
+
 MotorDrive::MotorDrive(PwmSingleOut *motor1a, PwmSingleOut *motor1b, PwmSingleOut *motor2a, PwmSingleOut *motor2b, uint16_t *encoder_val_left, uint16_t *encoder_val_right)
     : motor1a_(motor1a), motor1b_(motor1b), motor2a_(motor2a), motor2b_(motor2b) {
       this->encoder_val_left_ = encoder_val_left;
@@ -7,8 +15,8 @@ MotorDrive::MotorDrive(PwmSingleOut *motor1a, PwmSingleOut *motor1b, PwmSingleOu
       this->kp = 5;
       this->ki = 5;
 
-      speedLeft.SetLength(3);
-      speedRight.SetLength(3);
+      speedLeft.SetLength(2);
+      speedRight.SetLength(2);
 }
 
 void MotorDrive::Init() {
@@ -75,6 +83,12 @@ void MotorDrive::SpeedControl() {
             if (speed_right_ < 0 && power_right_ > -1) power_right_ = -1;
 
             Run(power_left_, power_right_);
+
+            // Cortex-Debug用グローバル変数
+            debug_speed_left = encoder.speed_left;
+            debug_speed_right = encoder.speed_right;
+            debug_rad_left = encoder.rad_left;
+            debug_rad_right = encoder.rad_right;
       }
 }
 
@@ -106,6 +120,9 @@ void MotorDrive::Run(double left, double right) {
                   motor2b_->write(output_right * -0.001f);
             }
       }
+
+      debug_power_left = output_left;
+      debug_power_right = output_right;
 }
 
 void MotorDrive::Drive(int16_t left, int16_t right) {

@@ -5,9 +5,10 @@
 #include "PWMSingle.hpp"
 #include "Timer.hpp"
 
-#define MAX_POWER 600
+#define MAX_POWER 600  // MAX:1000
 #define MIN_POWER 20
 
+#define MAX_SPEED
 class MotorDrive {
      public:
       MotorDrive(PwmSingleOut *motor1a, PwmSingleOut *motor1b, PwmSingleOut *motor2a, PwmSingleOut *motor2b, uint16_t *encoder_val_left, uint16_t *encoder_val_right);
